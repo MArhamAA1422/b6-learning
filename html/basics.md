@@ -35,3 +35,21 @@
   <input type="range" id="vol" name="vol" min="0" max="50">
 ```
 
+## textarea
+- multi-line text input: comments, message, feedback
+- common attributes: `readonly, disabled, required`
+
+## select (kinda navbar)
+- grouping option: `optgroup`
+```html
+<select name="cars">
+  <optgroup label="German Cars">
+    <option value="bmw">BMW</option>
+    <option value="audi">Audi</option>
+  </optgroup>
+  <optgroup label="Swedish Cars">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+  </optgroup>
+</select>
+```
