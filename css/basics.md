@@ -27,3 +27,50 @@ flex: 0 0 200px;
   }
 }
 ```
+
+## Inheritance
+- Inherited by default: `color, font-family, font-size, line-height`
+
+- Not inherited by default: `margin, padding, border, background`
+
+- Example
+```html
+<div style="color: blue;">
+  <p>This text will be blue</p>
+  <span>This span is also blue</span>
+</div>
+```
+
+- Forcing inheritance
+```css
+p {
+  border: inherit; /* p will inherit border from its parent */
+}
+```
+
+## Cascade
+- Cascade decides which CSS rule applies when multiple rules target the same element.
+
+### Factors that determine priority
+
+- importance
+```css
+p {
+  color: red !important; /* overrides everything */
+}
+```
+- Specificity – more specific selectors override less specific ones.
+
+`Inline style > ID selector > Class/attribute/pseudo-class > Element`
+
+```css
+#myid { color: red; } /* wins over */
+.myclass { color: blue; }
+p { color: green; }
+```
+
+- Source order – last rule in CSS wins if specificity is same.
+```css
+p { color: red; }
+p { color: blue; } /* this one applies */
+```
