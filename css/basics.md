@@ -74,3 +74,43 @@ p { color: green; }
 p { color: red; }
 p { color: blue; } /* this one applies */
 ```
+
+## Transform
+- lets us change the **shape, size**, and **position** of an element without affecting the normal flow of the page.
+- It’s also GPU-accelerated, so it’s very smooth for animations.
+
+### Translate (move)
+```css
+.box {
+  transform: translateX(50px);   /* move right 50px */
+  transform: translate(50px, 20px); /* move right 50px & down 20px */
+}
+```
+
+### Rotate
+```css
+.box {
+  transform: rotate(45deg); /* rotate 45 degrees */
+}
+```
+
+### Scale (resize)
+```css
+.box {
+  transform: scale(1.5); /* increase size by 1.5x */
+}
+```
+
+### Skew (tilt)
+```css
+.box {
+  transform: skewX(20deg); /* tilt horizontally */
+}
+```
+
+### Combine multiple transforms
+```css
+.box {
+  transform: translateX(50px) rotate(30deg) scale(1.2);
+}
+```
