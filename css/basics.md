@@ -135,3 +135,24 @@ p { color: blue; } /* this one applies */
 ### Note
 - opacity: 0 still keeps the element in the layout (it’s just invisible).
 - Remove it entirely: use `display: none` or `visibility: hidden`
+
+## px vs rem
+- **px** (pixels) → absolute unit.
+  - Example: 16px always means exactly 16 pixels.
+  - Doesn’t change based on user settings.
+
+- **rem** (root em) → relative unit.
+
+  - 1rem = font size of the root element (<html>).
+
+- By default (user can change this though), most browsers set <html> `font-size = 16px`, so:
+
+```css
+1rem = 16px
+```
+
+## Difference from em
+- em is relative to the parent element’s font size.
+  - name came from the letter M in traditional typography
+
+- rem is relative to the root (html) font size, so it’s more consistent.
