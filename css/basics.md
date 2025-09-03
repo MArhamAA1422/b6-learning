@@ -114,3 +114,24 @@ p { color: blue; } /* this one applies */
   transform: translateX(50px) rotate(30deg) scale(1.2);
 }
 ```
+
+## opacity
+- Controls transparency of an element.
+
+- Ranges from 0 (fully invisible) to 1 (fully visible).
+
+```css
+.box {
+  opacity: 1;   /* fully visible */
+}
+.box-half {
+  opacity: 0.5; /* semi-transparent */
+}
+.box-hidden {
+  opacity: 0;   /* invisible, but still takes space */
+}
+```
+
+### Note
+- opacity: 0 still keeps the element in the layout (it’s just invisible).
+- Remove it entirely: use `display: none` or `visibility: hidden`
