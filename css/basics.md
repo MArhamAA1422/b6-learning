@@ -184,3 +184,19 @@ p { color: blue; } /* this one applies */
 ## Container query
 - Container queries are a modern CSS feature that let you style something based on the size of a parent element instead of the size of the entire viewport.
 - `@container`, similar to `@media`
+
+## Position
+- static (default)
+- relative (in normal flow)
+  - left, right, top, right movement possible
+- absolute (not in normal flow)
+  - normally under `relative` parent
+  - If no ancestor is positioned, it’s relative to <html> (the page itself).
+- fixed
+  - navbar, sidebar
+- sticky
+  - A mix of relative + fixed.
+  - Acts like relative until you scroll past a threshold (like top: 0), then it sticks like fixed
+  - sticky headers
+- inherit, initial, unset
+  - unset → behaves like inherit if parent has a value, else initial.
