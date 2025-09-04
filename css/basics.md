@@ -59,7 +59,7 @@ p {
   color: red !important; /* overrides everything */
 }
 ```
-- Specificity – more specific selectors override less specific ones.
+- **Specificity** – more specific selectors override less specific ones.
 
 `Inline style > ID selector > Class/attribute/pseudo-class > Element`
 
@@ -74,6 +74,30 @@ p { color: green; }
 p { color: red; }
 p { color: blue; } /* this one applies */
 ```
+
+- Hierarchy
+- !important + inline
+```html
+<p style="color: red !important;">text</p>
+```
+
+- !important in CSS file (applies depending on specificity order).
+
+- Inline styles (without !important).
+
+- ID selectors (#id).
+
+- Classes, attributes, pseudo-classes (.class, :hover, [attr]).
+
+- Elements & pseudo-elements (p, h1, ::before).
+
+- Universal selector * and inherited values (weakest).
+
+### Best practice:
+
+- Avoid `!important` unless really needed.
+
+- Structure your CSS with classes and IDs carefully to avoid conflicts.
 
 ## Transform
 - lets us change the **shape, size**, and **position** of an element without affecting the normal flow of the page.
