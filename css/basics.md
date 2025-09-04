@@ -167,7 +167,7 @@ p { color: blue; } /* this one applies */
 
 - **rem** (root em) → relative unit.
 
-  - 1rem = font size of the root element (<html>).
+  - 1rem = font size of the root element (<html>), normally `16px`.
 
 - By default (user can change this though), most browsers set <html> `font-size = 16px`, so:
 
@@ -179,7 +179,7 @@ p { color: blue; } /* this one applies */
 - em is relative to the parent element’s font size.
   - name came from the letter M in traditional typography
 
-- rem is relative to the root (html) font size, so it’s more consistent.
+- rem is relative to the root (html) font size, so **it’s more consistent**.
 
 ## Container query
 - Container queries are a modern CSS feature that let you style something based on the size of a parent element instead of the size of the entire viewport.
