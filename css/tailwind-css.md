@@ -11,6 +11,8 @@
 
 - Not recommend using CSS modules and Tailwind together.
 
+- Tailwind uses rem for the default breakpoints, so if you are adding additional breakpoints to the defaults, make sure you use rem as well.
+
 - Follow official doc.
 
 
@@ -66,7 +68,7 @@ In Tailwind, colors are defined in shades from 50 (lightest) → 900 (darkest).
 ```
 
 ## Compatibility
-```css
+```cssax-[600px
 @import "tailwindcss";
 @import "./typography.css";
 ```
@@ -85,6 +87,18 @@ In Tailwind, colors are defined in shades from 50 (lightest) → 900 (darkest).
 <img class="w-16 md:w-32 lg:w-48" src="..." />
 ```
 
+- Use the `@container` class to mark an element as a container, then use variants like `@sm` and `@md` to style child elements based on the size of the container:
+
+```HTML
+<div class="@container">
+  <div class="flex flex-col @md:flex-row">
+    <!-- ... -->
+  </div>
+</div>
+```
+
+- Just like breakpoint variants, container queries are mobile-first in Tailwind CSS and apply at the target container size and up.
+
 Breakpoint | Prefix	Minimum width	| CSS
 | - | - | - |
 sm	| 40rem (640px)	 | @media (width >= 40rem) { ... }
@@ -99,3 +113,8 @@ xl	| 80rem (1280px) | @media (width >= 80rem) { ... }
 - `@variant` → create custom variants (like hover:, dark:, or your own).
 
 - `@source` → tell Tailwind where to look for class names in your project.
+
+```html
+<!-- arbitrary value -->
+<div class="max-[10px]"></div>
+```

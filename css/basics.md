@@ -156,3 +156,7 @@ p { color: blue; } /* this one applies */
   - name came from the letter M in traditional typography
 
 - rem is relative to the root (html) font size, so it’s more consistent.
+
+## Container query
+- Container queries are a modern CSS feature that let you style something based on the size of a parent element instead of the size of the entire viewport.
+- `@container`, similar to `@media`
