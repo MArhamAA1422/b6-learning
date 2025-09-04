@@ -107,6 +107,19 @@ lg	| 64rem (1024px) | @media (width >= 64rem) { ... }
 xl	| 80rem (1280px) | @media (width >= 80rem) { ... }
 2xl	| 96rem (1536px) | @media (width >= 96rem) { ... }
 
+- `@container`
+```html
+<!-- Use the @container class to mark an element as a container, then use variants like @sm and @md to style child elements based on the size of the container: -->
+
+<div class="@container">
+  <div class="flex flex-col @md:flex-row">
+    <!-- ... -->
+  </div>
+</div>
+```
+
+- By default, Tailwind includes container sizes ranging from 16rem (256px) to 80rem (1280px). (1rem = 16px)
+
 ## Others
 - `@theme` → define or read design tokens (colors, spacing, etc.).
 
@@ -118,3 +131,48 @@ xl	| 80rem (1280px) | @media (width >= 80rem) { ... }
 <!-- arbitrary value -->
 <div class="max-[10px]"></div>
 ```
+
+## Flexbox
+### flex-basis
+- Utilities for controlling the initial size of flex items.
+
+- `class="basis-<num>" = flex-basis: calc(var(--spacing)*<num>)`
+
+### flex-direction
+- `flex-row`
+
+### flex-wrap
+- `flex-nowrap`
+
+### flex
+- Utilities for controlling how flex items both grow and shrink
+`flex-<num>`
+- `flex-1` to allow a flex item to grow and shrink as needed, ignoring its initial size.
+
+```html
+<!-- custom -->
+<div class="flex-(--my-flex) ...">
+  <!-- ... -->
+</div>
+```
+
+### flex-grow, flex-shrink
+- `class="grow"`
+- Use `grow-0` to prevent a flex item from growing.
+
+### order
+- Utilities for controlling the order of flex and grid items.
+
+- `order-2`, `order-first`, negative: `-order-1`
+
+### grid-template-columns
+- `grid-cols-<number>` = `grid-template-columns: repeat(<number>, minmax(0, 1fr));`
+
+- `grid-cols-none` = `grid-template-columns: none;`
+
+- `class="grid grid-cols-4 gap-4"`
+
+### place-content
+- Utilities for controlling how content is justified and aligned at the same time.
+
+- `place-content-center` = `place-content: center;`
