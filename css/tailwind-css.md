@@ -11,6 +11,8 @@
 
 - Not recommend using CSS modules and Tailwind together.
 
+- Follow official doc.
+
 
 ## colors
 
@@ -76,6 +78,20 @@ In Tailwind, colors are defined in shades from 50 (lightest) → 900 (darkest).
   color: var(--color-gary-700);
 }
 ```
+
+## Responsive Design
+```html
+<!-- Width of 16 by default, 32 on medium screens, and 48 on large screens -->
+<img class="w-16 md:w-32 lg:w-48" src="..." />
+```
+
+Breakpoint | Prefix	Minimum width	| CSS
+| - | - | - |
+sm	| 40rem (640px)	 | @media (width >= 40rem) { ... }
+md	| 48rem (768px)	 | @media (width >= 48rem) { ... }
+lg	| 64rem (1024px) | @media (width >= 64rem) { ... }
+xl	| 80rem (1280px) | @media (width >= 80rem) { ... }
+2xl	| 96rem (1536px) | @media (width >= 96rem) { ... }
 
 ## Others
 - `@theme` → define or read design tokens (colors, spacing, etc.).
