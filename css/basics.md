@@ -93,7 +93,7 @@ p { color: blue; } /* this one applies */
 
 - Universal selector * and inherited values (weakest).
 
-### Best practice:
+### Best practice
 
 - Avoid `!important` unless really needed.
 
