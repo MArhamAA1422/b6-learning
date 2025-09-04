@@ -5,6 +5,13 @@
 
 - It's fast, flexible, and reliable — with zero-runtime.
 
+- `tailwind.config.js`
+
+- Tailwind relies on CSS variables heavily internally, so if you can use Tailwind in your project, you can use native CSS variables.
+
+- Not recommend using CSS modules and Tailwind together.
+
+
 ## colors
 
 In Tailwind, colors are defined in shades from 50 (lightest) → 900 (darkest).
@@ -42,13 +49,37 @@ In Tailwind, colors are defined in shades from 50 (lightest) → 900 (darkest).
 /* custom color token */
 <style type="text/tailwindcss">
     @theme {
-        --color-clifford: #da373d;
+        --color-any: white;
     }
 </style>
 ```
 
 ```html
-<div class="bg-[--color-clifford] text-white p-4 rounded-lg">
+<div class="bg-[--color-any] text-white p-4 rounded-lg">
+  Test Clifford
+</div>
+<div class="bg-any text-white p-4 rounded-lg">
   Test Clifford
 </div>
 ```
+
+## Compatibility
+```css
+@import "tailwindcss";
+@import "./typography.css";
+```
+
+- `typography.css`
+```css
+.typography {
+  font-size: var(--text-base);
+  color: var(--color-gary-700);
+}
+```
+
+## Others
+- `@theme` → define or read design tokens (colors, spacing, etc.).
+
+- `@variant` → create custom variants (like hover:, dark:, or your own).
+
+- `@source` → tell Tailwind where to look for class names in your project.
