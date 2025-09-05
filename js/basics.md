@@ -41,3 +41,32 @@ const nums = [1, 2, 3];
 nums.push(4);           // ✅
 // nums = [9, 8, 7];    // ❌
 ```
+
+## falsy values
+- `false, 0, "", null, undefined, NaN`
+- `-0 (negative), 0n (bigint)`
+
+## Everything else is truthy
+- **Objects** → {}, [], new Date()
+- **Functions** → function() {}
+
+### In JavaScript, truthiness/falsiness is not about “content”, it’s about data type rules when values are converted to Boolean.
+
+## switch
+- Strict comparison (===)
+    - switch uses strict equality (no type coercion).
+    ```js
+    let x = "5";
+    switch (x) {
+        case 5:   // number
+            console.log("Number 5");
+            break;
+        default:
+            console.log("Not matched");
+    }
+    // Output: "Not matched"
+    ```
+- `break` is important
+    - Without break, execution continues into the next case → called **fall-through**.
+## Functions
+- A function is an **object** **with callable** behavior.
