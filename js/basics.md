@@ -68,5 +68,51 @@ nums.push(4);           // ✅
     ```
 - `break` is important
     - Without break, execution continues into the next case → called **fall-through**.
+
+## Loops
+- `for...of`
+    - Iterates over values of an **iterable** (arrays, strings, maps, sets, etc.).
+    ```js
+    let arr = ["a", "b", "c"];
+    for (let value of arr) {
+        console.log(value);
+    }
+    ```
+- `for...in`
+    - Iterates over keys (properties) of an object.
+    ```js
+    let person = { name: "name", age: 10 };
+    for (let key in person) {
+        console.log(key, person[key]);
+    }
+    ```
+## Primitive Types
+- BigInt
+    - For integers bigger than `Number.MAX_SAFE_INTEGER (2^53 - 1)`.
+    - Created by adding `n` at the end or using `BigInt()`.
+    ```js
+    let big = 1234567890123456789012345678901234567890n;
+    console.log(big + 2n); // works only with other BigInts
+
+    // Mixing with Number throws error
+    // console.log(big + 1); ❌ TypeError
+    ```
+    - cryptography, IDs, financial calculations
+- String
+    - **` `** (template literal).
+        - let greeting = `Hello, ${name}`; // template literal
+    - **Immutable.**
+- Null
+    - Type is **object** (weird historical bug).
+- Symbol
+    - Unique and immutable identifier, often used as object keys.
+    - No two symbols are equal.
+    ```js
+    let id1 = Symbol("id");
+    let id2 = Symbol("id");
+    console.log(id1 === id2);  // false
+    ```
+- NaN, Infinity
+
 ## Functions
 - A function is an **object** **with callable** behavior.
