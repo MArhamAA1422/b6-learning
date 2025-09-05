@@ -180,5 +180,8 @@ console.log(child.country);
 - configurable
 - enumerable
 
+## Array Methods
+
+
 ## Functions
 - A function is an **object** **with callable** behavior.
