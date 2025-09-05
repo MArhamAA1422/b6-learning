@@ -4,6 +4,7 @@
     - let → block-scoped (limited to { ... }).
 - redeclaration
     - **var allows, let doesn't**
+    - **we can reassign let**
 - hoisting
     - var is initialized as undefined.
     - let is hoisted but not initialized → you get Temporal Dead Zone (TDZ) error if used before declaration.
@@ -24,3 +25,19 @@
     console.log(window.x); // ✅ 100
     console.log(window.y); // ❌ undefined
     ```
+## const
+- **block scope**
+```js
+const b = 30;
+b = 40;   // ❌ TypeError
+```
+- no rebind
+```js
+const person = { name: "Arham" };
+person.name = "Alice";  // ✅
+// person = {}          // ❌
+
+const nums = [1, 2, 3];
+nums.push(4);           // ✅
+// nums = [9, 8, 7];    // ❌
+```
