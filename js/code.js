@@ -1,4 +1,3 @@
-    let person = { name: "name", age: 10 };
-    for (let key in person) {
-        console.log(key, person[key]);
-    }
+const myArray = [1,2,3];
+console.log(typeof myArray[Symbol.iterator]);
+console.log(myArray[Symbol.iterator]().next());

@@ -1,3 +1,16 @@
+## Hoisting
+- JavaScript needs to know all variable names in advance to manage scope.
+
+- Hoisting allows the engine to:
+
+    - Recognize the variable exists in this scope.
+
+    - Set up memory for it.
+
+    - Enforce TDZ, preventing accidental usage before initialization.
+
+- Essentially, hoisting is about “creation phase”, not “usable yet”.
+
 ## var vs let
 - scope
     - var → **function-scoped** (or global if outside a function).
@@ -7,7 +20,8 @@
     - **we can reassign let**
 - hoisting
     - var is initialized as undefined.
-    - let is hoisted but not initialized → you get Temporal Dead Zone (TDZ) error if used before declaration.
+    - let is hoisted but not initialized → you get **Temporal Dead Zone** (TDZ) error if used before declaration.
+        - let is hoisted so JS knows the variable exists in the scope, but TDZ prevents unsafe access until it’s actually declared.
     ```js
     console.log(a);  // undefined
     var = 5;
@@ -112,7 +126,59 @@ nums.push(4);           // ✅
     let id2 = Symbol("id");
     console.log(id1 === id2);  // false
     ```
+    ```js
+    const user = {};
+    const id = Symbol("id");  // unique key
+    user[id] = 123;
+
+    console.log(user[id]);    // 123
+    console.log(user.id);     // undefined
+    console.log(Object.keys(user)); // Symbol not listed
+    ```
 - NaN, Infinity
+
+## Object methods
+- `Object.keys(obj), Object.values(obj)`
+- `Object.entries(obj)`
+```js
+console.log(Object.entries(user));
+// [["name", "name"], ["age", 10], ["country", "BD"]]
+
+for (const [key, value] of Object.entries(user)) {
+  console.log(`${key}: ${value}`);
+}
+// name: name
+// age: 10
+// country: BD
+```
+
+```js
+// Add a non-enumerable property to "user" object
+Object.defineProperty(user, "secret", {
+  value: "hidden",
+  enumerable: false
+});
+
+// Output: "hidden"
+```
+
+```js
+const parent = { country: "Bangladesh" };
+const child = Object.create(parent);
+child.name = "child_nam";
+
+console.log(Object.keys(child)); 
+// ["name"] → own enumerable property only
+
+console.log(child.country); 
+// "Bangladesh" → accessible (inherited)
+// but not listed in Object.keys()
+```
+
+## Object Property Descriptor Flags
+- writable
+- configurable
+- enumerable
 
 ## Functions
 - A function is an **object** **with callable** behavior.
