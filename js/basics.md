@@ -471,3 +471,81 @@ console.log("first line");
 
 ## Callback Hell
 - When you have many nested callbacks, the code becomes hard to read, maintain, and debug. This is called callback hell.
+
+## Promise
+- A Promise represents a value that may be available now, later, or never.
+- It has three states:
+    - Pending - initial
+    - Fulfilled - done
+    - Rejected - fail
+```js
+const myPromise = new Promise((resolve, reject) => {
+  let success = true;
+  
+  setTimeout(() => {
+    if (success) {
+      resolve("Operation successful!");
+    } else {
+      reject("Operation failed!");
+    }
+  }, 1000);
+});
+```
+
+```js
+myPromise
+  .then((value) => {
+    console.log(value); // runs if resolved
+  })
+  .catch((err) => {
+    console.error(err); // runs if rejected
+  })
+  .finally(() => {
+    console.log("Done"); // runs always
+  });
+```
+
+## Chaining promises
+- Each `.then()` returns a new Promise, allowing chaining.
+```js
+new Promise((resolve) => resolve(2))
+  .then((num) => num * 2)   // 4
+  .then((num) => num + 1)   // 5
+  .then(console.log);        // 5
+```
+
+## Promise all
+- Waits for all promises to fulfill.
+- If any reject → whole Promise.all rejects.
+```js
+const p1 = Promise.resolve(1);
+const p2 = Promise.resolve(2);
+
+Promise.all([p1, p2]).then(console.log); // [1, 2]
+```
+## Promise allSettled
+- Waits for all promises, regardless of fulfill/reject.
+- Returns an array of objects with {status, value/reason}.
+```js
+const p3 = Promise.resolve("success");
+const p4 = Promise.reject("error");
+
+Promise.allSettled([p3, p4]).then(console.log);
+/*
+[
+  { status: "fulfilled", value: "success" },
+  { status: "rejected", reason: "error" }
+]
+*/
+```
+
+## Promise race
+- Resolves or rejects as soon as any one promise finishes.
+```js
+const p5 = new Promise(res => setTimeout(res, 500, "fast"));
+const p6 = new Promise(res => setTimeout(res, 1000, "slow"));
+
+Promise.race([p5, p6]).then(console.log); // "fast"
+```
+
+#### Promise.all is great for parallel requests, race for timeouts, allSettled for complete info.

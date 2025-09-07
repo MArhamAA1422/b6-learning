@@ -1,6 +1,4 @@
-function test() {
-    console.log(this);
-}
+const p5 = new Promise(res => setTimeout(res, 500, "fast"));
+const p6 = new Promise(res => setTimeout(res, 1000, "slow"));
 
-const user = { name: "name", age: 5 };
-test.call(user);
+Promise.race([p5, p6]).then(console.log); // "fast"
