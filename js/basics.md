@@ -745,3 +745,141 @@ function iterate(obj) {
 
 iterate(person);
 ```
+
+### OOP
+- Object Literal
+```js
+const user = {
+  name: "app",
+  greet() {
+    console.log(`Hi, I'm ${this.name}`);
+  }
+};
+user.greet();
+```
+- Encapsulation
+```js
+class BankAccount {
+  #balance = 0; // private field
+
+  deposit(amount) {
+    this.#balance += amount;
+  }
+
+  getBalance() {
+    return this.#balance;
+  }
+}
+
+const acc = new BankAccount();
+acc.deposit(100);
+console.log(acc.getBalance()); // 100
+// console.log(acc.#balance); ❌ Error (private)
+```
+
+- Abstraction
+```js
+class Car {
+  startEngine() {
+    console.log("Engine started");
+  }
+
+  drive() {
+    this.startEngine(); // internal details hidden
+    console.log("Car is moving");
+  }
+}
+
+const c = new Car();
+c.drive(); // Car is moving (doesn't need to know engine details)
+```
+
+- Inheritance
+```js
+class Animal {
+  speak() {
+    console.log("Some sound");
+  }
+}
+
+class Dog extends Animal {
+  speak() {
+    console.log("Woof!"); // overriding
+  }
+}
+
+const d = new Dog();
+d.speak(); // Woof!
+```
+
+- Polymorphism
+```js
+const animals = [new Dog(), new Animal()];
+animals.forEach(a => a.speak());
+// Woof!
+// Some sound
+```
+
+- Static methods & props
+    - Belong to the class itself, not instance.
+    ```js
+    class MathUtils() {
+        static add(a, b) {
+            return a + b;
+        }
+    }
+
+    console.log(MathUtils.add(2, 3));  // 5
+    ```
+
+- getters & setters
+    - get, set with same func name
+```js
+class User {
+  constructor(name) {
+    this._name = name;
+  }
+
+  get name() {
+    return this._name.toUpperCase();
+  }
+
+  set name(newName) {
+    this._name = newName;
+  }
+}
+
+const u = new User("app");
+console.log(u.name); // app
+u.name = "lab";
+console.log(u.name); // lab
+```
+
+- Object Prototypes
+    - Every object has a hidden `[[Prototype]]`.
+    - Classes & inheritance rely on this chain.
+    ```js
+    function Person(name) {
+        this.name = name;
+    }
+    Person.prototype.greet = function() {
+        console.log("Hello " + this.name);
+    };
+
+    const p = new Person("app");
+    p.greet();
+    console.log(p.__proto__ === Person.prototype); // true
+    ```
+- Mixins (JS-specific)
+    - Since JS supports single inheritance, you can mix in extra functionality.
+```js
+const canFly = { fly() { console.log("Flying"); } };
+const canSwim = { swim() { console.log("Swimming"); } };
+
+class Animal {}
+Object.assign(Animal.prototype, canFly, canSwim);
+
+const duck = new Animal();
+duck.fly();  // Flying
+duck.swim(); // Swimming
+```
