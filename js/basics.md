@@ -721,3 +721,27 @@ console.log(storedUser.name); // app
 ```
 
 - localStorage: persists until manually cleared whereas **sessionStorage**: persists only for the current tab/session.
+
+## Recursive Object Iteration
+- Useful when you deal with nested objects (like API responses, configs, or tree structures).
+```js
+function iterate(obj) {
+  for (let key in obj) {
+    if (Array.isArray(obj)) {
+        obj.forEach((item, i) => {
+        console.log(`Index ${i}:`);
+        iterate(item);
+        });
+    } else if (typeof obj[key] === "object" && obj[key] !== null) {
+      // If value is an object, go deeper (recursive call)
+      console.log("Entering:", key);
+      iterate(obj[key]);
+    } else {
+      // If value is primitive, print directly
+      console.log(`${key}: ${obj[key]}`);
+    }
+  }
+}
+
+iterate(person);
+```
