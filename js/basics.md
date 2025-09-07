@@ -320,3 +320,16 @@ console.log(result);  // [1, 2, 2, 4, 3, 6]
 
 ## Functions
 - A function is an **object** **with callable** behavior.
+
+## Arrow function: explicit return
+- `const f = () => { return value; }` → explicit return
+
+## Arrow function: implicit return
+- `const f = () => value;` → implicit return
+- To return an object literal, wrap it in **parentheses ()**
+```js
+// implicit return with object
+const makeUser = (name, age) => ({ name, age });
+console.log(makeUser("Arham", 22)); 
+// { name: "Arham", age: 22 }
+```
