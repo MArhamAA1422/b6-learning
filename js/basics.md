@@ -280,5 +280,43 @@ console.log(nums.find(n => n > 20)); // undefined
 - `substr(st, len)`
     - Takes start index and length (not end).
     - Negative start works.
+
+## set
+- unique, Order is preserved (insertion order).
+- not sorted
+- methods: `.add(v), .has(v), .delete(v), .size()`
+```js
+let set = new Set();
+let set = new Set([1, 2, 3]);
+```
+
+## map
+- Stores key-value pairs.
+- Keys can be any type (object, function, etc).
+- sorted on keys
+- Methods: `.set(key, value), .get(key), .has(key), .delete(key), .size`
+
+## WeakMap
+- Like Map, but with **only objects as keys**.
+- Keys are held weakly → if object is garbage-collected, entry disappears.
+- No `.size`, no iteration (for security + GC reasons).
+```js
+let wm = new WeakMap();
+let obj = { id: 1 };
+wm.set(obj, "Sensitive Data");
+console.log(wm.get(obj));   // "Sensitive Data"
+obj = null;   // object no longer referenced
+// At some point, garbage collector removes entry automatically
+```
+
+## flatMap()
+- First maps each element, then flattens the result by 1 level.
+```js
+let arr = [1, 2, 3];
+// map → double each number, flatten → expand arrays
+let result = arr.flatMap(x => [x, x * 2]);
+console.log(result);  // [1, 2, 2, 4, 3, 6]
+```
+
 ## Functions
 - A function is an **object** **with callable** behavior.
