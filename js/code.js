@@ -1,5 +1,6 @@
-console.log([] + []);    // ""   (empty string)
-console.log([] + {});    // "[object Object]"
-console.log({} + []);    // "[object Object]"
-console.log(null + 1);   // 1   (null → 0)
-console.log(undefined + 1); // NaN (undefined → NaN)
+function test() {
+    console.log(this);
+}
+
+const user = { name: "name", age: 5 };
+test.call(user);

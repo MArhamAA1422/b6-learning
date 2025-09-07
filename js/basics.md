@@ -422,3 +422,30 @@ console.log(null + 1);   // 1   (null → 0)
 console.log(undefined + 1); // NaN (undefined → NaN)
 ```
 
+## this
+- Its value depends on how a function is called, not where it’s written.
+- In non-strict mode, this refers to the global object (**window in browsers, global in Node**).
+- In strict mode, this is **undefined**.
+- Arrow functions do not have their own *this* — **they inherit it from the lexical scope**.
+
+## call(), apply(), bind()
+- All three are used to manually set *this*.
+- `call()`
+    - Calls a function with a specified this and arguments listed individually.
+    ```js
+    function greet(age) {
+        console.log(this.name + " is " + age);
+    }
+
+    const user = { name: "Arham" };
+    greet.call(user, 22); // "Arham is 22"
+    ```
+- `apply()`
+    - Like call(), but arguments are passed **as an array**.
+- `bind()`
+    - Returns a new function with *this* permanently set.
+    - Doesn’t call immediately.
+    ```js
+    const boundGreet = greet.bind(user);
+    boundGreet(22); // "Arham is 22"
+    ```
