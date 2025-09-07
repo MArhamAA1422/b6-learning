@@ -549,3 +549,9 @@ Promise.race([p5, p6]).then(console.log); // "fast"
 ```
 
 #### Promise.all is great for parallel requests, race for timeouts, allSettled for complete info.
+
+## JSON
+- `JSON.parse()` Converts a JSON string into a JavaScript object.
+- `JSON.stringify()` Converts a JavaScript object into a JSON string.
+
+
