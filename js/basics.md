@@ -599,3 +599,37 @@ u.greet(); // Hi app
     console.log(user.age ?? 18);  // 18
     ```
 - for...of, for...in loops
+
+## DOM
+- appendChild
+    - Creates a new element and adds it as the last child.
+    ```js
+    const p = document.createElement("p"); // create a <p> element
+    p.textContent = "Hello!";
+    container.appendChild(p); // add it to container
+    ```
+- insertBefore
+    - Inserts an element before a specific child.
+    ```js
+    const span = document.createElement("span");
+    span.textContent = "Start here";
+    container.insertBefore(span, p); // insert before <p>
+    ```
+- remove
+    - `container.removeChild(p); // removes <p> from container`
+    - `p.remove();   // modern: direct remove`
+- styling with JS
+    - inline
+    ```js
+    span.style.color = "red";
+    span.style.backgroundColor = "blue";
+    ```
+    - multiple styles at once (object assignment)
+    ```js
+    Object.assign(span.style, {
+        color: "blue",
+        padding: "10px",
+        border: "1px solid black"
+    });
+    ```
+- Use camelCase in JS instead of kebab-case (e.g., backgroundColor instead of background-color).
