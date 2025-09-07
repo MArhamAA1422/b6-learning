@@ -268,5 +268,17 @@ console.log(nums.find(n => n > 20)); // undefined
 - `splice()`
     - changes the original array (adds/removes elements).
 
+## String methods
+- `trim()`
+    - Removes whitespace from start and end.
+- `includes()`
+    - Returns true if substring is found.
+- `substring(st, en)`
+    - Similar to slice(), but
+        - Does not allow negative indexes.
+        - If start > end, it swaps them.
+- `substr(st, len)`
+    - Takes start index and length (not end).
+    - Negative start works.
 ## Functions
 - A function is an **object** **with callable** behavior.
