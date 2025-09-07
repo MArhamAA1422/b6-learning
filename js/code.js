@@ -1,2 +1,5 @@
-const ar = ["a", "bc", 1, {name:"name", val:12}];
-console.log(ar.join('-'));
+const fruits = ["apple", "banana", "mango", "orange", "grape"];
+
+// Between -4 and -1 (exclusive)
+console.log(fruits.slice(-4, -3)); 
+// ["banana", "mango", "orange"]

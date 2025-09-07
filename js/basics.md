@@ -242,5 +242,31 @@ console.log(nums.find(n => n > 20)); // undefined
     - Returns the index of the first element that matches a condition.
     - If not found → -1.
 
+- `slice()`
+    - Returns a shallow copy of a portion of an array into a new array.
+    - Does NOT modify the original array.
+    ```js
+    const fruits = ["apple", "banana", "mango", "orange", "grape"];
+
+    // From index 2 till end
+    console.log(fruits.slice(2)); 
+    // ["mango", "orange", "grape"]
+
+    // Negative index: last 2 elements
+    console.log(fruits.slice(-2)); 
+    // ["orange", "grape"]
+
+    // Between -4 and -1 (exclusive)
+    console.log(fruits.slice(-4, -1)); 
+    // ["banana", "mango", "orange"]
+
+    console.log(fruits); 
+    // ["apple", "banana", "mango", "orange", "grape"] → original unchanged
+
+    ```
+
+- `splice()`
+    - changes the original array (adds/removes elements).
+
 ## Functions
 - A function is an **object** **with callable** behavior.
