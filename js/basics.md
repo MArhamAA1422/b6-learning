@@ -706,8 +706,21 @@ btn.addEventListener("click", function(event) {
 - Stored as **strings** (you need to JSON.stringify/JSON.parse for objects).
 
 - Size limit: **~5–10 MB** depending on browser.
+    - If exceeded → QuotaExceededError
+
+- Unlike cookies: it's not sent with every HTTP req.
 
 - `setItem(key, val), getItem(key), removeItem(key), clear()`
+
+- SQLite (Chromium-based browsers like Chrome, Edge, Opera) – localStorage is stored in **SQLite databases on disk**.
+
+- Per Origin → Each website (scheme + domain + port) has its own isolated storage.
+
+- Persistence → Saved to disk, survives browser restarts.
+
+- Synchronous API → Operations like getItem, setItem are blocking, unlike IndexedDB (async).
+
+- Dict/HashMap at API level. Browsers use efficient hashing + indexing in their DB engines to retrieve keys quickly.
 
 ```js
 const user = { name: "app", age: 25 };
