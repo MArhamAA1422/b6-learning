@@ -333,3 +333,9 @@ const makeUser = (name, age) => ({ name, age });
 console.log(makeUser("Arham", 22)); 
 // { name: "Arham", age: 22 }
 ```
+
+## IIFE
+- Before import/export, IIFEs were a way to create private modules.
+- For setting up configurations, event listeners, etc.
+- `(function(){})();`
+
