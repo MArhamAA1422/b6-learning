@@ -339,3 +339,39 @@ console.log(makeUser("Arham", 22));
 - For setting up configurations, event listeners, etc.
 - `(function(){})();`
 
+## Lexical scope
+- Inner can access vars from outer.
+
+## Closure
+- A closure is formed when a function "remembers" the variables from its lexical scope, even after the outer function has finished running.
+
+```js
+function makeCounter() {
+  let count = 0;   // private variable
+
+  return function() {   // inner function (closure)
+    count++;
+    return count;
+  };
+}
+
+const counter1 = makeCounter();
+console.log(counter1()); // 1
+console.log(counter1()); // 2
+
+const counter2 = makeCounter();
+console.log(counter2()); // 1  (separate closure!)
+```
+
+```js
+for (let i = 1; i <= 3; i++) {
+  setTimeout(() => console.log(i), 1000);
+}
+// Output: 1, 2, 3 (closure keeps i for each loop)
+```
+
+## Why closure
+- Data privacy (hide variables from outside).
+- Maintain state (like counters, caches).
+- Callbacks & async code rely on closures.
+- Used heavily in functional programming and event handlers.
