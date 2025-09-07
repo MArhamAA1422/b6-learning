@@ -695,3 +695,29 @@ btn.addEventListener("click", function(event) {
   });
 </script>
 ```
+
+## Persistent Storage: localStorage
+- Part of the Web Storage API (BOM).
+
+- Stores key–value pairs in the browser.
+
+- Data persists even after closing or refreshing the browser (until explicitly cleared).
+
+- Stored as **strings** (you need to JSON.stringify/JSON.parse for objects).
+
+- Size limit: **~5–10 MB** depending on browser.
+
+- `setItem(key, val), getItem(key), removeItem(key), clear()`
+
+```js
+const user = { name: "app", age: 25 };
+
+// Save object
+localStorage.setItem("user", JSON.stringify(user));
+
+// Get object back
+const storedUser = JSON.parse(localStorage.getItem("user"));
+console.log(storedUser.name); // app
+```
+
+- localStorage: persists until manually cleared whereas **sessionStorage**: persists only for the current tab/session.
