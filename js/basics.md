@@ -639,3 +639,59 @@ u.greet(); // Hi app
 - Unlike DOM, which deals with the HTML structure, BOM deals with browser features like `windows, frames, history, location, and dialogs`.
 - Key BOM objects: `window, navigator, screen, history, location, alert, confirm, prompt`
 
+## Events and Event Listeners
+- An event is an action that happens in the browser.
+```html
+<button onclick="alert('Clicked!')">Click Me</button>
+
+<button id="btn">Click Me</button>
+<script>
+  const btn = document.getElementById("btn");
+  btn.onclick = function() {  // only one event handler per event type
+    alert("Button clicked!");
+  };
+</script>
+
+<!-- BEST -->
+<button id="btn">Click Me</button>
+<script>
+  const btn = document.getElementById("btn");
+  
+  btn.addEventListener("click", () => {
+    alert("Clicked with addEventListener!");
+  });
+  
+  // Multiple listeners possible
+  btn.addEventListener("click", () => {
+    console.log("Another action!");
+  });
+</script>
+```
+
+- Event object (event)
+```js
+btn.addEventListener("click", function(event) {
+  console.log(event.type); // "click"
+  console.log(event.target); // <button> element
+});
+```
+    - Use `e.preventDefault()` to stop unwanted default behavior.
+
+### Event Bubbling & Delegation
+- Bubbling: Event starts from the innermost element → goes up to parents.
+- Delegation: Attach a listener to a parent instead of every child.
+```HTML
+<ul id="list">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+<script>
+  const list = document.getElementById("list");
+  list.addEventListener("click", function(e) {
+    if (e.target.tagName === "LI") {
+      console.log("Clicked:", e.target.textContent);
+    }
+  });
+</script>
+```
