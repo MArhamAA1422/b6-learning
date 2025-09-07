@@ -375,3 +375,29 @@ for (let i = 1; i <= 3; i++) {
 - Maintain state (like counters, caches).
 - Callbacks & async code rely on closures.
 - Used heavily in functional programming and event handlers.
+
+## Spread & Rest
+- spread: expands items out
+- rest: gathers items in
+
+### spread
+- Expands (spreads out) an iterable (array, string, object, etc) into individual elements.
+```js
+const arr = [1, 2];
+const arr2 = [0, ...arr, 3];  // [0, 1, 2, 3]
+```
+```js
+const user = { name: "Arham", age: 22 };
+const clone = { ...user, country: "BD" };
+```
+
+### rest
+- Collects multiple elements into a single array/object.
+- Used in function parameters or destructuring.
+```js
+function log(...args) {}
+```
+```js
+const [first, ...rest] = [10, 20, 30, 40];
+const { name, ...details } = { name: "Arham", age: 22, country: "BD" };
+```
