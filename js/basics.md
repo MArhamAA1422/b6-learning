@@ -401,3 +401,24 @@ function log(...args) {}
 const [first, ...rest] = [10, 20, 30, 40];
 const { name, ...details } = { name: "Arham", age: 22, country: "BD" };
 ```
+
+## Type coercion: implicit, explicit
+- Type coercion = converting a value from one type to another.
+- Implicitly (JS does it automatically)
+- Explicitly (you do it manually)
+
+```js
+console.log("5" + 2);   // "52"
+console.log("5" - 2);   // 3
+console.log("5" * "2"); // 10     (both strings → numbers)
+console.log(1 == "1");  // true   (loose equality does coercion)
+```
+
+```js
+console.log([] + []);    // ""   (empty string)
+console.log([] + {});    // "[object Object]"
+console.log({} + []);    // "[object Object]"
+console.log(null + 1);   // 1   (null → 0)
+console.log(undefined + 1); // NaN (undefined → NaN)
+```
+

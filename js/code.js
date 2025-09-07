@@ -1,6 +1,5 @@
-let mp = new Map();
-mp[5] = 5;
-mp["hello"] = 2;
-mp["hello"] = 'nice';
-mp[0] = 5;
-console.log(mp);
+console.log([] + []);    // ""   (empty string)
+console.log([] + {});    // "[object Object]"
+console.log({} + []);    // "[object Object]"
+console.log(null + 1);   // 1   (null → 0)
+console.log(undefined + 1); // NaN (undefined → NaN)
