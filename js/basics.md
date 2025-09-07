@@ -633,3 +633,9 @@ u.greet(); // Hi app
     });
     ```
 - Use camelCase in JS instead of kebab-case (e.g., backgroundColor instead of background-color).
+
+## BOM (Browser Object Model)
+- Provides objects and methods to interact with the browser itself (not the document content).
+- Unlike DOM, which deals with the HTML structure, BOM deals with browser features like `windows, frames, history, location, and dialogs`.
+- Key BOM objects: `window, navigator, screen, history, location, alert, confirm, prompt`
+
