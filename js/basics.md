@@ -135,6 +135,10 @@ nums.push(4);           // ✅
     console.log(user.id);     // undefined
     console.log(Object.keys(user)); // Symbol not listed
     ```
+    - Normally, you don’t call `Symbol.iterator` directly. It’s used internally by:
+        - for...of loops
+        - The spread operator `...`
+        - Destructuring
 - NaN, Infinity
 
 ## Object methods
@@ -181,7 +185,62 @@ console.log(child.country);
 - enumerable
 
 ## Array Methods
+- `reduce()`
+    - Reduces an array to a single value by applying a function step by step.
+```js
+const nums = [1, 2, 3, 4];
+const sum = nums.reduce((acc, curr) => acc + curr, 0);
+console.log(sum); // 10
+```
 
+- `join()`
+    - Joins all array elements into a **string**, separated by the given separator.
+```js
+const arr = ["a", "b", "c"];
+console.log(arr.join());    // "a,b,c"
+console.log(arr.join("-")); // "a-b-c"
+```
+
+- `shift()`
+    - Removes the first element of the array and returns it.
+```js
+const fruits = ["apple", "banana", "mango"];
+console.log(fruits.shift()); // "apple"
+console.log(fruits);         // ["banana", "mango"]
+```
+
+- `sort()`
+    - Sorts array elements in place (changes the original array).
+    - By default, **sorts as strings**.
+```js
+const nums = [10, 2, 5, 1];
+console.log(nums.sort());        // [1, 10, 2, 5] → string sort
+console.log(nums.sort((a,b) => a - b)); // [1, 2, 5, 10] → numeric sort
+```
+
+- `every()`
+    - Checks if all elements pass the test. Returns true / false.
+```js
+const nums = [2, 4, 6];
+console.log(nums.every(n => n % 2 === 0)); // true
+console.log(nums.every(n => n > 3));       // false
+```
+
+- `some()`
+    - Checks if at least one element passes the test.
+
+- `find()`
+    - Returns the first element that matches a condition.
+    - If not found → undefined.
+```js
+const nums = [5, 10, 15];
+console.log(nums.find(n => n > 8));  // 10
+console.log(nums.find(n => n > 20)); // undefined
+```
+
+- `findIndex()`
+    - Returns the index of the first element that matches a condition.
+    - If not found → -1.
 
 ## Functions
 - A function is an **object** **with callable** behavior.
