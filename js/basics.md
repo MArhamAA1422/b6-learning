@@ -47,7 +47,7 @@ b = 40;   // ❌ TypeError
 ```
 - no rebind
 ```js
-const person = { name: "Arham" };
+const person = { name: "app" };
 person.name = "Alice";  // ✅
 // person = {}          // ❌
 
@@ -330,8 +330,8 @@ console.log(result);  // [1, 2, 2, 4, 3, 6]
 ```js
 // implicit return with object
 const makeUser = (name, age) => ({ name, age });
-console.log(makeUser("Arham", 22)); 
-// { name: "Arham", age: 22 }
+console.log(makeUser("app", 22)); 
+// { name: "app", age: 22 }
 ```
 
 ## IIFE
@@ -387,7 +387,7 @@ const arr = [1, 2];
 const arr2 = [0, ...arr, 3];  // [0, 1, 2, 3]
 ```
 ```js
-const user = { name: "Arham", age: 22 };
+const user = { name: "app", age: 22 };
 const clone = { ...user, country: "BD" };
 ```
 
@@ -399,7 +399,7 @@ function log(...args) {}
 ```
 ```js
 const [first, ...rest] = [10, 20, 30, 40];
-const { name, ...details } = { name: "Arham", age: 22, country: "BD" };
+const { name, ...details } = { name: "app", age: 22, country: "BD" };
 ```
 
 ## Type coercion: implicit, explicit
@@ -437,8 +437,8 @@ console.log(undefined + 1); // NaN (undefined → NaN)
         console.log(this.name + " is " + age);
     }
 
-    const user = { name: "Arham" };
-    greet.call(user, 22); // "Arham is 22"
+    const user = { name: "app" };
+    greet.call(user, 22); // "app is 22"
     ```
 - `apply()`
     - Like call(), but arguments are passed **as an array**.
@@ -447,5 +447,27 @@ console.log(undefined + 1); // NaN (undefined → NaN)
     - Doesn’t call immediately.
     ```js
     const boundGreet = greet.bind(user);
-    boundGreet(22); // "Arham is 22"
+    boundGreet(22); // "app is 22"
     ```
+
+## Callback
+- A callback function is a function **passed as an argument** to another function, to be executed later, usually after some operation finishes (like I/O, network, timer).
+```js
+function greet(name) {
+  console.log("Hello " + name);
+}
+function processUser(name, callback) {
+  callback(name);  // execute the callback
+}
+processUser("app", greet); // "Hello app"
+```
+- Asynchronous callback
+```js
+setTimeout(() => {
+    console.log("second line, after 2s");
+}, 2000);
+console.log("first line");
+```
+
+## Callback Hell
+- When you have many nested callbacks, the code becomes hard to read, maintain, and debug. This is called callback hell.
