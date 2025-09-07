@@ -554,4 +554,48 @@ Promise.race([p5, p6]).then(console.log); // "fast"
 - `JSON.parse()` Converts a JSON string into a JavaScript object.
 - `JSON.stringify()` Converts a JavaScript object into a JSON string.
 
+## ES6+
+- Template Literals
+    - backticks, interpolation, multi-line string
+- Arrow func
+- let, const
+- Destructuring
+- Default params
+```js
+function greet(name = "Guest") {
+  console.log(`Hello ${name}`);
+}
+greet(); // Hello Guest
+```
+- rest & spread operator
+- Enhanced obj literals: shorter syntax for methods and props
+```js
+const name = "app";
+const user = {
+  name,          // instead of name: name
+  greet() {      // method shorthand
+    console.log("Hello");
+  }
+};
+```
+- Modules: export, import
+- Promises
+- Classes
+```js
+class User {
+  constructor(name) { this.name = name; }
+  greet() { console.log(`Hi ${this.name}`); }
+}
 
+const u = new User("app");
+u.greet(); // Hi app
+```
+- Optional Chaining & Nullish Coalescing
+    - Optional chaining `(?.)` avoids errors if property doesn’t exist.
+    - Nullish coalescing `(??)` provides default for null/undefined.
+    ```js
+    const user = { name: "app" };
+    console.log(user?.age);       // undefined
+    console.log(user.age ?? 18);  // 18
+    ```
+- for...of, for...in loops
