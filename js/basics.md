@@ -1,3 +1,45 @@
+## Everything is OBJECT in JS
+- All non-primitives(object, array, function, date, regex) are objects in JS.
+  - This is because JS was designed to be dynamic and flexible, not strictly typed like Java or C++.
+```js
+let arr = [10, 20, 30];
+console.log(typeof arr); // "object"
+console.log(Object.getOwnPropertyNames(arr)); 
+// ["0", "1", "2", "length"]
+```
+- In JS, functions are first-class objects:
+
+  - They can be assigned to variables.
+
+  - Passed as arguments.
+
+  - Returned from other functions.
+- Internally, a function is an object with a callable `[[Call]]` property.
+```js
+console.log(typeof greet); // "function" (special subtype)
+console.log(greet instanceof Object); // true
+```
+
+- All objects in JS inherit from `Object.prototype`, unless explicitly changed.
+  - That’s why you can call methods like `.toString()` on almost anything.
+  ```js
+  let arr = [];
+  console.log(arr.toString()); // "" (empty string)
+  console.log(Function.prototype.toString); // [Function: toString]
+  ```
+
+### Why
+- Flexibility → Dynamic behavior (e.g., you can add properties to arrays/functions).
+```js
+function greet() {}
+greet.language = "JavaScript";
+console.log(greet.language); // "JavaScript"
+```
+
+- Uniformity → Instead of multiple separate structures, everything “complex” behaves like an object.
+
+- Prototype-based inheritance → Instead of class-based inheritance (originally), JS uses prototypes, and prototypes are objects.
+
 ## Hoisting
 - JavaScript needs to know all variable names in advance to manage scope.
 
