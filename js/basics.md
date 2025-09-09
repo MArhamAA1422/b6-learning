@@ -889,6 +889,8 @@ animals.forEach(a => a.speak());
 
 - getters & setters
     - get, set with same func name
+    - Because dot access is dumb — it directly gets/sets values without any extra rules.
+      - With getters/setters, you can add logic, validation, transformation, computed results — all while keeping a clean obj.prop syntax.
 ```js
 class User {
   constructor(name) {
