@@ -26,3 +26,13 @@
 - other contexts will be pushed/popped in this stack
 - maintains the order of execution of EC
 - other names: (EC, program, control, runtime, machine) stack 
+
+## Hoisting
+- var: undefined
+- function: actual function body (no issue)
+- reason: memory phase
+- function expression: behaves like variable not function
+```js
+console.log(fn);  // undefined
+var fn = () => {};
+```
