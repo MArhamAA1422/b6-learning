@@ -67,3 +67,4 @@ var fn = () => {};
 ## Closure
 - function + its lexical scope
 - the actual reference (latest updated value) of the variables are bound in closure
+- single function can have multiple closures

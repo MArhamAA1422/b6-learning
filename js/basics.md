@@ -57,6 +57,7 @@ console.log(greet.language); // "JavaScript"
 - scope
     - var → **function-scoped** (or global if outside a function).
     - let → block-scoped (limited to { ... }).
+      - each time new copy of let variable is created, new memory location
 - redeclaration
     - **var allows, let doesn't**
     - **we can reassign let**
