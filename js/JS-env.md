@@ -24,6 +24,20 @@
         - delete the execution context (for function)
 - finally whole global execution context will be deleted
 
+## When a JS code runs
+- a GEC will be created
+- a Global Object (window, global) will be created
+- a "this" will be created, pointing the GO
+- all these will be created by JS engine
+    - like engine creates GEC, then GEC creates others
+- window/this can access global scope
+- function declarations go to HEAP memory (memory creation phase)
+
+## Function Execution Context (Creation Phase Browser)
+- arguments: Local Object
+- this: window
+- a: undefined
+
 ## Callstack
 - a stack, managing execution contexts
 - bottom element: GEC (global execution context)
@@ -53,14 +67,6 @@ var fn = () => {};
 ```
 - In memory phase: let/const placed in “Temporal Dead Zone (TDZ)” until the code actually declares them.
     - <uninitialized>
-
-## When a JS code runs
-- a GEC will be created
-- a Global Object (window, global) will be created
-- a "this" will be created, pointing the GO
-- all these will be created by JS engine
-    - like engine creates GEC, then GEC creates others
-- window/this can access global scope
 
 #### undefined != not defined
 
