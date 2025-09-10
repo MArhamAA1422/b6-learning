@@ -36,3 +36,10 @@
 console.log(fn);  // undefined
 var fn = () => {};
 ```
+
+## When a JS code runs
+- a GEC will be created
+- a Global Object (window, global) will be created
+- a "this" will be created, pointing the GO
+- all these will be created by JS engine
+- window/this can access global scope
