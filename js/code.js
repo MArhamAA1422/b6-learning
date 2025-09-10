@@ -22,3 +22,10 @@ function loopTest() {
     }
 }
 loopTest();
+
+function scope() {
+    var scopeVar = 10;
+}
+scope();
+
+// console.log(scopeVar);  // error

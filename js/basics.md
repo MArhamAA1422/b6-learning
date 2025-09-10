@@ -40,6 +40,10 @@ console.log(greet.language); // "JavaScript"
 
 - Prototype-based inheritance → Instead of class-based inheritance (originally), JS uses prototypes, and prototypes are objects.
 
+## Scope
+- জাভাস্ক্রিপ্টে একমাত্র তখনই Scope তৈরি হয়, যখন আমরা কোন function ইনভোক বা কল করি। - Local scope
+- Global, Local scope
+
 ## Hoisting
 - JavaScript needs to know all variable names in advance to manage scope.
 
