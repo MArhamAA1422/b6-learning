@@ -20,4 +20,9 @@
         - delete the execution context (for function)
 - finally whole global execution context will be deleted
 
-
+## Callstack
+- a stack, managing execution contexts
+- bottom element: GEC (global execution context)
+- other contexts will be pushed/popped in this stack
+- maintains the order of execution of EC
+- other names: (EC, program, control, runtime, machine) stack 
