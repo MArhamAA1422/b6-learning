@@ -1,0 +1,23 @@
+## Execution Context
+- everything in js happens inside at EC (like a box)
+- **Memory component** or Var env
+    - variables, functions
+- **Code component** or Thread of Execution
+- js is synchronous single-threaded language
+
+## How JS code is executed
+- first **global execution context**
+- memory creation phase
+    - each var = **undefined**
+    - whole block of the function
+- code execution phase
+    - actual value of each var
+    - function invocation
+        - functions are the heart of JS
+        - a **new execution context** will be crated inside code component (again, memory, code components, phase: memory creation, code execution)
+        - every var (including arguments) = undefined in memory creation phase
+        - return back to the invoker execution context
+        - delete the execution context (for function)
+- finally whole global execution context will be deleted
+
+
