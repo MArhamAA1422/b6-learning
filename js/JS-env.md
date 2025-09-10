@@ -1,5 +1,9 @@
+## In RAM
+- The Call Stack (a data structure) lives in the JS Engine’s memory space (RAM).
+- The GEC is the first frame pushed onto the Call Stack.
+
 ## Execution Context
-- everything in js happens inside at EC (like a box)
+- everything in js happens inside at EC (like a box, a DS)
 - **Memory component** or Var env
     - variables, functions
 - **Code component** or Thread of Execution
@@ -25,7 +29,18 @@
 - bottom element: GEC (global execution context)
 - other contexts will be pushed/popped in this stack
 - maintains the order of execution of EC
-- other names: (EC, program, control, runtime, machine) stack 
+- other names: (EC, program, control, runtime, machine) stack
+
+## Memory vs Call Stack
+- Memory (Heap / Variable Environment)
+    - Stores objects, arrays, functions, variables.
+    - Managed by the engine’s Heap.
+- Call Stack
+    - A stack data structure → tracks which execution context is running.
+    - Each context = one "stack frame".
+    - Lives in RAM, managed by the engine.
+- Everything in RAM
+    - The JS Engine (like V8) is a program **written in C++** that manages this memory.
 
 ## Hoisting
 - var: undefined
@@ -36,10 +51,19 @@
 console.log(fn);  // undefined
 var fn = () => {};
 ```
+- In memory phase: let/const placed in “Temporal Dead Zone (TDZ)” until the code actually declares them.
+    - <uninitialized>
 
 ## When a JS code runs
 - a GEC will be created
 - a Global Object (window, global) will be created
 - a "this" will be created, pointing the GO
 - all these will be created by JS engine
+    - like engine creates GEC, then GEC creates others
 - window/this can access global scope
+
+#### undefined != not defined
+
+## Closure
+- function + its lexical scope
+- the actual reference (latest updated value) of the variables are bound in closure
