@@ -41,3 +41,6 @@
     - WEB APIs (window): `setTimeout, DOM APIs, fetch, localStorage, console, location`
     - Browser gives access to JS Engine through WEB APIs
     - `window.fetch()` = `fetch()`, same for others
+
+## Concurrency Model in JS
+For example: `startTimeout` callback will be waiting in callback queue to finish execution of the GEC in call stack.
