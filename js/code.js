@@ -12,7 +12,7 @@ function test() {
 }
 
 const fn = test();
-fn();
+// fn();
 
 function loopTest() {
     for (var i = 1; i <= 5; i++) {
@@ -21,11 +21,42 @@ function loopTest() {
         }, 1000, i);
     }
 }
-loopTest();
+// loopTest();
 
 function scope() {
     var scopeVar = 10;
 }
-scope();
+// scope();
 
 // console.log(scopeVar);  // error
+
+function outer() {
+    function inner() {
+        console.log(a);
+    }
+    const a = 5;
+    return inner;
+}
+
+// outer()();
+
+(function scopeTest() {
+    const fn = function() {
+        console.log(a);
+    }
+    const a = 10;
+    fn();
+})();
+
+function counter() {
+  var count = 0;
+  return function incCounter() {
+    count++;
+    console.log(count);
+  }
+}
+const counter1 = counter();
+counter1();  // 1
+counter1();  // 2
+const counter2 =  counter();
+counter2();  // 1

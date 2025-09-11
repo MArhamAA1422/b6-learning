@@ -390,7 +390,7 @@ console.log(makeUser("app", 22));
 - Inner can access vars from outer.
 
 ## Closure
-- A closure is formed when a function "remembers" the variables from its lexical scope, even after the outer function has finished running.
+- A closure is formed when a function "remembers" the variables (with reference) from its lexical scope, even after the outer function has finished running.
 
 ```js
 function makeCounter() {
@@ -419,6 +419,20 @@ for (let i = 1; i <= 3; i++) {
 
 ## Why closure
 - Data privacy (hide variables from outside).
+```js
+function counter() {
+  var count = 0;
+  return function incCounter() {
+    count++;
+    console.log(count);
+  }
+}
+const counter1 = counter();
+counter1();  // 1
+counter1();  // 2
+const counter2 =  counter();
+counter2();  // 1
+```
 - Maintain state (like counters, caches).
 - Callbacks & async code rely on closures.
 - Used heavily in functional programming and event handlers.
