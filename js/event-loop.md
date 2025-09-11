@@ -37,3 +37,30 @@ setTimeout(function cb() {
 ## Starvation
 - One function in microTask queue creating multiple others (recursively) tasks.
 - Now, the function in callback queue aren't getting any chance to execute.
+- Starvation = when some tasks never get CPU time because higher-priority tasks keep running forever.
+
+## Mutation Observer
+- It’s a built-in **JavaScript API** that lets you watch for changes in the DOM (like when an element is added, removed, or modified).
+- Whenever something changes, it notifies you.
+- MutationObserver is efficient than `setInterval` → browser tells you only when something really changed.
+```js
+// Select the element you want to observe
+const target = document.getElementById("myDiv");
+
+// Create a new observer
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    console.log("Change detected:", mutation);
+  });
+});
+
+// Tell it what to watch
+observer.observe(target, {
+  childList: true,   // watch for child add/remove
+  attributes: true,  // watch for attribute changes
+  subtree: true      // watch inside child elements too
+});
+
+// Example: Trigger a change
+target.setAttribute("class", "new-class");
+```
