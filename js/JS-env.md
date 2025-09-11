@@ -39,7 +39,7 @@
 - this: window
 - a: undefined
 
-## Callstack
+## Call Stack
 - a stack, managing execution contexts
 - bottom element: GEC (global execution context)
 - other contexts will be pushed/popped in this stack
