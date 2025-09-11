@@ -86,3 +86,17 @@ console.log(arr.reduce((acc, curr) => {
     if (curr > acc) acc = curr;
     return acc
 }, 0));
+
+const users = [
+    { first: "a", last: "aa", age: 26 },
+    { first: "b", last: "bb", age: 75 },
+    { first: "c", last: "cc", age: 50 },
+    { first: "d", last: "dd", age: 26 }
+];
+
+console.log(users.reduce((acc, curr) => {
+    if (curr.age <= 30) {
+        acc.push(curr.first);
+    }
+    return acc
+}, []));

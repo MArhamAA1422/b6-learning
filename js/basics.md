@@ -319,6 +319,8 @@ console.log(nums.find(n => n > 20)); // undefined
 - `splice()`
     - changes the original array (adds/removes elements).
 
+- advanced manipulation: chaining `arr.filter().map()`
+
 ## String methods
 - `trim()`
     - Removes whitespace from start and end.
