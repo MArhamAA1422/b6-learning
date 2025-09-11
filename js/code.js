@@ -63,3 +63,19 @@ function Counter() {  // constructor function
 const counter = new Counter();
 counter.incCounter();
 counter.decCounter();
+
+const rad = [1, 2, 3];
+const area = function (r) {
+    return Math.PI * r * r;
+}
+
+// every array will get this function, can access it, using prototype
+Array.prototype.calculate = function(logic) {
+    const output = [];
+    for (let i = 0; i < this.length; i++) {
+        output.push(logic(this[i]));
+    }
+    return output;
+}
+
+console.log(rad.calculate(area));

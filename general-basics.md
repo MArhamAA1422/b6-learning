@@ -44,3 +44,26 @@
 
 ## Concurrency Model in JS
 For example: `startTimeout` callback will be waiting in callback queue to finish execution of the GEC in call stack.
+
+## Higher order functions
+- A function that takes another function or return a function.
+- Functional programming
+- DRY
+- Single Responsibility
+```js
+const rad = [1, 2, 3];
+const area = function (r) {
+    return Math.PI * r * r;
+}
+
+// every array will get this function, can access it, using prototype
+Array.prototype.calculate = function(logic) {
+    const output = [];
+    for (let i = 0; i < this.length; i++) {
+        output.push(logic(this[i]));
+    }
+    return output;
+}
+
+console.log(rad.calculate(area));
+```
