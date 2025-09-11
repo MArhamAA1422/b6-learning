@@ -437,6 +437,28 @@ counter2();  // 1
 - Callbacks & async code rely on closures.
 - Used heavily in functional programming and event handlers.
 
+```js
+function Counter() {  // constructor function
+  var count = 0;
+  this.incCounter = function() {
+    count++;
+    console.log(count);
+  }
+  this.decCounter = function() {
+    count--;
+    console.log(count);
+  }
+}
+
+const counter = new Counter();
+counter.incCounter();
+counter.decCounter();
+```
+
+## Cons of Closure
+- Memory consumption
+- Memory leak if not handled properly
+
 ## Spread & Rest
 - spread: expands items out
 - rest: gathers items in
@@ -529,6 +551,9 @@ setTimeout(() => {
 }, 2000);
 console.log("first line");
 ```
+
+- Asynchronous code inside synchronous environment.
+- Will ba called.
 
 ## Callback Hell
 - When you have many nested callbacks, the code becomes hard to read, maintain, and debug. This is called callback hell.

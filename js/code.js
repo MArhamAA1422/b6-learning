@@ -46,17 +46,20 @@ function outer() {
     }
     const a = 10;
     fn();
-})();
+});
 
-function counter() {
+function Counter() {  // constructor function
   var count = 0;
-  return function incCounter() {
+  this.incCounter = function() {
     count++;
     console.log(count);
   }
+  this.decCounter = function() {
+    count--;
+    console.log(count);
+  }
 }
-const counter1 = counter();
-counter1();  // 1
-counter1();  // 2
-const counter2 =  counter();
-counter2();  // 1
+
+const counter = new Counter();
+counter.incCounter();
+counter.decCounter();

@@ -32,6 +32,7 @@
     - like engine creates GEC, then GEC creates others
 - window/this can access global scope
 - function declarations go to HEAP memory (memory creation phase)
+- window (global object) lives outside your code, provided by the runtime (say, browser). The GEC just points to it, and *this* in global scope is a reference to it.
 
 ## Function Execution Context (Creation Phase Browser)
 - arguments: Local Object
@@ -74,3 +75,5 @@ var fn = () => {};
 - function + its lexical scope
 - the actual reference (latest updated value) of the variables are bound in closure
 - single function can have multiple closures
+- if we need closure: just create a outer function
+- callback scope
