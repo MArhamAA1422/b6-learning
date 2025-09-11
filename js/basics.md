@@ -234,6 +234,8 @@ console.log(child.country);
 ## Array Methods
 - `reduce()`
     - Reduces an array to a single value by applying a function step by step.
+    - sum, min/max
+    - first param (accumulator, currentValue), second param(initial value)
 ```js
 const nums = [1, 2, 3, 4];
 const sum = nums.reduce((acc, curr) => acc + curr, 0);

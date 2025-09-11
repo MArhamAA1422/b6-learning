@@ -79,3 +79,10 @@ Array.prototype.calculate = function(logic) {
 }
 
 console.log(rad.calculate(area));
+
+const arr = [1, 5, 2, 3, 1];
+
+console.log(arr.reduce((acc, curr) => {
+    if (curr > acc) acc = curr;
+    return acc
+}, 0));

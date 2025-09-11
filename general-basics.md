@@ -57,7 +57,7 @@ const area = function (r) {
 }
 
 // every array will get this function, can access it, using prototype
-Array.prototype.calculate = function(logic) {
+Array.prototype.calculate = function(logic) {  // custom map
     const output = [];
     for (let i = 0; i < this.length; i++) {
         output.push(logic(this[i]));
