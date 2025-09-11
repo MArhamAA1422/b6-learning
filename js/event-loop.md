@@ -16,6 +16,9 @@ setTimeout(function cb() {
 - Moves stuffs from callback queue to call stack.
 - Continuously check whether the call stack is empty, if empty put stuff from microTask/callback queue to call stack.
     - even no GEC, full empty
+- Event Loop = "**traffic controller**" for JS execution.
+- Ensures async tasks don’t block main code.
+- Makes JS suitable for highly interactive apps & servers.
 
 ## Another example
 - `addEventListener` with a button.
@@ -29,4 +32,8 @@ setTimeout(function cb() {
 - `fetch` callback (promise) will be there
 - **All promise callbacks will be there.**
 - **Mutation Observer** (From DOM) will be there.
-- Higher priority then callback queue.
+- **Higher priority** then callback queue.
+
+## Starvation
+- One function in microTask queue creating multiple others (recursively) tasks.
+- Now, the function in callback queue aren't getting any chance to execute.
