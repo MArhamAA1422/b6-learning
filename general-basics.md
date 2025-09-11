@@ -34,3 +34,10 @@
 - Use fewer DOM elements → deep nesting slows layout.
 
 - Animations → prefer transform & opacity (GPU accelerated).
+
+## Browser
+- localstorage, timer, UI, locationAccess, URL, JS Engine (inside there is a callstack)
+- Part of Browser (not JS)
+    - WEB APIs (window): `setTimeout, DOM APIs, fetch, localStorage, console, location`
+    - Browser gives access to JS Engine through WEB APIs
+    - `window.fetch()` = `fetch()`, same for others
