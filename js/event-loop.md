@@ -39,6 +39,8 @@ setTimeout(function cb() {
 - Now, the function in callback queue aren't getting any chance to execute.
 - Starvation = when some tasks never get CPU time because higher-priority tasks keep running forever.
 
+#### blocking: while (true), starvation: inf promises
+
 ## Mutation Observer
 - It’s a built-in **JavaScript API** that lets you watch for changes in the DOM (like when an element is added, removed, or modified).
 - Whenever something changes, it notifies you.
