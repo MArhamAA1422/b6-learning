@@ -855,6 +855,24 @@ u.greet(); // Hi app
 - for...of, for...in loops
 
 ## DOM
+ডম(DOM) বা অন্যকথায় ডকুমেন্ট অবজেক্ট মডেল(Document Object Model) হচ্ছে **XML বা HTML ডকুমেন্ট এর জন্যে একটা প্রোগ্রামিং ইন্টারফেস।** এটা হচ্ছে আমাদের পেজ(HTML বা XML পেজ) কে এমনভাবে রিপ্রেজেন্ট করে যাতে এটাকে সহজেই প্রোগ্রামিং ল্যাংগুয়েজ দিয়ে মডিফাই করা যায়। বেশীরভাগ মেজর ব্রাউজারগুলোই The **W3C DOM এবং WHATWG DOM** এর স্ট্যান্ডার্ড মেইন্টেইন করে।
+
+There are two methods to traverse downwards:
+- querySelector or querySelectorAll
+- **children**
+
+There are two methods to traverse upwards:
+- **parentElement**
+- **closest**
+
+```js
+const firstListItem = document.querySelector('li')
+const list = firstListItem.parentElement
+const list1 = firstLink.closest('.list')
+```
+
+Some methods:
+
 - appendChild
     - Creates a new element and adds it as the last child.
     ```js
