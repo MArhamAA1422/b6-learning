@@ -387,6 +387,22 @@ console.log(result);  // [1, 2, 2, 4, 3, 6]
 ## Functions
 - A function is an **object** **with callable** behavior.
 
+## Pure Function
+Pure ফাংশন হল একটি Deterministic ফাংশন যার মানে হল যদি ওই **ফাংশনে একই ইনপুটের জন্য সর্বদা একই আউটপুট থাকবে**। একটি Pure ফাংশনের অবশ্যই নিচের বৈশিষ্ট্যগুলো থাকতে হবে।
+
+- সর্বদা নিজের আর্গুমেন্টের উপর নির্ভর করবে।
+- ফাংশনটি নিজের Scope এর বাইরে কোন ভারিয়েবলের মান পরিবর্তন করবে না।
+- ফাংশনটি কোন side effects তৈরি করবে না।
+
+```js
+let val1 = 6;
+let val2 = 4;
+
+function imPure() {  // accessing outer scope, val1/val2 changes => output changes
+	return val1 * val2;
+}
+```
+
 ## Arrow function: explicit return
 - `const f = () => { return value; }` → explicit return
 
