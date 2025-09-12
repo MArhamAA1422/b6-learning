@@ -145,3 +145,9 @@ let getInfo =  function (id, id1) {
 }
 
 // console.log(getInfo.apply(person, [1, 2]));
+
+function argTest(a, b, c) {
+    console.log(arguments);
+}
+
+// argTest(1, 2, 3);

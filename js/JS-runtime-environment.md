@@ -27,7 +27,7 @@ JS Engine, API (connecting outside world), Event Loop, Callback Q, MicroTask Q
 - js is synchronous single-threaded language
 
 ## How JS code is executed
-- first **global execution context**
+- first **global execution context**, যা `main()` দ্বারা রিপ্রেসেন্ট করা হয়
 - memory creation phase
     - each var = **undefined**
     - whole block of the function
