@@ -113,7 +113,7 @@ function hoistingFunc() {
 // console.log(BigInt(5));
 
 let ob1 = { name: "app" };
-let ob2 = { name: "app" }
+let ob2 = { name: "app" };
 
 // console.log(ob1 === ob2);  // false
 
