@@ -116,3 +116,19 @@ let ob1 = { name: "app" };
 let ob2 = { name: "app" }
 
 // console.log(ob1 === ob2);  // false
+
+var test = (function test() {
+    function add(a, b) {
+        return a+b;
+    }
+    function sub(a, b) {
+        return a-b;
+    }
+
+    return {
+        add,
+        sub
+    }
+})();
+
+// console.log(test.sub(2, 3));
