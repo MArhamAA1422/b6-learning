@@ -972,11 +972,18 @@ btn.addEventListener("click", function(event) {
   console.log(event.target); // <button> element
 });
 ```
-    - Use `e.preventDefault()` to stop unwanted default behavior.
+- Use `e.preventDefault()` to stop unwanted default behavior.
+
+## Event Capturing and Bubbling
+DOM ইভেন্টগুলি ইভেন্ট প্রোপাগেশন 3টি পর্যায় বর্ণনা করে: **ক্যাপচারিং ফেজ** – ইভেন্টটি এলিমেন্ট চলে যায়। **টার্গেট ফেজ** – ইভেন্ট টার্গেট এলিমেন্টে পৌঁছেছে। **বাবলিং পর্যায়** – ঘটনাটি এলিমেন্ট থেকে উঠে।
+- ইভেন্ট ক্যাপচারিং হলো ইভেন্ট-এর প্রোপাগেশন যেটা এর রুট ইলিমেন্ট থেকে টার্গেট এলিমেন্ট পর্যন্ত গিয়ে থামে।
 
 ### Event Bubbling & Delegation
-- Bubbling: Event starts from the innermost element → goes up to parents.
-- Delegation: Attach a listener to a parent instead of every child.
+- Bubbling: Event starts from the innermost element → goes up to parents. ইভেন্ট বাবলিং হলো ইভেন্ট-এর প্রোপাগেশন যেটা এর অরিজিন থেকে উপরে রুট ইলিমেন্ট পর্যন্ত গিয়ে থামে। অর্থাং যখনি কোনো একজন ইউজার পেজের কোনো একটা বাটনে ক্লিক করে তথন সেই বাটনের আন্ডারে যে ইভেন্ট হ্যান্ডেলার টা আছে সেই ইভেন্ট টা তার প্যারেন্ট, তার প্যারেন্ট, আবার তার প্যারেন্ট এভাবে সে রুট ইলিমেন্ট Html পর্যন্ত ইভেন্ট-এর প্রোপাগেশন বা প্রচার চালায় । **ইভেন্ট টি তার উপরের সব ইলিমেন্ট** কে জানিয়ে দেয় যে, কেউ একজন তাকে ক্লিক করেছে। আপনি চাইলে বাবলিং টাকে রোধ করতে পারেন, জাস্ট `event.stopPropagation` মেথড ব্যবহার করে।
+
+### Delegation
+Attach **a listener to a parent** instead of every child.
+
 ```HTML
 <ul id="list">
   <li>Item 1</li>
@@ -991,6 +998,14 @@ btn.addEventListener("click", function(event) {
     }
   });
 </script>
+```
+
+addEventListener() ফাংশনের তৃতীয় argument হিসেবে আমরা যে true/false ভ্যালু দিয়েছি সেটা বাই ডিফল্ট false থাকে অর্থাৎ nested element ক্লিক করার ক্ষেত্রে সেটা বাই ডিফল্ট event bubbling করে থাকে। বিষয়টি যদি অন্যভাবে বলি তাহলে বলা যায় যে **তৃতীয় আর্গুমেন্টে জিজ্ঞাসা করা থাকে এই event টি প্রথমে capture** করা হবে নাকি হবে না।
+
+```js
+blueDiv.addEventListener(‘click’, () => {
+console.log(‘Blue box clicked.’);
+}, true)
 ```
 
 ## Persistent Storage: localStorage
@@ -1015,7 +1030,7 @@ btn.addEventListener("click", function(event) {
 
 - Persistence → Saved to disk, survives browser restarts.
 
-- Synchronous API → Operations like getItem, setItem are blocking, unlike IndexedDB (async).
+- Synchronous API → Operations like getItem, setItem are *blocking*, unlike **IndexedDB** (async).
 
 - Dict/HashMap at API level. Browsers use efficient hashing + indexing in their DB engines to retrieve keys quickly.
 
