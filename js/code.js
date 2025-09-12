@@ -60,9 +60,9 @@ function Counter() {  // constructor function
   }
 }
 
-const counter = new Counter();
-counter.incCounter();
-counter.decCounter();
+// const counter = new Counter();
+// counter.incCounter();
+// counter.decCounter();
 
 const rad = [1, 2, 3];
 const area = function (r) {
@@ -78,14 +78,14 @@ Array.prototype.calculate = function(logic) {
     return output;
 }
 
-console.log(rad.calculate(area));
+// console.log(rad.calculate(area));
 
 const arr = [1, 5, 2, 3, 1];
 
-console.log(arr.reduce((acc, curr) => {
-    if (curr > acc) acc = curr;
-    return acc
-}, 0));
+// console.log(arr.reduce((acc, curr) => {
+//     if (curr > acc) acc = curr;
+//     return acc
+// }, 0));
 
 const users = [
     { first: "a", last: "aa", age: 26 },
@@ -94,12 +94,12 @@ const users = [
     { first: "d", last: "dd", age: 26 }
 ];
 
-console.log(users.reduce((acc, curr) => {
-    if (curr.age <= 30) {
-        acc.push(curr.first);
-    }
-    return acc
-}, []));
+// console.log(users.reduce((acc, curr) => {
+//     if (curr.age <= 30) {
+//         acc.push(curr.first);
+//     }
+//     return acc
+// }, []));
 
 var hoistingIntro = "Hi there, I am a string one.";
 function hoistingFunc() {
@@ -108,4 +108,11 @@ function hoistingFunc() {
 	console.log(hoistingIntro);
 }
 
-hoistingFunc();
+// hoistingFunc();
+
+// console.log(BigInt(5));
+
+let ob1 = { name: "app" };
+let ob2 = { name: "app" }
+
+// console.log(ob1 === ob2);  // false

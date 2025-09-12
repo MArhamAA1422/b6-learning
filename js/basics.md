@@ -44,6 +44,19 @@ console.log(greet.language); // "JavaScript"
 - জাভাস্ক্রিপ্টে একমাত্র তখনই Scope তৈরি হয়, যখন আমরা কোন function ইনভোক বা কল করি। - Local scope
 - Global, Local scope
 
+## Data Types
+- Primitive ডাটা টাইপ
+  - String, Number, Boolean, Null, undefined, BigInt, Symbol
+  - immutable
+  - আমরা কোন প্রিমিটিভ ডাটা টাইপকে অন্য কোন ভেরিয়েবলে অ্যাসাইন করি, তখন তার **ভ্যালু কপি** হয়ে নতুন ভেরিয়েবলে অ্যাসাইন হয়।
+
+- Non-primitive or reference
+  - Arrays, Objects, Functions
+  - mutable
+  - আমরা যখন কোন নন-প্রিমিটিভ ডাটা তৈরি করি, তখন সেই ডাটার জন্যে মেমোরিতে একটা অ্যাড্রেস তৈরি হয় এবং সেই অ্যাড্রেসটাকে মনে রেখে কোন এক জায়গায় ভ্যালুগুলোকে স্ট্রোর করে রাখে।
+  - যখন আমরা কোন রেফারেন্স ডাটাকে অন্য কোন ভেরিয়েবলে অ্যাসাইন করি, তখন তার **রেফারেন্স কপি** হয়। Changing one will change others.
+  - নন-প্রিমিটিভ ডাটা তাদের রেফারেন্স দ্বারা তুলনা করে।
+
 ## Hoisting
 - JavaScript needs to know all variable names in advance to manage scope.
 
