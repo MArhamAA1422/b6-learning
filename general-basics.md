@@ -21,9 +21,24 @@
 
 - CSS = style becomes CSSOM
 
+- HTML/CSS is rendered by an engine
+
 - Browser merges them into Render Tree, does layout → paint → composite
 
 - They are interpreted, not compiled, but browsers optimize heavily.
+
+- They (HTML, CSS) don’t “execute” by themselves — they need a **rendering engine** (like **Chrome’s Blink**, Firefox’s Gecko, Safari’s WebKit).
+
+- There are environments that embed a browser engine or reimplement it:
+    - **Electron.js**
+    - Mobile Apps (React Native)
+
+- CLI (NodeJS)
+    - **jsdom**: parse HTML & emulate DOM.
+
+    - **parse5**: parse HTML.
+
+    - **postcss**: parse & transform CSS.
 
 ## Performance Basics
 
