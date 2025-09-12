@@ -626,6 +626,40 @@ console.log(undefined + 1); // NaN (undefined → NaN)
     boundGreet(22); // "app is 22"
     ```
 
+```js
+function Person(fName, lName, age) {
+	this._firstName = fName;
+	this._lastName = lName;
+	this._age = age;
+}
+
+function Student(fName, lName, age, roll, section) {
+	Person.call(this, fName, lName, age);
+	this._roll = roll;
+	this._section = section;
+}
+
+let std1 = new Student("Saroar Hossain", "Shahan", 25, 99, "B");
+```
+
+- এখন ধরেন আপনার Student ক্লসে কয়টা প্যারামিটার হতে পারে তা আপনার জানা নেই। ঐ সমস্যার সমাধান কিভাবে করবেন? খুব সহজ একটা সমাধান আছে। আমরা জানি যে, জাভাস্ক্রিপ্টে **arguments** নামে একটা বিল্ড-ইন অবজেক্ট আছে। এইটা অবজেক্ট হলেও আসলে কাজ করে Array এর মত করে এবং Apply মেথড যেহেতু Array নিয়ে কাজ করে, তাহলে তো আমরা arguments অবজেক্ট দিয়েই এই কাজটি করে ফেলতে পারি খুব সহজে।
+
+```js
+function Person(fName, lName, age) {
+	this._firstName = fName;
+	this._lastName = lName;
+	this._age = age;
+}
+
+function Student(fName, lName, age, roll, section) {
+	Person.apply(this, arguments);
+	this._roll = roll;
+	this._section = section;
+}
+
+let std1 = new Student("Saroar Hossain", "Shahan", 25, 99, "B");
+```
+
 ## Callback
 - A callback function is a function **passed as an argument** to another function, to be executed later, usually after some operation finishes (like I/O, network, timer).
 ```js

@@ -134,4 +134,14 @@ var test = (function test() {
 // console.log(test.sub(2, 3));
 
 object = { name: "app" };
-console.log(object);
+// console.log(object);
+
+let person = {
+    name: "app"
+};
+
+let getInfo =  function (id, id1) {
+    return `Welcome ${this.name}, your roll is ${id}, ${id1}`;
+}
+
+// console.log(getInfo.apply(person, [1, 2]));
