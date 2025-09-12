@@ -349,6 +349,47 @@ console.log(nums.find(n => n > 20)); // undefined
 
 - advanced manipulation: chaining `arr.filter().map()`
 
+## More Array methods
+- `Array.from()` এটি Array অবজেক্টের একটি স্ট্যাটিক মেথড যেটি মূলত iterable বা পুনরাবৃত্তিযোগ্য কোন ভেরিয়েবল থেকে নতুন একটি অ্যারে তৈরীতে ব্যবহৃত হয়।
+```js
+let str = "Vivasoft";
+let arr = [1, 2, 3];
+console.log(Array.from(str)); // ["V", "i", "v", "a", "s", "o", "f", "t"];
+console.log(Array.from(arr, (x) => x * x)); // [1, 4, 9]
+```
+
+- `Array.isArray()`
+```js
+console.log(Array.isArray(new Array())); // true
+```
+
+- `Array.prototype.at()` at() মেথডের মজার একটি ব্যাপার হচ্ছে এটি নেগেটিভ ইনডেক্স অনুযায়ী কাজ করতে পারে তবে সেটা উল্টো দিক থেকে।
+```js
+let arr = [92, 46, 71, 87, 39];
+console.log(arr.at(0)); // 92
+console.log(arr.at(-1)); // 39
+console.log(arr[-1]); // undefined
+```
+
+- `Array.prototype.concat()`
+```js
+let arr1 = [1, 2, 3];
+let arr2 = [4, 5];
+let final = arr1.concat(arr2);  // [1, 2, 3, 4, 5]
+```
+
+- `Array.prototype.fill()` এই মেথডটির মাধ্যমে আমরা কোন অ্যারের সবগুলো উপাদান বা একটি নির্দিষ্ট রেঞ্জের মধ্যে উপাদান গুলোকে একটি ভ্যালু দ্বারা এ্যাসাইন করে থাকি। `fill(value, from, to)`
+
+```js
+let arr = [29, 13, 71, 30, 55];
+arr.fill(3);
+console.log(arr); // [3,3,3,3,3]
+arr.fill(4, 2);
+console.log(arr); // [3,3,4,4,4]
+arr.fill(5, 3, 4);
+console.log(arr); // [3,3,4,5,4]
+```
+
 ## String methods
 - `trim()`
     - Removes whitespace from start and end.
