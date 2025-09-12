@@ -132,3 +132,6 @@ var test = (function test() {
 })();
 
 // console.log(test.sub(2, 3));
+
+object = { name: "app" };
+console.log(object);

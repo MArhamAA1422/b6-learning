@@ -40,6 +40,21 @@ console.log(greet.language); // "JavaScript"
 
 - Prototype-based inheritance → Instead of class-based inheritance (originally), JS uses prototypes, and prototypes are objects.
 
+## Use strict mode (from ES5)
+আমরা যখন স্ট্রিক্ট মোড ব্যবহার করি, তখন জাভাস্ক্রিপ্ট কোড কোন ভুল সিনট্যাক্স ছাড়া এক্সিকিউট করে এবং কোড আরও সিকিউর করে। `"use strict";`
+- global declaration
+- function declaration
+
+Use cases:
+- আমরা জানি জাভাস্ক্রিপ্টে ভেরিয়েবলের নামের আগে ভেরিয়েবল কি-ওয়ার্ড ব্যবহার না করলে এটি বাই-ডিফল্ট উইন্ডো অবজেক্টের আন্ডারে এক্সিকিউট হয়। একই কোড যখন আমরা “use strict” ব্যবহার করে এক্সিকিউট করবো, আমরা একটা Uncaught ReferenceError পাবো।
+
+- জাভাস্ক্রিপ্টে আমরা রিজার্ভড কি-ওয়ার্ডগুলো ব্যবহার করতে পারি ভেরিয়েবলের নাম হিসাবে। কিন্তু “use strict” মোডে এটি সম্ভব নয়।
+
+- ফাংশনের ভিতরে “this” এর ভ্যালু সব সময় উইন্ডো অবজেক্ট হয়। 
+কিন্তু “use strict” মোডে ফাংশনের ভিতরে “this” এর ভ্যালু undefined হবে।
+
+- Deleting a variable (or object) is not allowed. `delete x;`
+
 ## Scope
 - জাভাস্ক্রিপ্টে একমাত্র তখনই Scope তৈরি হয়, যখন আমরা কোন function ইনভোক বা কল করি। - Local scope
 - Global, Local scope
