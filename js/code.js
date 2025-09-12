@@ -100,3 +100,12 @@ console.log(users.reduce((acc, curr) => {
     }
     return acc
 }, []));
+
+var hoistingIntro = "Hi there, I am a string one.";
+function hoistingFunc() {
+	console.log(hoistingIntro);
+	var hoistingIntro = "Hi there, I am a string two";
+	console.log(hoistingIntro);
+}
+
+hoistingFunc();

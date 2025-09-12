@@ -6,6 +6,7 @@
 - Lexical Scope
 - JIT
 - Constructor Function
+- this
 
 ## CSS
 - Query
