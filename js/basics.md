@@ -85,6 +85,17 @@ Use cases:
 
 - Essentially, hoisting is about “creation phase”, not “usable yet”.
 
+- var: undefined
+- function: **actual function** body (no issue)
+- reason: memory phase
+- function expression: behaves like variable not function, can cause error
+```js
+console.log(fn);  // undefined
+var fn = () => {};
+```
+- In memory phase: let/const placed in “**Temporal Dead Zone (TDZ)**” until the code actually declares them.
+    - <uninitialized>
+
 ## var vs let
 - scope
     - var → **function-scoped** (or global if outside a function).
@@ -520,8 +531,15 @@ var math = (() => {
 ## Lexical scope
 - Inner can access vars from outer.
 
+#### undefined != not defined
+
 ## Closure
 - A closure is formed when a function "remembers" the variables (with reference) from its lexical scope, even after the outer function has finished running.
+- **function + its lexical scope**
+- the actual **reference** (latest updated value) of the variables are bound in closure
+- single function can have multiple closures
+- if we need closure: just create a outer function
+- callback scope
 
 ```js
 function makeCounter() {

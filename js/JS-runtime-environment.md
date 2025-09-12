@@ -1,3 +1,20 @@
+## JS Runtime Environment
+JS Engine, API (connecting outside world), Event Loop, Callback Q, MicroTask Q
+
+## JS Engine
+- Heart of JS runtime env
+- First JS engine: SpiderMonkey
+- not a machine (not a hardware)
+- just a piece of code (software)
+    - v8 is written in C++
+- Components
+    - Interpreter
+    - Compiler
+    - GC
+    - Optimizer (connected to compiler)
+    - Memory Heap (connected to GC)
+    - a call stack
+
 ## In RAM
 - The Call Stack (a data structure) lives in the JS Engine’s memory space (RAM).
 - The GEC is the first frame pushed onto the Call Stack.
@@ -57,23 +74,21 @@
 - Everything in RAM
     - The JS Engine (like V8) is a program **written in C++** that manages this memory.
 
-## Hoisting
-- var: undefined
-- function: actual function body (no issue)
-- reason: memory phase
-- function expression: behaves like variable not function
-```js
-console.log(fn);  // undefined
-var fn = () => {};
-```
-- In memory phase: let/const placed in “Temporal Dead Zone (TDZ)” until the code actually declares them.
-    - <uninitialized>
+#### localStorage an API in browser, different in NodeJS
 
-#### undefined != not defined
+### Same API both in browser and NodeJS
+- setTimeout
+- console
 
-## Closure
-- function + its lexical scope
-- the actual reference (latest updated value) of the variables are bound in closure
-- single function can have multiple closures
-- if we need closure: just create a outer function
-- callback scope
+## Garbage Collector
+- **Mark & Sweep Algorithm**
+
+## Optimization (compilation)
+- inlining
+- copy elision
+- inline caching
+
+## V8 Engine
+- JS source code > parser > AST > Ignition (interpreter) > Bytecode
+Ignition > Turbofan (compiler) > Optimized MC > Bytecode
+- GC: Orinoco, Oilpan
