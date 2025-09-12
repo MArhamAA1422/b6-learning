@@ -1018,6 +1018,10 @@ console.log(‘Blue box clicked.’);
 
 - Data persists even after closing or refreshing the browser (until explicitly cleared).
 
+- এটি ব্রাউজার রিস্টার্ট এবং এমনকি OS রিবুট হওয়ার পরেও ডাটার মেয়াদ শেষ হয় না।
+
+- লোকাল স্টোরেজের অবজেক্ট Iterable নয়। তবে একটি উপায় হল অ্যারের উপর তাদের লুপ করা। Or, `for key in localStorage`.
+
 - Stored as **strings** (you need to JSON.stringify/JSON.parse for objects).
 
 - Size limit: **~5–10 MB** depending on browser.
