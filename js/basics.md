@@ -893,6 +893,31 @@ u.greet(); // Hi app
 - Unlike DOM, which deals with the HTML structure, BOM deals with browser features like `windows, frames, history, location, and dialogs`.
 - Key BOM objects: `window, navigator, screen, history, location, alert, confirm, prompt`
 
+## window object
+Window Object একটি ব্রাউজারে একটি খোলা উইন্ডো উপস্থাপন করে। যদি একটি ডকুমেন্ট এ ফ্রেম থাকে (<iframe> ট্যাগ), ব্রাউজার HTML ডকুমেন্ট এর জন্য একটি উইন্ডো অবজেক্ট এবং **প্রতিটি ফ্রেমের জন্য একটি অতিরিক্ত উইন্ডো অবজেক্ট** তৈরি করে।
+- Property
+  - `closed, console, document, frames, history, innerHeight, location, name, screen, self, status, top` and more.
+
+## document object
+HTML DOM ডকুমেন্ট অবজেক্ট হল আপনার ওয়েব পেজের অন্য সব অবজেক্টের মালিক। document object আপনার ওয়েব পৃষ্ঠা প্রতিনিধিত্ব করে। ডকুমেন্ট অবজেক্ট মডেল (DOM) ওয়েব পৃষ্ঠাগুলিকে স্ক্রিপ্ট বা প্রোগ্রামিং ভাষার সাথে সংযুক্ত করে একটি document গঠন উপস্থাপন করে – যেমন HTML একটি ওয়েব পৃষ্ঠাকে প্রদর্শন করে – মেমরিতে। DOM একটি লজিক্যাল ট্রি সহ একটি document উপস্থাপন করে। ট্রি প্রতিটি শাখা একটি নোডে শেষ হয় এবং **প্রতিটি নোডে object** থাকে। নোডের সাথে ইভেন্ট হ্যান্ডলারও সংযুক্ত থাকতে পারে। `alert(), confirm(), prompt(), open()`
+
+## Query selectors
+```js
+let element = document.querySelector('*');  // first element of document
+let element = document.querySelectorAll('*');
+
+let autoplay = document.querySelector('[autoplay]');  // attribute
+
+let listItems = document.querySelectorAll('ul.nav > li');  // child combinator, direct child
+
+let listItem = document.querySelectorAll('li:nth-child(2)');  // psudo-classes
+
+let links = document.querySelector('p::first-line');  // :: document এ অন্তর্ভুক্ত নয় এমন entities represent করে৷
+```
+
+### querySelector
+একটি querySelector দিয়ে, আপনি একটি CSS Selector উপর ভিত্তি করে একটি উপাদান নির্বাচন করতে পারেন। querySelectorAll দিয়ে, আপনি সমস্ত উপাদান নির্বাচন করতে পারেন। querySelector(“css-selectors”) আপনাকে CSS Selector প্যাটার্নের উপর ভিত্তি করে যেকোনো উপাদান নির্বাচন করতে দেয়।
+
 ## Events and Event Listeners
 - An event is an action that happens in the browser.
 ```html
