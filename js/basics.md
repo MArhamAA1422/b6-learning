@@ -721,6 +721,7 @@ let std1 = new Student("Saroar Hossain", "Shahan", 25, 99, "B");
 
 ## Callback
 - A callback function is a function **passed as an argument** to another function, to be executed later, usually after some operation finishes (like I/O, network, timer).
+- কলব্যাক ফাংশনের মানে এক কথায় এটা এমন একটা ফাংশন যেটা আরেকটা ফাংশন এক্সিকিউট হওয়ার পর এক্সিকিউট হয়।
 ```js
 function greet(name) {
   console.log("Hello " + name);
