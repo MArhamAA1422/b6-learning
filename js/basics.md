@@ -828,10 +828,11 @@ createOrder(cart)
 ```
 
 ## Promise APIs
+All take array of promises.
 
 ### Promise all
-- Waits for all promises to fulfill.
-- If any reject → whole Promise.all rejects.
+- Waits for all promises to be fulfilled.
+- If any reject → whole Promise.all rejects. ASAP Error Message.
 ```js
 const p1 = Promise.resolve(1);
 const p2 = Promise.resolve(2);
@@ -862,6 +863,11 @@ const p6 = new Promise(res => setTimeout(res, 1000, "slow"));
 
 Promise.race([p5, p6]).then(console.log); // "fast"
 ```
+
+### Promise any
+- wait for first success (fulfilled), in between reject doesn't matter
+- if all promise fail
+  - **AggregateError**: list of all errors for all promises
 
 #### Promise.all is great for parallel requests, race for timeouts, allSettled for complete info.
 
