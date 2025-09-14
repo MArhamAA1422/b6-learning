@@ -223,8 +223,13 @@ nums.push(4);           // ✅
     console.log(Object.keys(user)); // Symbol not listed
     ```
     ```js
-    s = toVow(wordlist[i]);
-    if (vow.find(s) == vow.end()) vow[s] = i;
+    let id = Symbol(“id”);
+    let person = {
+      name: “Jack”,
+      // adding symbol as a key
+      [id]: 123 // not “id”: 123
+    };
+    console.log(person); // {name: “Jack”, Symbol(id): 123}
     ```
     - Normally, you don’t call `Symbol.iterator` directly. It’s used internally by:
         - for...of loops
