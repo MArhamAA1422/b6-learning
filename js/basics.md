@@ -756,11 +756,17 @@ console.log("first line");
 - When you have many nested callbacks, the code becomes hard to read, maintain, and debug. This is called callback hell.
 
 ## Promise
+- A Promise is **an Object** representing the **eventual completion** or failure of an asynchronous operation.
 - A Promise represents a value that may be available now, later, or never.
-- It has three states:
+- Requires callback.
+- Immutable.
+- Returns an Object (with data).
+- It has three states: 
     - Pending - initial
     - Fulfilled - done
     - Rejected - fail
+- Control of the code/execution, callback has an issue on that.
+- **Attaching callbacks**, not sending callbacks.
 ```js
 const myPromise = new Promise((resolve, reject) => {
   let success = true;
@@ -775,10 +781,30 @@ const myPromise = new Promise((resolve, reject) => {
 });
 ```
 
+## Chaining promises
+- Each `.then()` returns a new Promise, allowing chaining.
+- Always write `return` to flow the data correctly.
+- Solves callback hell.
+```js
+new Promise((resolve) => resolve(2))
+  .then((num) => num * 2)   // 4
+  .then((num) => num + 1)   // 5
+  .then(console.log);        // 5
+```
+```js
+createOrder(cart)
+  .then((orderId) => {
+    return proceedToPayment(orderId);
+  })
+  .then((paymentInfo) => {
+    return showOrderSummary(paymentInfo);
+  });
+```
+
 ```js
 myPromise
-  .then((value) => {
-    console.log(value); // runs if resolved
+  .then((data) => {
+    console.log(data); // runs if resolved
   })
   .catch((err) => {
     console.error(err); // runs if rejected
@@ -788,16 +814,22 @@ myPromise
   });
 ```
 
-## Chaining promises
-- Each `.then()` returns a new Promise, allowing chaining.
 ```js
-new Promise((resolve) => resolve(2))
-  .then((num) => num * 2)   // 4
-  .then((num) => num + 1)   // 5
-  .then(console.log);        // 5
+createOrder(cart)
+  .then(function(order) {
+    //
+  })
+  .catch(function(error) {
+    console.log(error, " for createOrder");
+  })
+  .then(function() {
+    console.log("No matter what happes, this will be called");
+  });
 ```
 
-## Promise all
+## Promise APIs
+
+### Promise all
 - Waits for all promises to fulfill.
 - If any reject → whole Promise.all rejects.
 ```js
@@ -806,7 +838,7 @@ const p2 = Promise.resolve(2);
 
 Promise.all([p1, p2]).then(console.log); // [1, 2]
 ```
-## Promise allSettled
+### Promise allSettled
 - Waits for all promises, regardless of fulfill/reject.
 - Returns an array of objects with {status, value/reason}.
 ```js
@@ -822,7 +854,7 @@ Promise.allSettled([p3, p4]).then(console.log);
 */
 ```
 
-## Promise race
+### Promise race
 - Resolves or rejects as soon as any one promise finishes.
 ```js
 const p5 = new Promise(res => setTimeout(res, 500, "fast"));

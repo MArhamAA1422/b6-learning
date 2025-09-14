@@ -151,3 +151,6 @@ function argTest(a, b, c) {
 }
 
 // argTest(1, 2, 3);
+
+const promise = new Promise(() => {}, () => {});
+console.log(promise);
