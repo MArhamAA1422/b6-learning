@@ -5,7 +5,7 @@ setTimeout(function cb() {
 }, 5000);
 ```
 - `setTimeout` calls WEB API and get access to the **Timer** feature of browser.
-- Then, a callback `cb` will be registered in WEB API environment, starts 5000 timer.
+- Then, a callback `cb` will be **registered in WEB API environment**, starts 5000 timer.
 - Now, we need `cb` inside the call stack (JS Engine) to be executed.
 - GEC has been popped from call stack.
 
@@ -13,6 +13,7 @@ setTimeout(function cb() {
 - After the timer ends, `cb` goes to the call stack through callback queue.
 
 ## Event Loop
+- Event loop (ইভেন্ট লুপ) জাভাস্ক্রিপ্টের একটি সিক্রেট machenism যার মাধ্যমে জাভাস্ক্রিপ্ট single-threaded প্রোগ্রামিং ল্যাঙ্গুয়েজ হওয়া সত্ত্বেও বাহ্যিক ভাবে multi-threaded প্রোগ্রামিং ল্যাঙ্গুয়েজের মত কাজ করে।
 - Moves stuffs from callback queue to call stack.
 - Continuously check whether the call stack is empty, if empty put stuff from microTask/callback queue to call stack.
     - even no GEC, full empty

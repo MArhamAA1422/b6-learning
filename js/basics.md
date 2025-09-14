@@ -207,6 +207,7 @@ nums.push(4);           // ✅
 - Symbol
     - Unique and immutable identifier, often used as object keys.
     - No two symbols are equal.
+    - সিম্বল প্রপার্টির কলিসন এড়ানোর জন্য অনেক উপকারী। ধরি আমাদের একটা অবজেক্ট আছে Person। দুইটি  প্রোগ্রাম Person অব্জেক্টটি  মডিফাই  করতে চায়  এবং Id নামের একটি প্রপার্টি এড করতে চায় । এখন দুইটি  প্রোগ্রাম একই নামের প্রপার্টি এড  করতে গেলে প্রপার্টি এর ভ্যালু ওভাররাইড বা পরিবর্তন করে ফেলবে । এই সমস্যা আমরা সিম্বল ব্যবহার করে সমাধান করতে পারি। সিম্বল ব্যবহার করে আমরা একটা ইউনিক প্রপার্টি তৈরী করে ব্যবহার করতে পারি।
     ```js
     let id1 = Symbol("id");
     let id2 = Symbol("id");
@@ -220,6 +221,10 @@ nums.push(4);           // ✅
     console.log(user[id]);    // 123
     console.log(user.id);     // undefined
     console.log(Object.keys(user)); // Symbol not listed
+    ```
+    ```js
+    s = toVow(wordlist[i]);
+    if (vow.find(s) == vow.end()) vow[s] = i;
     ```
     - Normally, you don’t call `Symbol.iterator` directly. It’s used internally by:
         - for...of loops
