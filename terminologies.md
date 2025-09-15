@@ -7,6 +7,11 @@
 - JIT
 - Constructor Function
 - this
+- Type Coercion
+- IIFE
+- BOM
+- Promise APIs
+- Optional Chaining & Nullish Coalescing
 
 ## CSS
 - Query
