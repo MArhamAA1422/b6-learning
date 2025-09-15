@@ -119,3 +119,34 @@ let emp: Emp = {
   }
 }
 ```
+
+## Union types
+```js
+function kgToLbs(wg: number | string): number {
+  // Narrowing
+  if (typeof wg === 'number') {
+    return wg*2.2;
+  } else {
+    return parseInt(wg)*2.2;
+  }
+}
+```
+
+## Intersection types
+```js
+let wg: number & string;  // both number and string
+```
+```js
+type Draggable = {
+  drag: () => void
+}
+type Resizable = {
+  resize: () => void
+}
+type UIWidget = Draggable & Resizable;
+
+let textBox: UIWidget = {
+  drag: () => {},
+  resize: () => {}
+}
+```

@@ -53,3 +53,14 @@ let emp1: Emp = {
     }
 }
 // emp1.retire(new Date());
+
+function kgToLbs(wg: number | string): number {
+  // Narrowing
+  if (typeof wg === 'number') {
+    return wg*2.2;
+  } else {
+    return parseInt(wg)*2.2;
+  }
+}
+
+// console.log(kgToLbs(10), kgToLbs("10kg"));
