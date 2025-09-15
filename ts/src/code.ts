@@ -16,3 +16,5 @@ arr = [];
 arr[0] = 5;
 
 let user: [number, string] = [1, 'app'];
+user.push(1);
+console.log(user);

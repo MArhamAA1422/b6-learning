@@ -51,3 +51,17 @@ arr[0] = 5;
 let user: [number, string] = [1, 'app'];
 ```
 Here, we can use all methods of number `user[0].`, all methods of string `user[1].`
+
+Issue
+- here we can write: `user.push(1)`
+  - it shouldn't be happened, but compiler won't mind for now.
+
+## Enum
+PascalCase is preferred.
+
+```ts
+const enum Size { Small = 1, Medium, Large };
+let mySize: Size = Size.Medium;
+```
+
+Use `const` to generate more optimized JS.
