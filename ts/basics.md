@@ -15,3 +15,7 @@
 - To fix default compilation (JS) target
   - `tsc --init` => tsconfig.json => update **target** => (CTRL + space) => To get valid options.
   - rootDir, outDir, removeComments, noEmitOnError (don't generate JS if there are errors)
+
+  ## Debugging
+  - Inside `tsconfig.json` => sourceMap
+  - Run & Debug (vs code) => launch.json => "preLaunchTask": "tsc "; => Launch Program
