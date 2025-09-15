@@ -158,3 +158,18 @@ Limiting the input.
 type Quantity = 50 | 100;  // 50 or 100, nothing else
 let quantity: Quantity = 100;
 ```
+
+## Nullable Types
+- TS is very strict with `null` and `undefined`
+- `strictNullChecks` in tsconfig.json
+
+```js
+function test(name: string | null | undefine) {
+  if (name) {
+    //
+  } else {
+    //
+  }
+}
+test(null);
+```
