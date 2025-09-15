@@ -668,13 +668,34 @@ console.log(undefined + 1); // NaN (undefined → NaN)
 - Its value depends on how a function is called, not where it’s written.
 - In non-strict mode, this refers to the global object (**window in browsers, global in Node**).
 - In strict mode, this is **undefined**.
+  - inside any function
+- In non-strict mode, if *this* is `undefined` or `null` *this* **will be replaced** by global object (window/global).
 - Arrow functions do not have their own *this* — **they inherit it from the lexical scope**.
-- “this” এর ভ্যালু কি হবে সেটা নির্ভর করে কোথায় এবং কিভাবে কল হচ্ছে তার উপর ভিত্তি করে।
+- “this” এর ভ্যালু কি হবে সেটা নির্ভর করে **কোথায় এবং কিভাবে** কল হচ্ছে তার উপর ভিত্তি করে।
 - কোন ফাংশন কল করার সময় ফাংশনের নামের ডটের আগে যে অবজেক্ট নামটা থাকবে তার ভ্যালুই দেখাবে।
 - this সেই object কে refer করে যা বর্তমানে ফাংশনটিকে কল করছে।
+- *this* inside **DOM** elements => refers to HTML elements
 
 ## call(), apply(), bind()
 - All three are used to manually set *this*.
+- Sharing methods between objects.
+  - using overriding the *this*
+  ```js
+  const std = {
+    name: "app",
+    print: function() {
+      //
+    }
+  }
+  std.print();
+
+  const std2 = {
+    name: "lab"
+  }
+
+  // std.print();  // error
+  std.print.call(std2);  // we've changed *this*
+  ```
 - `call()`
     - Calls a function with a specified this and arguments listed individually.
     ```js
