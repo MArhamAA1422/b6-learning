@@ -13,6 +13,9 @@
 - Promise APIs
 - Optional Chaining & Nullish Coalescing
 
+## TS
+- Transpilation
+
 ## CSS
 - Query
     - media
