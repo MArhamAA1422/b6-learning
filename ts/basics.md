@@ -85,3 +85,20 @@ function calc(inc: number, tax?: number): number {  // also, tax = 10
 }
 calc(5);
 ```
+
+## Object
+```ts
+let emp: {
+    readonly id: number,
+    name: string
+
+    retire: (date: Date) => void
+
+} = {
+    id : 1,
+    name: 'app',
+    retire: (date: Date) => {
+        console.log(date);
+    }
+};
+```

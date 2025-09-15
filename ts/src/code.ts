@@ -23,4 +23,19 @@ function calc(inc: number, tax?: number): number {
   if (tax || 10 < 10) return inc;
   return inc*10;
 }
-console.log(calc(5));
+// console.log(calc(5));
+
+let emp: {
+    readonly id: number,
+    name: string
+
+    retire: (date: Date) => void
+
+} = {
+    id : 1,
+    name: 'app',
+    retire: (date: Date) => {
+        console.log(date);
+    }
+};
+console.log(emp);
