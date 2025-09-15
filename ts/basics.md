@@ -102,3 +102,20 @@ let emp: {
     }
 };
 ```
+
+## Type
+```js
+type Emp = {
+  readonly id: number,
+  name: string,
+  retire: (data: Date) => void
+}
+
+let emp: Emp = {
+  id: 1,
+  name: 'app',
+  retire: (date: Date) => {
+    console.log(date);
+  }
+}
+```

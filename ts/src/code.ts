@@ -17,7 +17,7 @@ arr[0] = 5;
 
 let user: [number, string] = [1, 'app'];
 user.push(1);
-console.log(user);
+// console.log(user);
 
 function calc(inc: number, tax?: number): number {
   if (tax || 10 < 10) return inc;
@@ -38,4 +38,18 @@ let emp: {
         console.log(date);
     }
 };
-console.log(emp);
+
+type Emp = {
+    readonly id: number,
+    name: string,
+    retire: (date: Date) => void
+}
+
+let emp1: Emp = {
+    id: 1,
+    name: 'app',
+    retire: (date: Date) => {
+        console.log(date);
+    }
+}
+// emp1.retire(new Date());
