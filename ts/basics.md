@@ -1,5 +1,6 @@
 ## Intro
 - TS = JS with Type Checking
+- We can write JS in TS
 - Medium to Large Project: TS
 - Simple Project: JS
 
@@ -26,7 +27,7 @@ let a: number = 123_456_789;
 
 let s = "typescript";  // let s: string
 ```
-- any type
+### any type
 ```ts
 let a;  // it can be any type if we not initialize
 a = 10;
@@ -38,3 +39,15 @@ function anyArgument(doc: any) {
   //
 }
 ```
+### array declaration
+```ts
+let arr: number[];
+arr = [];
+arr[0] = 5;
+```
+
+### Tuples
+```ts
+let user: [number, string] = [1, 'app'];
+```
+Here, we can use all methods of number `user[0].`, all methods of string `user[1].`
