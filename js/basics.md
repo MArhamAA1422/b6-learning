@@ -871,6 +871,21 @@ Promise.race([p5, p6]).then(console.log); // "fast"
 
 #### Promise.all is great for parallel requests, race for timeouts, allSettled for complete info.
 
+## Async/Await
+- Async function **always returns promise**. If there is no promise auto creation (wrapping) and return promise.
+- Write `await` in front of a promise. (only inside a async function)
+```js
+async function handlePromise() {
+  const val = await p;
+  console.log("print after 'p' is resolved");  // different from normal promise
+}
+```
+
+## Notes on Promise
+- While resolving promise the resolver function will be popped from call stack, after resolved it will be pushed again.
+  - that function execution is suspended
+- Normal Promise and async promise may not provide same result in execution.
+
 ## JSON
 - `JSON.parse()` Converts a JSON string into a JavaScript object.
 - `JSON.stringify()` Converts a JavaScript object into a JSON string.

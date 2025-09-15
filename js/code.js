@@ -153,4 +153,28 @@ function argTest(a, b, c) {
 // argTest(1, 2, 3);
 
 const promise = new Promise(() => {}, () => {});
-console.log(promise);
+// console.log(promise);
+
+async function promiseExec() {
+    const p1 = new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            resolve("p1 here");
+        }, 8000);
+    });
+    const p2 = new Promise(function(resolve, reject){
+        setTimeout(function(){
+            resolve("p2 here");
+        }, 4000);
+    });
+    // p1.then(function(val) {
+    //     console.log(val);
+    // });
+    // p2.then(function(val) {
+    //     console.log(val);
+    // });
+    const val1 = await p1;
+    console.log(val1);
+    const val2 = await p2;
+    console.log(val2);
+}
+promiseExec();
