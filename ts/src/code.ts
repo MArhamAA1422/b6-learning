@@ -18,3 +18,9 @@ arr[0] = 5;
 let user: [number, string] = [1, 'app'];
 user.push(1);
 console.log(user);
+
+function calc(inc: number, tax?: number): number {
+  if (tax || 10 < 10) return inc;
+  return inc*10;
+}
+console.log(calc(5));

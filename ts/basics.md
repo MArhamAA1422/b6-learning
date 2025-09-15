@@ -1,5 +1,5 @@
 ## Intro
-- TS = JS with Type Checking
+- TS = JS with Type Checking (annotation)
 - We can write JS in TS
 - Medium to Large Project: TS
 - Simple Project: JS
@@ -27,7 +27,7 @@ let a: number = 123_456_789;
 
 let s = "typescript";  // let s: string
 ```
-### any type
+## any type
 ```ts
 let a;  // it can be any type if we not initialize
 a = 10;
@@ -39,14 +39,15 @@ function anyArgument(doc: any) {
   //
 }
 ```
-### array declaration
+
+## array declaration
 ```ts
 let arr: number[];
 arr = [];
 arr[0] = 5;
 ```
 
-### Tuples
+## Tuples
 ```ts
 let user: [number, string] = [1, 'app'];
 ```
@@ -65,3 +66,22 @@ let mySize: Size = Size.Medium;
 ```
 
 Use `const` to generate more optimized JS.
+
+## Function
+```ts
+function fn(v: number): number {
+  return 0;
+}
+```
+
+We can have `noUnusedLocals, noUnusedParameters, noImplicitReturns` in `tsconfig.json`.
+
+Strict Parameters.
+
+```js
+function calc(inc: number, tax?: number): number {  // also, tax = 10
+  if (tax || 10 < 10) return inc;
+  return inc*10;
+}
+calc(5);
+```
