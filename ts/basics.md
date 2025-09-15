@@ -16,6 +16,25 @@
   - `tsc --init` => tsconfig.json => update **target** => (CTRL + space) => To get valid options.
   - rootDir, outDir, removeComments, noEmitOnError (don't generate JS if there are errors)
 
-  ## Debugging
-  - Inside `tsconfig.json` => sourceMap
-  - Run & Debug (vs code) => launch.json => "preLaunchTask": "tsc "; => Launch Program
+## Debugging
+- Inside `tsconfig.json` => sourceMap
+- Run & Debug (vs code) => launch.json => "preLaunchTask": "tsc "; => Launch Program
+
+## Code Example
+```ts
+let a: number = 123_456_789;
+
+let s = "typescript";  // let s: string
+```
+- any type
+```ts
+let a;  // it can be any type if we not initialize
+a = 10;
+a = 'a';
+```
+```ts
+// not recommended
+function anyArgument(doc: any) {
+  //
+}
+```
