@@ -880,6 +880,12 @@ async function handlePromise() {
   console.log("print after 'p' is resolved");  // different from normal promise
 }
 ```
+- Error handling: try-catch block
+- Classic way of error handling
+```js
+// async function always returns promise, so we can write like this
+asyncFunction().catch(err => console.log(err));
+```
 
 ## Notes on Promise
 - While resolving promise the resolver function will be popped from call stack, after resolved it will be pushed again.
@@ -889,6 +895,15 @@ async function handlePromise() {
 ## JSON
 - `JSON.parse()` Converts a JSON string into a JavaScript object.
 - `JSON.stringify()` Converts a JavaScript object into a JSON string.
+
+## fetch API
+Returns a promise with **response** object. This response is a readable stream. Than, we can get the value using `Response.json()`. Again, this is a promise. Finally, we can get the result by resolving this promise.
+
+```js
+const data = await fetch(URL);
+const jsonValue = await data.json();
+console.log(jsonValue);
+```
 
 ## ES6+
 - Template Literals
