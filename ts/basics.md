@@ -150,3 +150,11 @@ let textBox: UIWidget = {
   resize: () => {}
 }
 ```
+
+## Literal Types
+Limiting the input.
+
+```js
+type Quantity = 50 | 100;  // 50 or 100, nothing else
+let quantity: Quantity = 100;
+```
