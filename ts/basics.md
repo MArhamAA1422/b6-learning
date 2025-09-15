@@ -247,3 +247,50 @@ let users: Array<User> = [
   { id: 2, name: "lab" }
 ];
 ```
+
+## Interface
+Interfaces define the **shape of an object** (what properties it should have, and their types).
+
+- Interfaces can be extended (inheritance).
+- Only used for **object shapes, classes, and contracts**.
+
+```js
+interface User {
+  id: number
+  name: string
+  isAdmin?: boolean  // optional property
+}
+
+let user: User = {
+  id: 1,
+  name: 'app'
+}
+
+console.log(user);
+```
+
+## Declaration Merging (interface)
+```js
+interface User {
+  id: number;
+}
+interface User {
+  name: string;
+}
+
+const u: User = { id: 1, name: "app" }; // both merged
+```
+
+## Type Aliases (type)
+- Type aliases let you name any type (**not just objects**).
+- They’re more flexible than interfaces.
+- Can represent unions, intersections, primitives, tuples, etc.
+- More general-purpose than interfaces.
+
+## interface vs type
+Feature	| interface	| type
+|-|-|-|
+Use case	| Object shapes, contracts	| Objects + unions + primitives, tuples
+Extending	| Can extend other interfaces	| Can use intersection (&) to combine
+Declaration merging	| Supported (you can redeclare same interface and it merges)	| Not supported
+Flexibility	| Limited to objects/classes	| Very flexible

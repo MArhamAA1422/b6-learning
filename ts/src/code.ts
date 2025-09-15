@@ -15,8 +15,8 @@ let arr: number[];
 arr = [];
 arr[0] = 5;
 
-let user: [number, string] = [1, 'app'];
-user.push(1);
+let tup: [number, string] = [1, 'app'];
+tup.push(1);
 // console.log(user);
 
 function calc(inc: number, tax?: number): number {
@@ -64,3 +64,16 @@ function kgToLbs(wg: number | string): number {
 }
 
 // console.log(kgToLbs(10), kgToLbs("10kg"));
+
+interface User {
+  id: number
+  name: string
+  isAdmin?: boolean  // optional property
+}
+
+let user: User = {
+  id: 1,
+  name: 'app'
+}
+
+// console.log(user);
