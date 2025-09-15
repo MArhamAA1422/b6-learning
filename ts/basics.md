@@ -173,3 +173,18 @@ function test(name: string | null | undefine) {
 }
 test(null);
 ```
+
+## Optional Chaining
+```js
+// optional property access operator
+customer?.data;
+```
+```js
+// optional element access operator
+arr?.[0]
+```
+```js
+// optional call (function)
+let log: any = null;l
+log?.('a');
+```
