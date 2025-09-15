@@ -4,6 +4,17 @@
 - Medium to Large Project: TS
 - Simple Project: JS
 
+## Why TS
+- **Static Typing**: You can define types for variables, function parameters, and return values.
+
+- Without TS, if you accidentally pass a number to greet("Alice"), you won’t catch it until runtime. With TS, you’ll get a compile-time error.
+
+- **Error Prevention**: Most bugs in JS happen due to unexpected types. TS helps catch them early.
+
+- **Better Tooling**: Editors like VS Code can give intelligent autocomplete, hints, and refactoring with TS.
+
+- **Scalability**: Big projects (React apps, Node.js backends) become easier to maintain when types are enforced.
+
 ## Drawbacks
 - compilation
 - discipline in coding
@@ -14,7 +25,7 @@
   - compile and this will result `code.js`
   - by default, each code in TS will convert into ES5 (JS)
 - To fix default compilation (JS) target
-  - `tsc --init` => tsconfig.json => update **target** => (CTRL + space) => To get valid options.
+  - `tsc --init` => tsconfig.json => update **target** => (CTRL + space) => To get valid ES options.
   - rootDir, outDir, removeComments, noEmitOnError (don't generate JS if there are errors)
 
 ## Debugging
@@ -187,4 +198,52 @@ arr?.[0]
 // optional call (function)
 let log: any = null;l
 log?.('a');
+```
+
+## Symbol
+```js
+let sym1: symbol = Symbol("id");
+let sym2: symbol = Symbol("id");
+
+console.log(sym1 === sym2); // false (always unique)
+
+let obj = {
+  [sym1]: "secret"
+};
+
+console.log(obj[sym1]); // "secret"
+```
+
+## BigInt
+```js
+let big1: bigint = 9007199254740991n;  // valid
+let big2: bigint = BigInt("900719925474099145678");
+
+console.log(big1 + 10n);  // 9007199254741001n
+
+let x: number = 10;
+let y: bigint = 20n;
+
+// console.log(x + y); Error in TS
+```
+
+## Array<T>
+Array<T> is the generic type notation for arrays.
+- `string[] = Array<string>`
+
+```js
+let nums: Array<number> = [1, 2, 3];
+let names: string[] = ["Alice", "Bob", "Charlie"];
+```
+
+```js
+type User = {
+  id: number;
+  name: string;
+};
+
+let users: Array<User> = [
+  { id: 1, name: "app" },
+  { id: 2, name: "lab" }
+];
 ```
