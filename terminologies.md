@@ -12,9 +12,12 @@
 - BOM
 - Promise APIs
 - Optional Chaining & Nullish Coalescing
+- Mutation Observer
 
 ## TS
 - Transpilation
+- Type aliasing
+- interface
 
 ## CSS
 - Query

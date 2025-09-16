@@ -9,7 +9,7 @@ But engines don’t inline blindly:
 - Functions that change shape (polymorphic) may not be inlined.
 
 ## Copy Elision (a.k.a Return Value Optimization)
-Avoiding unnecessary copies of objects.
+Avoid unnecessary copies of objects.
 
 ## Inline Caching (IC)
 Huge optimization in dynamic languages like JS.

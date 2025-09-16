@@ -90,5 +90,5 @@ JS Engine, API (connecting outside world), Event Loop, Callback Q, MicroTask Q
 
 ## V8 Engine
 - JS source code > parser > AST > Ignition (interpreter) > Bytecode
-Ignition > Turbofan (compiler) > Optimized MC > Bytecode
+- Ignition > Turbofan (compiler) > Optimized MC > Bytecode
 - GC: Orinoco, Oilpan
