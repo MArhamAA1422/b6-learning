@@ -72,6 +72,30 @@ Use cases:
   - যখন আমরা কোন রেফারেন্স ডাটাকে অন্য কোন ভেরিয়েবলে অ্যাসাইন করি, তখন তার **রেফারেন্স কপি** হয়। Changing one will change others.
   - নন-প্রিমিটিভ ডাটা তাদের রেফারেন্স দ্বারা তুলনা করে।
 
+## User Input
+### In Browser (frontend)
+```js
+let name = prompt("Enter: ");
+console.log("Hello, " + name);
+```
+
+### In NodeJS (cmd)
+```js
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question("Enter your name: ", function(name) {
+  console.log("Hello, " + name);
+  rl.close();
+});
+```
+
+Also, `async/await` (cleaner way in Node.js).
+
 ## Hoisting
 - JavaScript needs to know all variable names in advance to manage scope.
 
