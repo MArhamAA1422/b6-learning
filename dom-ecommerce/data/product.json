@@ -1,0 +1,39 @@
+{
+   "products" : [ {
+      "id": "pid-1",
+      "image": "images/athletic-cotton-socks-6-pairs.jpg",
+      "name": "Black Cotton Socks - 6 Pairs",
+      "priceCents": 1090
+    },
+    {
+      "id": "pid-2",
+      "image": "images/intermediate-composite-basketball.jpg",
+      "name": "Intermediate Size Basketball",
+      "priceCents": 2095
+    },
+    {
+      "id": "pid-3",
+      "image": "images/adults-plain-cotton-tshirt-2-pack-teal.jpg",
+      "name": "Adults Cotton T-Shirt - 2 Pack",
+      "priceCents": 799
+    },
+    {
+      "id": "pid-4",
+      "image": "images/black-2-slot-toaster.jpg",
+      "name": "2 Slot Toaster - Black",
+      "priceCents": 1899
+    },
+    {
+      "id": "pid-5",
+      "image": "images/round-sunglasses-black.jpg",
+      "name": "Round Sunglasses",
+      "priceCents": 1560
+    },
+    {
+      "id": "pid-6",
+      "image": "images/electric-glass-and-steel-hot-water-kettle.webp",
+      "name": "Electric Glass and Steel Hot Tea Water Kettle - 1.7-Liter",
+      "priceCents": 3074
+    }
+  ]
+}

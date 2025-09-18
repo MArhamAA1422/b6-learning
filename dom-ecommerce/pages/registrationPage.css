@@ -1,0 +1,62 @@
+.main {
+   height: 500px;
+   width: 500px;
+   background-color: white;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+   margin-top: 100px;
+   margin-left: 200px;
+   border: none;
+   border-radius: 60px;
+   box-shadow: 2px 3px 8px rgba(0,0,0,0.3);
+}
+
+.title {
+   font-size: 50px;
+   margin-bottom: 30px;
+}
+
+.input {
+   margin-bottom: 10px;
+}
+
+.text {
+   font-size: 20px;
+}
+
+.input-box {
+   font-size: 16px;
+   padding: 8px;
+   width: 300px
+}
+
+.create-button {
+   margin-top: 5px;
+   margin-bottom: 5px;
+   font-size: 20px;
+   padding: 10px 50px;
+   border: none;
+   color: white;
+   background-color: green;
+   cursor: pointer;
+}
+
+.login {
+   display: flex;
+}
+
+.ask {
+   margin-right: 5px;
+}
+
+.login-link {
+   text-decoration: underline;
+   color: green;
+   cursor: pointer;
+}
+
+.hidden {
+   display: none;
+}
