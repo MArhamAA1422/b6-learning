@@ -344,3 +344,27 @@ let user = JSON.parse(json) as { id : number; number: string };
 - It doesn’t actually convert the type at runtime. It only **changes how TS checks** your code.
 - If your assertion is wrong, it may cause runtime errors even if TS compiles fine.
 
+## Type Inference in TypeScript
+TypeScript has a powerful type inference system. This means you don’t always need to explicitly declare the type of a variable, parameter, or return value — TypeScript will figure it out automatically based on how the code is written. Once inferred, you can’t assign a different type.
+
+```js
+let mixed = [1, "hello", true]; 
+// inferred as (string | number | boolean)[]
+```
+
+## When to Use Explicit Typing?
+
+- When the type is not obvious
+
+- When you want to improve readability
+
+- For **function parameters** (always good practice)
+
+- When working with APIs / complex objects
+
+#### Implicit typing: TypeScript infers types automatically.
+
+#### Explicit typing: You manually set the type.
+
+Inference happens from **variable initialization, function return values, array elements, and context**.
+
