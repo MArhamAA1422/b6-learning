@@ -393,11 +393,64 @@ function format(input: string | number): string {
   }
 }
 
-console.log(format("arham")); // "ARHAM"
+console.log(format("app")); // "app"
 console.log(format(3.14159)); // "3.14"
 ```
 
 Rules:
 - You define multiple signatures (only declarations, no body).
 - Then a **single implementation** handles all cases with union types.
+
+## OOP
+
+### Access Modifiers
+- Public (default): Accessible anywhere.
+- Private: Accessible only inside the class. Not accessible outside or in subclasses.
+```js
+class BankAccount {
+  private balance: number;
+
+  constructor(balance: number) {
+    this.balance = balance;
+  }
+}
+```
+- Protected: Like private, but accessible inside subclasses too.
+
+### Readonly Properties
+- Can only be assigned once (at declaration or **in constructor**).
+- Prevents accidental modification.
+
+```js
+readonly a: number = 10;
+```
+
+### Static Properties
+- Belongs to the class itself, not instances.
+- Useful for **constants, counters, utility methods**.
+
+### Implementing Interfaces in Classes
+- Interfaces define a **contract**. A class must implement all members.
+- In class it enforces contract & structure
+
+```js
+interface Shape {
+  area(): number;
+}
+
+class Circle implements Shape {
+  radius: number;
+
+  constructor(radius: number) {
+    this.radius = radius;
+  }
+
+  area(): number {
+    return Math.PI * this.radius * this.radius;
+  }
+}
+
+let circle = new Circle(5);
+console.log(circle.area()); // 78.54
+```
 

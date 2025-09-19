@@ -77,3 +77,6 @@ let user: User = {
 }
 
 // console.log(user);
+let a: number = 5;
+let b: string = "a";
+console.log(a+b);
