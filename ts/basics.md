@@ -368,3 +368,36 @@ let mixed = [1, "hello", true];
 
 Inference happens from **variable initialization, function return values, array elements, and context**.
 
+## Functions
+### Optional parameters
+- Optional parameters must come after required parameters.
+```js
+function fn(a: number, b?: string): number {}  // b is optional here
+```
+
+### Function Overloading
+- Sometimes, a function can behave differently depending on argument types.
+- TypeScript supports function overloading with multiple signatures.
+
+```js
+// Overload signatures
+function format(input: string): string;
+function format(input: number): string;
+
+// Implementation
+function format(input: string | number): string {
+  if (typeof input === "string") {
+    return input.toUpperCase();
+  } else {
+    return input.toFixed(2);
+  }
+}
+
+console.log(format("arham")); // "ARHAM"
+console.log(format(3.14159)); // "3.14"
+```
+
+Rules:
+- You define multiple signatures (only declarations, no body).
+- Then a **single implementation** handles all cases with union types.
+
