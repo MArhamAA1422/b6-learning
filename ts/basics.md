@@ -532,3 +532,51 @@ function greet<T extends Person>(person: T): void {
 greet({ name: "app", age: 25 }); // ✅ works
 // greet({ age: 25 }); Error: must have `name`
 ```
+
+## Type manipulation: Mapped Types
+Mapped types let you transform existing types into new variations.
+(TypeScript gives us built-in helpers like `Partial, Required, Readonly`.)
+
+### Partial<T>
+**Makes all properties optional**.
+
+```js
+interface User {
+  id: number;
+  name: string;
+}
+
+type PartialUser = Partial<User>;
+
+let user1: PartialUser = { name: "app" }; // id is optional now
+```
+
+
+
+### Required<T>
+Makes all properties required.
+```js
+interface User {
+  id?: number;
+  name?: string;
+}
+
+type FullUser = Required<User>;
+
+let user2: FullUser = { id: 1, name: "app" }; // both required
+```
+
+### Readonly<T>
+Prevents properties from being changed.
+
+```js
+interface User {
+  id: number;
+  name: string;
+}
+
+type ReadonlyUser = Readonly<User>;
+
+let user3: ReadonlyUser = { id: 1, name: "app" };
+// user3.id = 2; ❌ Error: cannot assign to readonly property
+```

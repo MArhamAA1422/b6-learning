@@ -82,4 +82,4 @@ function gen<T>(ar: T): T {
   return ar;
 }
 
-console.log(gen('a'), gen(5), gen({a:"num"}));
+// console.log(gen('a'), gen(5), gen({a:"num"}));
