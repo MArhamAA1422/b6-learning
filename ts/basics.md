@@ -551,7 +551,42 @@ type PartialUser = Partial<User>;
 let user1: PartialUser = { name: "app" }; // id is optional now
 ```
 
+#### Use cases
 
+- Updating Objects (very common use case)
+  - updates may contain only some fields
+- Building objects step by step
+```js
+interface Todo {
+  title: string;
+  description: string;
+  completed: boolean;
+}
+
+let draft: Partial<Todo> = {};  // start empty
+draft.title = "Learn TypeScript";
+```
+- Optional configuration objects
+- Combining `Partial` with other utilities
+  - You can even create deep partials (all nested objects optional)
+  ```js
+  type DeepPartial<T> = {
+    [P in keyof T]?: DeepPartial<T[P]>;
+  };
+
+  interface Profile {
+    id: number;
+    info: {
+      name: string;
+      age: number;
+    };
+  }
+
+  let partialProfile: DeepPartial<Profile> = {
+    info: { name: "app" } // age optional now
+  };
+  ```
+- Partial<T> is great for update functions, config objects, and drafts. It saves you from writing separate optional interfaces.
 
 ### Required<T>
 Makes all properties required.
