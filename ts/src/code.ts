@@ -77,6 +77,9 @@ let user: User = {
 }
 
 // console.log(user);
-let a: number = 5;
-let b: string = "a";
-console.log(a+b);
+
+function gen<T>(ar: T): T {
+  return ar;
+}
+
+console.log(gen('a'), gen(5), gen({a:"num"}));

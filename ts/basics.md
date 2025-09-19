@@ -454,3 +454,81 @@ let circle = new Circle(5);
 console.log(circle.area()); // 78.54
 ```
 
+## Generics
+One of the most powerful features for making **reusable and type-safe code**.
+
+### What are Generics?
+Generics allow you to create components (functions, classes, etc.) that work with **any type**, while still enforcing **type safety**.
+Think of them as placeholders (<T>) for types.
+
+- Without generics:
+```js
+function identity(arg: any): any {
+  return arg;
+}
+```
+  - Problem: Using any loses type information.
+
+- With generics:
+```js
+function identity<T>(arg: T): T {
+  return arg;
+}
+
+let num = identity<number>(42);   // T = number
+let str = identity("Hello");      // T = string (inferred)
+```
+  - Now the function is type-safe and reusable.
+
+### Generic Functions
+
+Example: Reusable swap function
+```js
+function swap<T, U>(a: T, b: U): [U, T] {
+  return [b, a];
+}
+
+let result = swap("apple", 10);
+console.log(result); // [10, "apple"]
+```
+
+Example: Generic array function
+```js
+function getFirst<T>(arr: T[]): T {
+  return arr[0];
+}
+
+console.log(getFirst([1, 2, 3]));      // number
+console.log(getFirst(["a", "b", "c"])); // string
+```
+
+### Generic Constraints
+Sometimes you need to restrict what type can be used. Using `extends`.
+
+Example: Ensure type has a .length property
+```js
+function logLength<T extends { length: number }>(arg: T): number {
+  console.log(arg.length);
+  return arg.length;
+}
+
+logLength("Hello");     // works (string has length)
+logLength([1, 2, 3]);   // works (array has length)
+// logLength(42); Error: number has no length
+```
+
+### Extending Types
+Generics can extend interfaces or other types.
+
+```js
+interface Person {
+  name: string;
+}
+
+function greet<T extends Person>(person: T): void {
+  console.log("Hello, " + person.name);
+}
+
+greet({ name: "app", age: 25 }); // ✅ works
+// greet({ age: 25 }); Error: must have `name`
+```
