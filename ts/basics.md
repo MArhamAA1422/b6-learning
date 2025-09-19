@@ -196,7 +196,7 @@ arr?.[0]
 ```
 ```js
 // optional call (function)
-let log: any = null;l
+let log: any = null;
 log?.('a');
 ```
 
@@ -246,6 +246,8 @@ let users: Array<User> = [
   { id: 1, name: "app" },
   { id: 2, name: "lab" }
 ];
+
+console.log(users[0]?.name);  // object could be undefined
 ```
 
 ## Interface
@@ -294,3 +296,51 @@ Use case	| Object shapes, contracts	| Objects + unions + primitives, tuples
 Extending	| Can extend other interfaces	| Can use intersection (&) to combine
 Declaration merging	| Supported (you can redeclare same interface and it merges)	| Not supported
 Flexibility	| Limited to objects/classes	| Very flexible
+
+## Type Assertion
+- Type Assertion tells TypeScript: “Trust me, I know the type better than you.”
+
+- It does not change the runtime value, only how TypeScript treats it at compile time.
+
+```js
+let someValue: unknown = "Hello, TS";
+let strLength: number = (someValue as string).length;
+```
+
+Another way: using `<>`
+
+```js
+let value: unknown = "JS TS";
+let strLen = (<string>value).length;
+```
+
+Note: The <> syntax does not work in .tsx (React/JSX) files, because it conflicts with JSX tags. That’s why as is safer.
+
+### When to use?
+- When TS can’t infer type but you’re sure
+```js
+const canvas = document.getElementById("myCanvas") as HTMLCanvasElement;
+const ctx = canvas.getContext("2d");
+```
+Without assertion, getElementById returns `HTMLElement | null`.
+But you know it’s a <canvas>, so you assert it.
+
+- When narrowing from a broader type
+```js
+type Bird = { fly: () => void };
+type Fish = { swim: () => void };
+
+let pet: Bird | Fish = { swim: () => console.log("swim") };
+(pet as Fish).swim();
+```
+
+- For DOM work, JSON parsing, third-party libraries
+```js
+let json = '{"id": 1, "name": "app"}';
+let user = JSON.parse(json) as { id : number; number: string };
+```
+
+### Type Assertion ≠ Type Casting
+- It doesn’t actually convert the type at runtime. It only **changes how TS checks** your code.
+- If your assertion is wrong, it may cause runtime errors even if TS compiles fine.
+
