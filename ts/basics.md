@@ -613,5 +613,57 @@ interface User {
 type ReadonlyUser = Readonly<User>;
 
 let user3: ReadonlyUser = { id: 1, name: "app" };
-// user3.id = 2; ❌ Error: cannot assign to readonly property
+// user3.id = 2; Error: cannot assign to readonly property
 ```
+
+## Error Handling
+In TS, error has type `unknown` (for safety).
+```js
+if (err instanceof Error) {
+  console.error("Caught error:", err.message);
+} else {
+  console.error("Unknown error", err);
+}
+```
+#### Why unknown and not any?
+Because TypeScript forces you to safely check what the error is before using it — this prevents runtime crashes.
+
+### Custom Error Classes
+You can define your own error types (very useful for domain-specific logic).
+```js
+class ValidationError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "ValidationError";
+  }
+}
+
+function validateUsername(username: string) {
+  if (username.length < 3) {
+    throw new ValidationError("Username must be at least 3 characters long");
+  }
+  return true;
+}
+
+try {
+  validateUsername("ab");
+} catch (err) {
+  if (err instanceof ValidationError) {
+    console.error("Validation failed:", err.message);
+  } else {
+    console.error("Unexpected error:", err);
+  }
+}
+```
+
+### Handling Errors with Type Guards
+- `instanceof`, Check if error is an instance of a custom class
+- `typeof`, Useful for checking primitive types in error values
+```js
+if (typeof err === 'string') {}
+```
+
+#### Summary
+- `try...catch` works the same as JS, but TS treats errors as unknown for safety.
+- Custom error classes help structure error handling (e.g., ValidationError, NetworkError).
+- Use type guards (instanceof, typeof) to safely narrow down error types.
