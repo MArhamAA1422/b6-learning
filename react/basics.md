@@ -44,3 +44,47 @@ function App() {
 - Vue.js → Similar to React, simpler syntax, smaller ecosystem than React.
 
 - Svelte → Compiles at build time (no virtual DOM), very fast but newer ecosystem.
+
+## JSX
+JSX is a syntax extension for JavaScript that looks like HTML but actually compiles to **React function calls**.
+
+Under the hood, this:
+```jsx
+const element = <h1>Hello</h1>;
+```
+
+is compiled to:
+```js
+const element = React.createElement("h1", null, "Hello");
+```
+
+So, JSX just makes writing UI easier and more readable.
+
+### Embedding Expressions in JSX
+You can embed JavaScript expressions inside { }.
+
+```jsx
+const name = "app";
+const element = <h1>Hello, {name.toUpperCase()}!</h1>;
+```
+
+You can use any expression (variables, functions, calculations).
+You cannot put statements (like `if, for`) directly — use them outside JSX.
+
+## JSX Rules & Differences from HTML
+- One Parent Element: Components must return a single root element.
+- Use `className` instead of `class`
+- Self-closing tags
+- Attributes in camelCase: `onclick → onClick`, `tabindex → tabIndex`
+
+### JSX with JS function
+You can use inline functions:
+```jsx
+function App() {
+   return (
+      <h1>
+         Hello, {(() => "app")()}
+      </h1>
+   );
+}
+```
