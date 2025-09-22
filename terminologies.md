@@ -4,7 +4,7 @@
 - Closure
 - Hoisting
 - Lexical Scope
-- JIT
+- JIT: V8, Turbofan, Ignition
 - Constructor Function
 - this
 - Type Coercion
@@ -13,16 +13,24 @@
 - Promise APIs
 - Optional Chaining & Nullish Coalescing
 - Mutation Observer
+- AggregateError
+- Event loop, callback queue, microTask queue, GEC, call stack, WEB API, Libuv
 
 ## TS
 - Transpilation
 - Type aliasing
 - interface
 
+## React
+- Rendering
+- Components
+- State, Props
+- Hooks
+
 ## CSS
 - Query
-    - media
-    - container
+   - media
+   - container
 - CSSOM
 - !important
 
