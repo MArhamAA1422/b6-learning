@@ -118,3 +118,114 @@ root.render(element);
 - ReactDOM.render() → old, synchronous, React ≤17.
 - ReactDOM.createRoot() → new, concurrent, React 18+.
 
+## Components in React
+Think of components as reusable pieces of UI (like Lego blocks).
+
+Each component can be:
+- Functional (modern, preferred)
+- Class-based (legacy, still important to understand)
+
+### Functional Components (Modern Approach)
+
+- Just a JavaScript function that returns JSX.
+- Can use hooks (useState, useEffect, etc.) for state & lifecycle.
+- Simple, clean, and preferred in modern React.
+
+Characteristics:
+- Lightweight
+- Hook support
+- Easy to test & read
+
+### Class Components (Legacy, but Important)
+
+- Introduced earlier in React’s history.
+- Used `this.state` for state & `this.setState()` to update.
+- Had lifecycle methods like componentDidMount(), componentDidUpdate(), componentWillUnmount().
+
+```jsx
+import React, { Component } from "react";
+
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 }; // state inside constructor
+  }
+
+  increase = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button onClick={this.increase}>Increase</button>
+      </div>
+    );
+  }
+}
+
+export default Counter;
+```
+
+## Props (Properties) in React
+Props = Inputs to a component (like function parameters).
+- They are read-only (immutable).
+- Used to pass data from parent → child components.
+- You pass it like an HTML attribute.
+
+```jsx
+function User({ username }) {
+  return <p>User: {username}</p>;
+}
+```
+
+```jsx
+class User extends React.Component {
+  render() {
+    return <p>User: {this.props.username}</p>;
+  }
+}
+```
+
+## Default Props
+```jsx
+function Button({ text }) {
+  return <button>{text}</button>;
+}
+
+Button.defaultProps = {
+  text: "Click Me",
+};
+
+<Button />  // Renders: "Click Me"
+```
+
+## PropTypes (Type Checking)
+React doesn’t enforce types, but **prop-types** package helps. Runtime type checking.
+
+
+```jsx
+import PropTypes from "prop-types";
+
+function Profile({ name, age }) {
+  return (
+    <p>
+      {name} is {age} years old.
+    </p>
+  );
+}
+
+Profile.propTypes = {
+  name: PropTypes.string.isRequired,
+  age: PropTypes.number,
+};
+
+Profile.defaultProps = {
+  age: 18,
+};
+```
+
+If you pass wrong type → React gives a **warning in console**, not an error.
+
+#### props = external data, state = internal data
