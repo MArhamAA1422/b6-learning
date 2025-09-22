@@ -16,4 +16,31 @@ Core ideas:
 - Fast UI updates → Thanks to the Virtual DOM.
 - Huge ecosystem, Cross-platform, Backed by Meta.
 
+## React vs. Vanilla JS
+In Vanilla JS, you directly manipulate the DOM:
+```js
+const element = document.createElement("h1");
+element.innerText = "Hello, World!";
+document.body.appendChild(element);
+```
+- Hard to maintain for large apps (lots of DOM updates).
+- State management (tracking UI changes) is manual and error-prone.
 
+In React, you just describe UI in components:
+```js
+function App() {
+  return <h1>Hello, World!</h1>;
+}
+```
+- React handles DOM updates automatically.
+- State & props make handling changes easy.
+
+## React vs. Other Frameworks
+
+- React → Just the “V” (View) in MVC. You choose extra libraries (e.g., Redux for state, React Router for navigation).
+
+- Angular → Full-fledged framework (routing, HTTP, state, everything included). Steeper learning curve.
+
+- Vue.js → Similar to React, simpler syntax, smaller ecosystem than React.
+
+- Svelte → Compiles at build time (no virtual DOM), very fast but newer ecosystem.
