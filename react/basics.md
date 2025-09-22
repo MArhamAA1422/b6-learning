@@ -88,3 +88,33 @@ function App() {
    );
 }
 ```
+
+## Rendering Elements
+In React, “rendering” means taking your JSX and putting it into the DOM so users can see it.
+
+In React 17 and below:
+```jsx
+const element = <h1>Hello, World!</h1>;
+ReactDOM.render(element, document.getElementById("root"));
+```
+
+In React 18, the new API is:
+```jsx
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(element);
+```
+
+### Issues with ReactDOM.render()
+- It replaces the content of the root element.
+- It does not support React 18’s concurrent features (like automatic batching, useTransition, Suspense improvements).
+- Deprecated in React 18.
+
+### Advantages of createRoot()
+- Enables Concurrent Rendering (React can interrupt rendering for better responsiveness).
+- Supports automatic batching → multiple state updates in one go.
+- Future-proof (all new features rely on it).
+
+#### In Short
+- ReactDOM.render() → old, synchronous, React ≤17.
+- ReactDOM.createRoot() → new, concurrent, React 18+.
+
