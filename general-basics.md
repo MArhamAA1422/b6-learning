@@ -22,6 +22,44 @@ ES6 হল ECMA Script 6 এর ছোট ফর্ম। আর ECMA Script এ
 
 - Debuggers: Chrome Dev Tools, Code Editors like VS Code, Jetbrains WebStorm, etc.
 
+## Why JavaScript is Single-Threaded
+
+- JavaScript was designed in 1995 to make web pages interactive.
+
+- Browsers needed a scripting language that:
+
+    - Was simple.
+
+    - Didn’t break the page by running too many things at once.
+
+    - Could safely manipulate the DOM.
+
+The DOM (Document Object Model) is not thread-safe. If multiple threads updated the DOM at the same time → inconsistent UI, race conditions, crashes.
+
+Instead of true multi-threading, JavaScript uses:
+
+- Event Loop + Callback Queue → handles async tasks without blocking.
+
+- Web APIs (like setTimeout, fetch) → push async work outside JS thread.
+
+- Web Workers → background threads that run JS but cannot directly touch DOM.
+
+## Summary
+
+- JS is single-threaded by design → to keep DOM manipulation safe and predictable.
+
+- Multi-threading would cause race conditions and complexity.
+
+- Instead, JS achieves concurrency via:
+
+    - Event Loop (async tasks)
+
+    - Web Workers (background threads without DOM access)
+
+    - Async I/O (Node.js with libuv)
+
+So yes, multi-threading can make things faster, but safety and simplicity were prioritized in JS.
+
 ## open a webpage (under the hood)
 - html parsing: DOM Tree
     - Browser reads HTML line by line.

@@ -229,3 +229,22 @@ Profile.defaultProps = {
 If you pass wrong type → React gives a **warning in console**, not an error.
 
 #### props = external data, state = internal data
+
+## React Fragments
+A Fragment lets you group multiple elements without adding an extra DOM node (like a `<div>`).
+
+Use Fragments for cleaner, semantic, and optimized DOM.
+
+## Synthetic Events in React
+
+In React, events (like onClick, onChange, onSubmit) are wrapped inside a `SyntheticEvent object`.
+
+- It’s a cross-browser wrapper around native DOM events.
+
+- Provides the same interface as native events (event.target, event.preventDefault(), etc.).
+
+- React does this to:
+
+   - Ensure consistent behavior across browsers.
+
+   - Improve performance (by reusing event objects with pooling).
