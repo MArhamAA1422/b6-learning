@@ -1382,3 +1382,34 @@ const duck = new Animal();
 duck.fly();  // Flying
 duck.swim(); // Swimming
 ```
+
+## Method Overriding, Overloading
+JS supports overrding but not overloading directly.
+
+```js
+class Dog {
+  constructor(name, age){
+    this.name = name;
+    this.age = age;
+  }
+  bark (){
+    console.log(“Dog barking”);
+  }
+  play(){
+    console.log(this.name+” is playing”)
+  }
+  play(partner){
+    console.log(this.name+” is playing with “+ partner)
+  }
+  play(partner1, partner2){
+    console.log(this.name+” is playing with “+ partner1+ ” and “+partner2)
+  }
+}
+ 
+const hachi = new Dog(“Hachi”, 2);
+hachi.play(); // Output: Hachi is playing with undefined and undefined
+hachi.play(“Broley”); // Output: Hachi is playing with Broley and undefined
+hachi.play(“Broley”, “Bravo”); // Output: Hachi is playing with Broley and Bravo
+```
+
+এখানে আমরা একই নামের মেথড play কে দিয়ে ভিন্ন রকমের কাজ করিয়েছি। কিন্তু আউটপুটে undefined হওয়ার কারণ হল, অন্যান্য ল্যাংগুয়েজের মতো জাভাস্ক্রিপ্ট মেথড ওভারলোডিং সাপোর্ট করে না। এইটা কি কারণে হয় বলেন দেখি! এইটা হয় hoisting এর জন্য। কারণ জাভাস্ক্রিপ্টে ফাংশন ডিক্ল্যারেশন hoisted হয়। আমরা চাইলে আমাদের মত করে মেথড ওভারলোডিং ইমপ্লিমেন্ট করতে পারি। কিন্তু তা তুলনামূলক জটিল।
