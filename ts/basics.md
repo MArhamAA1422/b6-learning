@@ -131,6 +131,18 @@ let emp: Emp = {
 }
 ```
 
+Using intersection we can combine multiple type.
+
+```js
+type A = {
+  //
+};
+
+type B = A & {
+  //
+};
+```
+
 ## Union types
 ```js
 function kgToLbs(wg: number | string): number {
@@ -308,6 +320,8 @@ Use case	| Object shapes, contracts	| Objects + unions + primitives, tuples
 Extending	| Can extend other interfaces	| Can use intersection (&) to combine
 Declaration merging	| Supported (you can redeclare same interface and it merges)	| Not supported
 Flexibility	| Limited to objects/classes	| Very flexible
+
+`type` is better than `interface`, no declaration merging, 99.9% => `type`
 
 ## Type Assertion
 - Type Assertion tells TypeScript: “Trust me, I know the type better than you.”
