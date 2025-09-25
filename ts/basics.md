@@ -69,7 +69,9 @@ Issue
   - it shouldn't be happened, but compiler won't mind for now.
 
 ## Enum
-PascalCase is preferred.
+- PascalCase is preferred.
+- we can use `union`, enum is not recommended
+- enum adds extra codes after compilation, that could be buggy
 
 ```ts
 const enum Size { Small = 1, Medium, Large };
