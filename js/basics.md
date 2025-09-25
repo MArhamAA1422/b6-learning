@@ -538,7 +538,7 @@ console.log(makeUser("app", 22));
 ```
 
 ## IIFE
-- IIFE জাভাস্ক্রিপ্টের অন্যতম জনপ্রিয় একটি ডিজাইন প্যাটার্ন। এটি **ইফি** বলেই উচ্চারণ করে।
+- IIFE জাভাস্ক্রিপ্টের অন্যতম জনপ্রিয় একটি **ডিজাইন প্যাটার্ন**। এটি **ইফি** বলেই উচ্চারণ করে।
 - Before import/export, IIFEs were a way to create private modules.
 - For setting up configurations, event listeners, etc.
 - `(function(){})();`
@@ -1241,8 +1241,8 @@ function iterate(obj) {
 iterate(person);
 ```
 
-### OOP
-- Object Literal
+## OOP
+### Object Literal
 ```js
 const user = {
   name: "app",
@@ -1252,10 +1252,11 @@ const user = {
 };
 user.greet();
 ```
-- Encapsulation
+### Encapsulation
 ```js
 class BankAccount {
-  #balance = 0; // private field
+  #balance = 0;  // private field
+  _acountCount = 0;  // protected field
 
   deposit(amount) {
     this.#balance += amount;
@@ -1270,9 +1271,10 @@ const acc = new BankAccount();
 acc.deposit(100);
 console.log(acc.getBalance()); // 100
 // console.log(acc.#balance); ❌ Error (private)
+acc.accountCount = -1;  // no effect
 ```
 
-- Abstraction
+### Abstraction
 ```js
 class Car {
   startEngine() {
@@ -1289,7 +1291,7 @@ const c = new Car();
 c.drive(); // Car is moving (doesn't need to know engine details)
 ```
 
-- Inheritance
+### Inheritance
 ```js
 class Animal {
   speak() {
@@ -1307,7 +1309,7 @@ const d = new Dog();
 d.speak(); // Woof!
 ```
 
-- Polymorphism
+### Polymorphism
 ```js
 const animals = [new Dog(), new Animal()];
 animals.forEach(a => a.speak());
@@ -1327,10 +1329,10 @@ animals.forEach(a => a.speak());
     console.log(MathUtils.add(2, 3));  // 5
     ```
 
-- getters & setters
-    - get, set with same func name
-    - Because dot access is dumb — it directly gets/sets values without any extra rules.
-      - With getters/setters, you can add logic, validation, transformation, computed results — all while keeping a clean obj.prop syntax.
+### getters & setters
+- get, set with same func name
+- Because dot access is dumb — it directly gets/sets values without any extra rules.
+  - With getters/setters, you can add logic, validation, transformation, computed results — all while keeping a clean obj.prop syntax.
 ```js
 class User {
   constructor(name) {
@@ -1352,9 +1354,9 @@ u.name = "lab";
 console.log(u.name); // lab
 ```
 
-- Object Prototypes
-    - Every object has a hidden `[[Prototype]]`.
-    - Classes & inheritance rely on this chain.
+### Object Prototypes
+- Every object has a hidden `[[Prototype]]`.
+- Classes & inheritance rely on this chain.
     ```js
     function Person(name) {
         this.name = name;
@@ -1368,7 +1370,7 @@ console.log(u.name); // lab
     console.log(p.__proto__ === Person.prototype); // true
     ```
 - Mixins (JS-specific)
-    - Since JS supports single inheritance, you can mix in extra functionality.
+  - Since JS supports single inheritance, you can mix in extra functionality.
 ```js
 const canFly = { fly() { console.log("Flying"); } };
 const canSwim = { swim() { console.log("Swimming"); } };
