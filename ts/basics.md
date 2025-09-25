@@ -384,6 +384,11 @@ function fn(a: number, b?: string): number {}  // b is optional here
 - implicit return
 - code used by me
 
+### Arrow function
+```js
+(a: number, b: boolean) => string
+```
+
 ### Function Overloading
 - Sometimes, a function can behave differently depending on argument types.
 - TypeScript supports function overloading with multiple signatures.
