@@ -170,6 +170,18 @@ type Quantity = 50 | 100;  // 50 or 100, nothing else
 let quantity: Quantity = 100;
 ```
 
+```js
+function move(dir: "west") {
+  //
+}
+```
+
+## Template Literal Type
+```js
+type Class = "a" | "b";
+type Hero = `group ${Class}`;  // 'group a' | 'group b'
+```
+
 ## Nullable Types
 - TS is very strict with `null` and `undefined`
 - `strictNullChecks` in tsconfig.json
