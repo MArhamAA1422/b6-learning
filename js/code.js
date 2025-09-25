@@ -177,4 +177,28 @@ async function promiseExec() {
     const val2 = await p2;
     console.log(val2);
 }
-promiseExec();
+// promiseExec();
+
+function classPropTest() {
+    class Sample {
+        _name = 'app';
+        set name(nam) {
+            this._name = nam;
+        }
+    }
+
+    const sample = new Sample();
+    console.log(sample.name);
+    console.log(sample._name);
+
+    sample._name = 'lab';
+    console.log(sample.name, sample._name);
+
+    sample.name = 'lab2';
+    // sample.name('lab2');
+    console.log(sample.name, sample._name);
+
+    sample.name = 'lab3';
+    console.log(sample.name, sample._name);
+}
+// classPropTest();

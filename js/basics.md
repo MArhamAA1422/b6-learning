@@ -1413,3 +1413,37 @@ hachi.play(“Broley”, “Bravo”); // Output: Hachi is playing with Broley a
 ```
 
 এখানে আমরা একই নামের মেথড play কে দিয়ে ভিন্ন রকমের কাজ করিয়েছি। কিন্তু আউটপুটে undefined হওয়ার কারণ হল, অন্যান্য ল্যাংগুয়েজের মতো জাভাস্ক্রিপ্ট মেথড ওভারলোডিং সাপোর্ট করে না। এইটা কি কারণে হয় বলেন দেখি! এইটা হয় hoisting এর জন্য। কারণ জাভাস্ক্রিপ্টে ফাংশন ডিক্ল্যারেশন hoisted হয়। আমরা চাইলে আমাদের মত করে মেথড ওভারলোডিং ইমপ্লিমেন্ট করতে পারি। কিন্তু তা তুলনামূলক জটিল।
+
+## Getter এবং Setter
+
+আমরা অবজেক্ট সম্পর্কে জানি। অবজেক্টের মধ্যে **দুই ধরণের properties** থাকে। প্রথমটা হল data properties, যার সাথে আমরা পরিচিত। আমরা এতক্ষণ পর্যন্ত যেই প্রপার্টিগুলা ইউজ করে আসছি সেগুলো সবই ডাটা প্রোপার্টি। 
+
+দ্বিতীয়টি হল accessor properties, যা অবজেক্টে ফাংশন আকারে থাকে এবং ভ্যালু get আর set করতে ব্যবহৃত হয়। আমরা সাধারণত এই দুইটি keyword ব্যবহার করে থাকি accessor properties ডিফাইন করতে।
+
+## জাভাস্ক্রিপ্ট Object.defineProperty()
+
+আমরা চাইলে Object.defineProperty() ইউজ করে getter এবং setter মেথড ব্যবহার করতে পারি।
+
+```js
+const person = {
+  name: ‘Mehedi’
+}
+ 
+// getting property
+Object.defineProperty(person, “getName”, {
+  get : function () {
+    return this.name;
+  }
+});
+ 
+// setting property
+Object.defineProperty(person, “setName”, {
+  set : function (value) {
+    this.name = value;
+  }
+});
+ 
+console.log(person.name); // Output: Mehedi
+person.setName = “Azad”
+console.log(person.name); // Output: Azad
+```js
