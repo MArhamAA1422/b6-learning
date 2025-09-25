@@ -1,0 +1,24 @@
+### JS
+- under the hood
+- persistent storage
+- falsy values
+- object/array methods
+- IIFE
+- this keyword
+- == vs ===
+- JSON
+- DOM
+- error handling
+- classifier
+- oop
+- recursive object iteration
+
+### TS
+- symbol
+- interface, type
+- generics
+- mapped types (`Partial<T>`)
+
+### React
+- Hooks (useEffect, useMemo)
+   - side effect
