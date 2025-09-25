@@ -304,6 +304,26 @@ console.log(child.country);
 - configurable
 - enumerable
 
+## new (constructor pattern)
+আমরা যখন কন্সট্রাক্টর প্যাটার্ন ইউজ করার সময় new কীওয়ার্ড ইউজ করি তখন সাধারণত ৪ টা জিনিস হয়। সেগুলো হচ্ছেঃ
+
+- একটি সম্পূর্ণ নতুন অবজেক্ট তৈরি হয়
+- নতুন অবজেক্টের প্রোটোটাইপ হিসেবে ফাংশনের প্রোটোটাইপ সেট হয়
+```js
+function Car(color) {
+this.color = color;
+};
+ 
+Car.prototype.getColor = function(){
+console.log(“Color of the car is “+this.color)
+}
+ 
+let mercedes = new Car(“Red”);
+mercedes.getColor() // Output: Color of the car is Red
+```
+- this এর ভ্যালু হিসেবে নতুন অবজেক্টটি সেট হয়
+- নতুন তৈরি করা অবজেক্টটি অটোমেটিক রিটার্নড হয়
+
 ## Array Methods
 - `reduce()`
     - Reduces an array to a single value by applying a function step by step.

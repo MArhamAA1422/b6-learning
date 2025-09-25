@@ -5,7 +5,7 @@
 - Hoisting
 - Lexical Scope
 - JIT: V8, Turbofan, Ignition
-- Constructor Function
+- Constructor Function or Constructor Pattern
 - this
 - Type Coercion
 - IIFE
