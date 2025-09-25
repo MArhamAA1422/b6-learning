@@ -375,6 +375,15 @@ Inference happens from **variable initialization, function return values, array 
 function fn(a: number, b?: string): number {}  // b is optional here
 ```
 
+### Explicit return
+- library code
+- complex function
+- code used by others
+
+### Other than that: inferred
+- implicit return
+- code used by me
+
 ### Function Overloading
 - Sometimes, a function can behave differently depending on argument types.
 - TypeScript supports function overloading with multiple signatures.
