@@ -810,3 +810,17 @@ type A = Parameters<typeof greet>[0]  // string
 
 #### Mapped Types
 Is a way to create new types with **dynamic properties** based on existing types.
+
+## Local Development
+
+### TS ignore
+Add a `@ts-ignore` comment to the one line that's erroring.
+```js
+// @ts-ignore
+```
+```js
+// @ts-expect-error
+```
+
+### Vanilla Vite
+Vite is a new(ish) build tool that focuses on speed and simplicity.
