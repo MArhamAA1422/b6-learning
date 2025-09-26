@@ -556,7 +556,9 @@ const productList: ProductSummary[] = [
 Opposite of Pick
 
 ## Generics
-One of the most powerful features for making **reusable and type-safe code**.
+One of the most powerful features for making **reusable and type-safe code**. Always in this form `<>`
+
+For example: `Array<number>`
 
 ### What are Generics?
 Generics allow you to create components (functions, classes, etc.) that work with **any type**, while still enforcing **type safety**.
@@ -616,6 +618,17 @@ function logLength<T extends { length: number }>(arg: T): number {
 logLength("Hello");     // works (string has length)
 logLength([1, 2, 3]);   // works (array has length)
 // logLength(42); Error: number has no length
+```
+
+```js
+interface HasCost {
+  cost: number,
+}
+function applyDiscount<T extends HasCost>(vals: T[]) {}
+```
+
+```js
+function testEmails<T extends string>(arr: string) {}
 ```
 
 ### Extending Types
