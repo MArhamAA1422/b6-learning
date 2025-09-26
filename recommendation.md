@@ -18,6 +18,8 @@
 - interface, type
 - generics
 - mapped types (`Partial<T>`)
+- Record
+- Discriminative union, type narrowing/assertion
 
 ### React
 - Hooks (useEffect, useMemo)

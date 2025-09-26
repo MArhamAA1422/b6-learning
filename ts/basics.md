@@ -372,6 +372,15 @@ let user = JSON.parse(json) as { id : number; number: string };
 - It doesn’t actually convert the type at runtime. It only **changes how TS checks** your code.
 - If your assertion is wrong, it may cause runtime errors even if TS compiles fine.
 
+## Type narrowing
+- `unknown`
+- `any`
+- `in`
+- type predicates: `is`
+- exhaustive check: `default` in switch
+- guard clauses: `||`
+
+
 ## Type Inference in TypeScript
 TypeScript has a powerful type inference system. This means you don’t always need to explicitly declare the type of a variable, parameter, or return value — TypeScript will figure it out automatically based on how the code is written. Once inferred, you can’t assign a different type.
 
