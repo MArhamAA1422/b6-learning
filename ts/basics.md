@@ -505,6 +505,56 @@ let circle = new Circle(5);
 console.log(circle.area()); // 78.54
 ```
 
+## Utility Types
+### Single Source of Truth
+We can derive multiple types from one 'main' types. `extends` in interface.
+
+### Partial Utility Type
+`Partial<type>`
+
+### Required, Readonly Utility Types
+
+### Record Utility Type
+Change the shape of a type. The `Record<K, T>` utility type creates a type with a set of properties K of type T.
+
+One of the more practical use cases for **Record** is to ensure that all specified keys in a *union* are present in the object.
+
+```js
+type Role = 'a' | 'b';
+type Sample = Record<Role, number>;
+
+const firstSample: Sample = {  // OK
+  a: 1,
+  b: 2,
+}
+
+const secondSample: Sample = {  // ERROR
+  a:1,
+  // b: 2,
+}
+```
+
+### Pick Utility Type
+The `Pick<K, T>` creates a new type by selecting a subset of properties from an existing type.
+
+```js
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+}
+
+type ProductSummary = Pick<Product, "id", "name">;
+
+const productList: ProductSummary[] = [
+  { id: "p1", name: "p1-name" },
+  { id: "p2", name: "p2-name" },
+];
+```
+
+### Omit Utility Type
+Opposite of Pick
+
 ## Generics
 One of the most powerful features for making **reusable and type-safe code**.
 
