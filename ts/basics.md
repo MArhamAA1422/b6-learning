@@ -781,3 +781,32 @@ if (typeof err === 'string') {}
 - `try...catch` works the same as JS, but TS treats errors as unknown for safety.
 - Custom error classes help structure error handling (e.g., ValidationError, NetworkError).
 - Use type guards (instanceof, typeof) to safely narrow down error types.
+
+## Advanced TS (library, application)
+
+### Conditional Types
+
+#### Ternary
+```js
+export type SentimentString<T> = T extends { angry: true }
+  ? 'mad' : 'furious'
+  : 'continent' : 'happy'
+```
+
+#### infer
+When used inside a conditional type, lets us use the type of a value from the true branch.
+
+```js
+type Test<T> = T extends `${infer Key}:${infer Value}` ? [Key, Value] : false
+
+type A = Test<"name:app">  // type = [name, app]
+```
+
+#### Parameters
+```js
+function greet(name: string, age: number) {}
+type A = Parameters<typeof greet>[0]  // string
+```
+
+#### Mapped Types
+Is a way to create new types with **dynamic properties** based on existing types.
