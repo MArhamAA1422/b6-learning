@@ -212,3 +212,44 @@ const getUser = async (id: string): Promise<User> => {
   return user;
 };
 ```
+
+
+## Unions, Literals, and Narrowing
+
+Let's pause for a moment to introduce a couple more types that play an important role in TypeScript, particularly when we talk about 'wide' and 'narrow' types.
+
+#### The Widest Type: `unknown`
+Root of all other types.
+```js
+const fn = (input: unknown) => {}
+
+// Anything is assignable to unknown!
+fn('hello')
+fn(42)
+fn(true)
+fn({})
+fn([])
+fn(() => {})
+```
+
+### What's the Difference Between unknown and any?
+They're both wide types, but there's a key difference.
+
+`any` doesn't really fit into our definition of 'wide' and 'narrow' types. It breaks the type system. It's not really a type at all - **it's a way of opting out of TypeScript's type checking**.
+
+`any` can be assigned to anything, and anything can be assigned to `any`. `any` is **both narrower and wider** than every other type.
+
+`unknown`, on the other hand, is part of TypeScript's type system. It's wider than every other type, so it can't be assigned to anything.
+
+```js
+const handleWebhookInput = (input: unknown) => {
+  input.toUppercase();  // ERROR: 'input' is of type 'unknown'.
+}
+
+const handleWebhookInputWithAny = (input: any) => {
+  // no error
+  input.toUppercase()
+}
+```
+
+This means that unknown is a safe type, but any is not. unknown means "I don't know what this is", while any means "I don't care what this is".
