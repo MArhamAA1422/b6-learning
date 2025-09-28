@@ -252,4 +252,38 @@ const handleWebhookInputWithAny = (input: any) => {
 }
 ```
 
-This means that unknown is a safe type, but any is not. unknown means "I don't know what this is", while any means "I don't care what this is".
+This means that `unknown` is a safe type, but `any` is not. `unknown` means "I don't know what this is", while `any` means "I don't care what this is".
+
+### The Narrowest Type: never
+If `unknown` is the widest type in TypeScript, `never` is the narrowest.
+
+`never` represents something that will `never` happen. It's the very bottom of the type hierarchy. You cannot assign anything to `never`, except for `never` itself. However, you can assign `never` to anything.
+
+### never vs void
+Let's consider a function that never returns anything:
+```js
+const getNever = () => {
+  // This function never returns!
+}
+```
+When hovering this function, TypeScript will infer that it returns `void`, indicating that it essentially returns nothing.
+```js
+// hovering over `getNever` shows:
+const getNever: () => void
+```
+
+However, if we throw an error inside of the function, the function will never return:
+```js
+const getNever = () => {
+  throw new Error('This function never returns')
+}
+```
+With this change, TypeScript will infer that the function's type is **never**:
+```js
+// hovering over `getNever` shows:
+const getNever: () => never
+```
+
+### Type Narrowing
+`instanceof, unknown, type guards, if`
+
