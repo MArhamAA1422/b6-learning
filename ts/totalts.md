@@ -58,3 +58,18 @@ const logValues = (obj: any) => {
 - Quick Fixes
 
 TypeScript's IDE server is not just running on TypeScript files, but on JavaScript files too. That means that some of TypeScript's amazing IDE experience is also available in JavaScript.
+
+
+## TypeScript In The Development Pipeline
+
+In this chapter we'll get the TypeScript CLI up and running, and see how it fits into the development pipeline. As an example, we'll be looking at using TypeScript to build a web application. But TypeScript can also be used anywhere JavaScript can - in a Node, Electron, React Native or any other app.
+
+`tsc --watch`
+
+While Vite and other tools handle the actual transpilation of TypeScript to JavaScript, they don't provide type checking out of the box. This means that you could introduce errors into your code and Vite would continue running the dev server without telling you. It would even allow you to push errors into production, because it doesn't know any better.
+
+So, we still need the TypeScript CLI in order to catch errors. But if Vite is transpiling our code, we don't need TypeScript to do it too.
+
+### TS as Linter
+Inside the `tsconfig.json` file, there's an option called `noEmit` that tells `tsc` whether or not to emit JavaScript files.
+
