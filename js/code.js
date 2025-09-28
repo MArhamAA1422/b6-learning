@@ -202,3 +202,17 @@ function classPropTest() {
     console.log(sample.name, sample._name);
 }
 // classPropTest();
+
+function closureTest() {
+    let fn;
+    if (true) {
+        let x = 5;
+        fn = function() {
+            return x+1;
+        }
+    }
+    return fn;
+}
+
+const closureTestFn = closureTest();
+// console.log(closureTestFn());

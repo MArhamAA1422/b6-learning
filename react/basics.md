@@ -245,6 +245,63 @@ A controlled input is an `<input>, <textarea>, or <select>` element whose value 
 #### Uncontrolled input = DOM manages the value.
 To get the value, you’d need **refs** (inputRef.current.value).
 
+## What is state in Class Components?
+state = **an `object` that stores data local to the component**.
+
+You initialize state inside the constructor (or directly in the class with modern syntax):
+
+```jsx
+class Counter extends React.Component {
+  state = {
+    count: 0
+  };
+
+  render() {
+    return <h1>{this.state.count}</h1>;
+  }
+}
+```
+
+#### Updating State
+```jsx
+this.setState({ count: this.state.count + 1 });
+```
+
+Why this way?
+- Direct assignment like `this.state.count = 5;` won’t trigger re-render.
+- setState tells React: “state has changed → **re-render the component**.”
+
+```jsx
+class Counter extends React.Component {
+  state = { count: 0 };
+
+  increment = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>{this.state.count}</h1>
+        <button onClick={this.increment}>+</button>
+      </div>
+    );
+  }
+}
+```
+
+### Functional form of setState
+
+Sometimes, updates depend on the previous state. Then use a function instead of an object:
+
+```jsx
+this.setState((prevState) => ({
+  count: prevState.count + 1
+}));
+```
+
+This avoids bugs if **multiple setStates** run quickly (since **state updates are asynchronous**).
+
 ## Synthetic Events in React
 
 In React, events (like onClick, onChange, onSubmit) are wrapped inside a `SyntheticEvent object`.
