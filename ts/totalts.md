@@ -17,4 +17,44 @@ pnpm is used the same way as npm, but it is more efficient. Instead of having in
 TypeScript and its dependencies are contained within a single package, called typescript. `pnpm add -g typescript`
 
 
+## IDE Superpowers
 
+TypeScript works the same no matter what IDE you use. When you open VS Code, the **TypeScript server starts in the background**. It will be active as long as you have a TypeScript file open.
+
+Awesome VS Code features that are powered by the TypeScript server:
+- autocomplete
+   - TypeScript knows what type everything is inside your app. Because of that, it can give you suggestions when you're typing - speeding you up enormously.
+   - This is really powerful for exploring APIs you might not be familiar with, like the `HTMLAudioElement` API in this case.
+- TypeScript Error Checking
+   - The thing TypeScript is most famous for is its errors. These are a set of rules which TypeScript uses to make sure your code is doing what you think it's doing.
+   - Reading errors bottom-to-top can be a helpful strategy when dealing with multi-line TypeScript errors.
+- JSDoc Comments
+   - JSDoc is a syntax for adding documentation to the types and functions in your code. It allows VS Code to show additional information in the popup that shows when hovering. This is extremely useful when working with a team, Here's an example of how a logValues function could be documented:
+```js
+/**
+ * Logs the values of an object to the console.
+ *
+ * @param obj - The object to log.
+ *
+ * @example
+ * ```ts
+ * logValues({ a: 1, b: 2 });
+ * // Output:
+ * // a: 1
+ * // b: 2
+ * ```
+ */
+
+const logValues = (obj: any) => {
+  for (const key in obj) {
+    console.log(`${key}: ${obj[key]}`);
+  }
+};
+```
+- Navigating with Go To Definition and Go To References
+   - The TypeScript server also provides the ability to navigate to the definition of a variable or declaration. In VS Code, you can right click and select "Go to Definition" from the context menu on either platform.
+- Rename Symbol
+- Automatic Imports
+- Quick Fixes
+
+TypeScript's IDE server is not just running on TypeScript files, but on JavaScript files too. That means that some of TypeScript's amazing IDE experience is also available in JavaScript.
