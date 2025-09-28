@@ -73,3 +73,21 @@ So, we still need the TypeScript CLI in order to catch errors. But if Vite is tr
 ### TS as Linter
 Inside the `tsconfig.json` file, there's an option called `noEmit` that tells `tsc` whether or not to emit JavaScript files.
 
+
+## Essential Types and Annotations
+
+### Basic Annotations
+
+One of the most common things you'll need to do as a TypeScript developer is **to annotate your code**. Annotations tell TypeScript what type something is supposed to be.
+
+Annotations will often use a `:` - this is used to tell TypeScript that a variable or function parameter is of a certain type.
+
+One of the most important annotations you'll use is for **function parameters**.
+
+### Basic Types
+string, number, boolean, symbol, bigint, null, undefined
+
+#### Function Parameters Always Need Annotations
+
+TypeScript can't tell from a function parameter alone what type it's supposed to be. When you don't annotate it, it defaults the type to `any` - a scary, unsafe type.
+
