@@ -235,6 +235,16 @@ A Fragment lets you group multiple elements without adding an extra DOM node (li
 
 Use Fragments for cleaner, semantic, and optimized DOM.
 
+## Controlled Input
+A controlled input is an `<input>, <textarea>, or <select>` element whose value is controlled by **React state**. The source of truth for the input’s value lives in React’s state. Whatever you type into the input updates the state, and then React **re-renders** with the updated value.
+
+`value={name}` → input’s value comes from React state.
+
+#### Controlled input = React state manages the value.
+
+#### Uncontrolled input = DOM manages the value.
+To get the value, you’d need **refs** (inputRef.current.value).
+
 ## Synthetic Events in React
 
 In React, events (like onClick, onChange, onSubmit) are wrapped inside a `SyntheticEvent object`.
@@ -248,3 +258,6 @@ In React, events (like onClick, onChange, onSubmit) are wrapped inside a `Synthe
    - Ensure consistent behavior across browsers.
 
    - Improve performance (by reusing event objects with pooling).
+
+## Others
+- `onChange={setName("name")}`, setName("name") runs immediately during render, not on change.
