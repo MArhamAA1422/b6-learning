@@ -285,5 +285,56 @@ const getNever: () => never
 ```
 
 ### Type Narrowing
-`instanceof, unknown, type guards, if`
+`instanceof, typeof, unknown, type guards, if`
+
+
+### Discriminated Unions
+In this section we'll look at a common pattern TypeScript developers use to structure their code. It's called a 'discriminated union'.
+
+#### The Problem: The Bag Of Optionals
+Let's imagine we are modelling a data fetch. We have a State type with a status property which can be in one of three states: loading, success, or error.
+
+This is useful, but we also need to capture some extra data. The data coming back from the fetch, or the error message if the fetch fails.
+
+We could add an error and data property to the State type:
+
+```js
+type State = {
+  status: 'loading' | 'success' | 'error'
+  error?: string
+  data?: string
+}
+```
+
+It's a type that's too loose. We need to tighten it up so that error can only happen on error, and data can only happen on success.
+
+#### The Solution: Discriminated Unions
+The solution is to turn our State type into a discriminated union.
+
+**A discriminated union is a type that has a common property, the 'discriminant', which is a literal type that is unique to each member of the union.**
+
+In our case, the status property is the discriminant.
+
+Let's take each status and separate them into separate object literals:
+
+```js
+type State =
+    {
+      status: 'loading'
+    }
+  | {
+      status: 'error'
+      error: string
+    }
+  | {
+      status: 'success'
+      data: string
+    }
+```
+
+This is due to TypeScript's narrowing. To clean up our original type, we could use a type alias for each of the statuses.
+
+```js
+type State = LoadingState | ErrorState | SuccessState
+```
 
