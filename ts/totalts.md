@@ -91,3 +91,27 @@ string, number, boolean, symbol, bigint, null, undefined
 
 TypeScript can't tell from a function parameter alone what type it's supposed to be. When you don't annotate it, it defaults the type to `any` - a scary, unsafe type.
 
+### any
+
+When TypeScript doesn't know what type something is, it assigns it the any type.
+
+This type breaks TypeScript's type system. It turns off type safety on the thing it's assigned to.
+
+This means that anything can be assigned to it, any property on it can be accessed/assigned to, and **it can be called like a function**.
+
+```js
+let anyVariable: any = "This can be anything!";
+anyVariable(); // no error
+anyVariable.deep.property.access; // no error
+```
+
+### Object Literal Types
+
+```js
+const talkToAnimal = (animal: { name: string; type: string; age: number }) => {
+  // rest of function body
+};
+```
+
+This curly braces syntax is called an object literal type.
+
