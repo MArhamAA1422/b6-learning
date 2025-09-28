@@ -302,6 +302,16 @@ this.setState((prevState) => ({
 
 This avoids bugs if **multiple setStates** run quickly (since **state updates are asynchronous**).
 
+## setState
+- React does not update `this.state` immediately
+- Instead, it schedules an update.
+- **React batches updates** for performance (so multiple setStates in the same tick don’t cause multiple re-renders).
+- In class components, setState does a shallow merge (only updates specified fields, not replacing the whole object).
+- Internally, **React keeps a state update queue** for each component. If you use: `this.setState((prevState, props) => ({ count: prevState.count + 1 }))` → React stores that function in the queue.
+- During reconciliation, React runs all queued updates and calculates the final state.
+- Once updates are processed, React re-renders the component.
+- Virtual DOM compares old vs new → only the differences are applied to the real DOM.
+
 ## Synthetic Events in React
 
 In React, events (like onClick, onChange, onSubmit) are wrapped inside a `SyntheticEvent object`.
