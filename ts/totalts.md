@@ -115,3 +115,100 @@ const talkToAnimal = (animal: { name: string; type: string; age: number }) => {
 
 This curly braces syntax is called an object literal type.
 
+### Type Aliases
+
+```js
+type Animal = {
+  name: string;
+  type: string;
+  age?: number;
+};
+```
+
+This is what's called a type alias. It's a way to give a name to a type, and then use that name wherever we need to use that type.
+
+```js
+type Id = string | number;
+```
+
+Using a type alias is a great way to ensure there's a single source of truth for a type definition.
+
+
+### Arrays
+`string[]` or `Array<string>`
+
+### Tuples
+Tuples let you specify an array with a fixed number of elements, where each element has its own type. Creating a tuple is similar to an array's square bracket syntax - except the square brackets contain the types instead of abutting the variable name:
+
+```js
+let tup: [string, number] = ['app', 6];
+```
+
+Tuples are useful for **grouping related information together** without having to create a new type.
+
+
+#### Named Tuples
+```js
+type MyTuple = [album: Album, playCount: number];
+```
+
+The inline approaches are useful, but it is preferred extracting them out to **a new type**.
+
+
+### Not All Functions Can Receive Types
+Most functions in TypeScript can't receive types.
+
+For example, let's look at `document.getElementById` that comes in from the DOM typings.
+
+```js
+const audioElement = document.getElementById<HTMLAudioElement>("player");  // ERROR
+```
+
+`.getElementById` contains no angle brackets `(<>)` in its hover, which is why we can't pass a type to it.
+
+So, to fix our code above we could replace `.getElementById` with `.querySelector` and use the #player selector to find the audio element:
+```js
+const audioElement = document.querySelector<HTMLAudioElement>("#player");
+```
+
+So, to tell whether a function can receive a type argument, hover it and **check whether it has any angle brackets**.
+
+### Default Parameters
+```js
+const fn = (
+   a: string,
+   b: number = 5,
+) => {
+   // fn body
+}
+```
+
+### Function Types
+
+We've used type annotations to specify the types of function parameters, but we can also use TypeScript to describe the types of functions themselves.
+
+```js
+type Mapper = (item: string) => number;
+```
+
+This is a type alias for a function that takes in a string and returns a number.
+
+We could then use this to describe a callback function passed to another function:
+
+```js
+const mapOverItems = (items: string[], map: Mapper) => {
+  return items.map(map);
+};
+```
+
+### Void Type
+`console.log()` doesn't return anything.
+
+### Typing Async Functions
+
+```js
+const getUser = async (id: string): Promise<User> => {
+  const user = await db.users.get(id);
+  return user;
+};
+```
