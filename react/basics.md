@@ -13,7 +13,8 @@ Core ideas:
 
 ## Why React
 - Reusable Components → Write once, use anywhere (like LEGO blocks).
-- Fast UI updates → Thanks to the Virtual DOM.
+- **Fast UI updates** → Thanks to the Virtual DOM.
+  - **Performance**, don't put all elements into dom, put some into Virtual DOM, when in need load them.
 - Huge ecosystem, Cross-platform, Backed by Meta.
 
 ## React vs. Vanilla JS
