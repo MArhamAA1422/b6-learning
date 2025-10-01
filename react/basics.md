@@ -1,5 +1,5 @@
 ## Intro to React
-React is a JavaScript library (not a full framework) for building user interfaces (UI). It was created by Facebook (Meta) and is now open-source, used by millions of developers.
+React is a JavaScript library (not a full framework) for building user interfaces (UI). It was created by Facebook (Meta) and is now open-source, used by millions of developers. In 2011, Jordan Walke created first prototype, named it **fax js**.
 
 Core ideas:
 
