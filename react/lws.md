@@ -88,3 +88,31 @@ const element = {
 ## React Element
 - React element is **immutable**.
 - We'll **change data**, not element (React element), then UI'll be changed.
+
+## Component
+- A function that returns a React Element.
+- `<ComponentName />`
+- **Never change props inside components**.
+   - Issue: React component will re-render whenever props change. Eventually **cause infinite loop**. As, props change is inside the component.
+
+## Class Component
+- Function component cannot change itself, it requires **props** from outside.
+- Class component is powerful, **it is stateful**, it can change itself.
+- Given by React.
+- React can identify Class Component like Function Component using `React.Component`.
+- Class has its own `render` function. **ReactDOM will execute that**.
+- **this.props**
+- **this.props.children**
+   - `<Sample>childrenHTML</Sample>`
+
+```jsx
+class Sample extends React.Component {
+   render() {
+      return (
+         //
+      );
+   }
+}
+
+ReactDOM.render(<Sample />, document.getElementById('root'));
+```
