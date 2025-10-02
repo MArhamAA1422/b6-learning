@@ -1,3 +1,6 @@
+### Project
+- Text Editor (js, html, css)
+
 ### JS
 - under the hood
 - persistent storage
@@ -17,7 +20,7 @@
 - symbol
 - interface, type
 - generics
-- mapped types (`Partial<T>`)
+- mapped types (`Partial<T>`, `Record<key, value>`)
 - Record
 - Discriminated union, type narrowing/assertion
 
