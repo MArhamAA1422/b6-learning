@@ -16,6 +16,9 @@
 - oop
 - recursive object iteration
 
+### CSS
+- text-content?
+
 ### TS
 - symbol
 - interface, type
