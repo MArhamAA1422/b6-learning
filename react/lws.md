@@ -116,3 +116,66 @@ class Sample extends React.Component {
 
 ReactDOM.render(<Sample />, document.getElementById('root'));
 ```
+
+## State
+- Component **data** that can be changed.
+- Component's own database.
+- Not props, it resides insides the component.
+- **state is JS object**.
+- **this.state**, **this.setState**
+   - setState: React will be reactive and re-render.
+```js
+class Clock extends React.Component {
+   // constructor(props) {
+   //    super(props);
+   //    this.state = { data: new Date() };
+   // }  // we're not using props, then we've shortcut
+
+   state = { data: new Date() };
+
+   componentDidMount() {
+      this.clockTimer = setInterVal(() => this.tick(), 1000);
+   }
+
+   componentWillUnmount() {
+      clearInterval(this.clockTimer);
+   }
+
+   tick() {
+      this.setState({
+         date: new Date(),
+      });
+   }
+
+   render() {
+      return (
+         <span>{this.sate.data.}</span>
+      );
+   }
+}
+```
+
+## Using state correctly
+- Do not modify state directly, use setState, React understands setState
+- State update maybe asynchronous
+   - React may **batch multiple setState()** calls into a single update for performance
+   - **For current state use function with parameters**
+   ```js
+   this.setState(function(state, props) { return state + props; });
+   ```
+- **State update & merged**
+   - when setState() is called, React merges the object provided into the current state
+   - so, we can update properties/state individually
+- Don't update reference type, make a copy of them, then update. Otherwise an unintended rendering will happen cause state is changed.
+- **The Data Flows Down**
+   - Unlike Vue/Angular, React provides **one way data flow**, that's another big reason for the popularity of React.
+   - A component may choose to **pass its state down as props** to its child components.
+   - Top-down data flow, from top to bottom
+
+## Life Cycle
+
+#### componentDidMount()
+- DOM is present in Page, then it will be called.
+
+#### componentWillUnmount
+- Before DOM leaves, this will be called.
