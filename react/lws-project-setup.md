@@ -1,6 +1,10 @@
 ## React Project Init
 Latest `create-react-app` package usage: `npx create-react-app project_name`
 
+## Using Vite (recommended)
+- `npm create vite@latest`
+- `JS + SWC`
+
 #### Install DEV dependencies
 ### Lint: In order to lint and format your React project automatically according to popular **airbnb** style guide.
 
