@@ -13,7 +13,7 @@
 - use flex over grid
 - justfiy-content/align items depend on flex direction, main axis
 - use underline, dash in naming
-  - **BEN** method
+  - **BEM** method: Block-Element-Modifier
 - "id" becomes window property, can be used directly
 
 ## JS
