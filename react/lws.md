@@ -177,8 +177,13 @@ class Clock extends React.Component {
 #### componentDidMount()
 - DOM is present in Page, then it will be called.
 
-#### componentWillUnmount
+#### componentWillUnmount()
 - Before DOM leaves, this will be called.
+
+#### shouldComponentUpdate(nextProps, nextStage)
+- manually control re-rendering
+- returns true/false based on conditions, true means re-render component
+- `.bind()` returns **new function reference** each time, that can cause component rerendering even if we use this life cycle
 
 ## Issue with 'this' in callback
 - We can use arrow function
