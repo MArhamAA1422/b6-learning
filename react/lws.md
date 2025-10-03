@@ -117,7 +117,7 @@ class Sample extends React.Component {
 ReactDOM.render(<Sample />, document.getElementById('root'));
 ```
 
-## State
+## State: A Component's Memory
 - Component **data** that can be changed.
 - Component's own database.
 - Not props, it resides insides the component.
@@ -179,3 +179,15 @@ class Clock extends React.Component {
 
 #### componentWillUnmount
 - Before DOM leaves, this will be called.
+
+## Issue with 'this' in callback
+- We can use arrow function
+- We can use `.bind()`
+- Also, we can use presave outer "this"
+
+## Handling Events
+
+#### Prevent default
+- don't go to the link that is clicked, submit button handle
+- `event.preventDefault()`
+
