@@ -185,7 +185,7 @@ class Clock extends React.Component {
 - returns true/false based on conditions, true means re-render component
 - `.bind()` returns **new function reference** each time, that can cause component rerendering even if we use this life cycle
 
-## Issue with 'this' in callback
+## Solve issue with 'this' in callback
 - We can use arrow function
 - We can use `.bind()`
 - Also, we can use presave outer "this"
@@ -196,3 +196,7 @@ class Clock extends React.Component {
 - don't go to the link that is clicked, submit button handle
 - `event.preventDefault()`
 
+## Conditional rendering
+- trinary operator
+- && operator
+- use variable to construct the element
