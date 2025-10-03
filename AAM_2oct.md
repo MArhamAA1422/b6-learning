@@ -1,6 +1,7 @@
 ## Project
 - folder structure: keep similar stuffs together, can create subfolders
 - handle URL path, login URL should redirect to home page if user is logged in
+- userId in prefix then put into DB to separate user data
 
 ## HTML
 - line by line tag (for example script) execution
@@ -21,3 +22,5 @@
 - innerHTML is dangerous, has security vulnerability, can take malicious code
 - insted of innerHTML, use: **createElement, appendChild**
   - React internally creates element then appends it
+- textContent vs innerText
+  - textContent ignores style, innerText takes all literal text inside an element
