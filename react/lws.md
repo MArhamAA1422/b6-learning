@@ -200,3 +200,31 @@ class Clock extends React.Component {
 - trinary operator
 - && operator
 - use variable to construct the element
+
+## Controlled vs Uncontrolled Component
+- Controlled input has `value` attribute/property.
+- (no value attribute) DOM manages uncontrolled one. (using **ref**)
+- For controlled input, React takes the responsibility, but also it requires **state**.
+
+```jsx
+export default class Form extends React.Component {
+   state = {
+      title: "js",
+   };
+   handleChange = (e) => {
+      this.setState({
+         title: e.target.value,
+      });
+   }
+   render() {
+      const { title } = this.state;
+      return (
+         <div>
+            <form>
+               <input type="text" value={title} onChange={this.handleChange}/>
+            </form>
+         </div>
+      );
+   }
+}
+```
