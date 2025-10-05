@@ -180,7 +180,7 @@ class Clock extends React.Component {
 #### componentWillUnmount()
 - Before DOM leaves, this will be called.
 
-#### shouldComponentUpdate(nextProps, nextStage)
+#### shouldComponentUpdate(nextProps, nextState)
 - manually control re-rendering
 - returns true/false based on conditions, true means re-render component
 - `.bind()` returns **new function reference** each time, that can cause component rerendering even if we use this life cycle
@@ -282,6 +282,7 @@ Prop that defines render logic.
 ## Context API
 - Provide props to only relevant components anywhere in the Component Tree.
 - Basically a storage system, a pattern.
+- If provider's value changes, all consumers will also re-render.
 
 ### Procedures
 - Create a Context, it provides 2 things:
@@ -331,5 +332,6 @@ export const SampleContext = createContext();
 - Easier than render prop
 
 ## Context in Function component
+- **useContext()**
 - `const context = useContext(SampleContext);`
 - No need of **Provider**, **Consumer** use
