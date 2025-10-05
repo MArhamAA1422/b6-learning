@@ -239,8 +239,16 @@ export default class Form extends React.Component {
    - receive props
    - `<Emoji> {(addE) => <Text addE={addE} />} </Emoji>`
 
+## Props Drilling
+Data flow from root to leaf. Some components can get prop but they don't require. Solution:
+
+- HOC pattern
+- Render Prop pattern
+- Context API
+
 ## Higher Order Component
 - Takes a component as parameter, returns another component.
+- New component with necessary props.
 - Naming convention: name starts with "with"
    - `withCounter.js`
    - `export default withCounter(ClickCounter)`
@@ -260,3 +268,5 @@ Prop that defines render logic.
    }}
 </Counter>
 ```
+
+## Context API
