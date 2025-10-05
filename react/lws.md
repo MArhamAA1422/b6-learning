@@ -239,12 +239,22 @@ export default class Form extends React.Component {
    - receive props
    - `<Emoji> {(addE) => <Text addE={addE} />} </Emoji>`
 
+## Style in React
+- In JSX we need to provide style as **Object**
+- background-color => backgroundColor
+```jsx
+const style = { backgroundColor: white, color: black }
+return (
+   <p style={style}>Sample Text with Style</p>
+);
+```
+
 ## Props Drilling
 Data flow from root to leaf. Some components can get prop but they don't require. Solution:
 
-- HOC pattern
-- Render Prop pattern
-- Context API
+- HOC pattern (avoids PD)
+- Render Prop pattern (avoids PD)
+- Context API (actual solution)
 
 ## Higher Order Component
 - Takes a component as parameter, returns another component.
@@ -270,3 +280,13 @@ Prop that defines render logic.
 ```
 
 ## Context API
+Provide props to only relevant components anywhere in the Component Tree.
+
+### Procedures
+- Create a Context, it provides 2 things:
+   - Context Provider
+   - Context Consumer
+- Wrap parent with Context Provider
+- Provide a value of the context as prop
+- Wrap child with Context Consumer
+- Consumer follows the render prop patter
