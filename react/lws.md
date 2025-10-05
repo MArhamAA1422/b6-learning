@@ -324,3 +324,12 @@ export const SampleContext = createContext();
 <SampleContext.Provider />
 <SampleContext.Consumer />
 ```
+
+## Context in Class component
+- `ClassName.contextType = SampleContext;`, then we can use the context using "this"
+- It will be a **static property**
+- Easier than render prop
+
+## Context in Function component
+- `const context = useContext(SampleContext);`
+- No need of **Provider**, **Consumer** use
