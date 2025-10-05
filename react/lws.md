@@ -228,3 +228,13 @@ export default class Form extends React.Component {
    }
 }
 ```
+
+## Inheritance vs Composition
+- React encourages to use Composition
+- Inheritance is only in `React.Component` for class components
+- In inheritance
+   - components are tightly coupled, dependent
+   - components should be independent
+- In composition
+   - receive props
+   - `<Emoji> {(addE) => <Text addE={addE} />} </Emoji>`
