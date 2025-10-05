@@ -244,3 +244,19 @@ export default class Form extends React.Component {
 - Naming convention: name starts with "with"
    - `withCounter.js`
    - `export default withCounter(ClickCounter)`
+
+## Render Prop
+Prop that defines render logic.
+
+```jsx
+<User render={(cond) => cond ? 'a' : 'b'} />
+```
+
+`this.prop.children`
+```jsx
+<Counter>
+   {(counter, incCount) => {
+      <ClickCounter count={counter} incCount={incCount} />
+   }}
+</Counter>
+```
