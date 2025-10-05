@@ -238,3 +238,9 @@ export default class Form extends React.Component {
 - In composition
    - receive props
    - `<Emoji> {(addE) => <Text addE={addE} />} </Emoji>`
+
+## Higher Order Component
+- Takes a component as parameter, returns another component.
+- Naming convention: name starts with "with"
+   - `withCounter.js`
+   - `export default withCounter(ClickCounter)`
