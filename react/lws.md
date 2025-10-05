@@ -280,7 +280,8 @@ Prop that defines render logic.
 ```
 
 ## Context API
-Provide props to only relevant components anywhere in the Component Tree.
+- Provide props to only relevant components anywhere in the Component Tree.
+- Basically a storage system, a pattern.
 
 ### Procedures
 - Create a Context, it provides 2 things:
@@ -290,3 +291,36 @@ Provide props to only relevant components anywhere in the Component Tree.
 - Provide a value of the context as prop
 - Wrap child with Context Consumer
 - Consumer follows the render prop patter
+
+We can build our own context class:
+```js
+class Context {
+   constructor(value) {
+      this.value = value;
+   }
+
+   Provider = function({ children, value }) {
+      this.value = value;
+      return children;
+   }
+
+   Consumer = function({ children }) {  // Here, children is a render prop
+      return children(this.value);
+   }
+}
+
+export function createContext(value = null) {
+   const context = new Context(value);
+   return {
+      Provider: context.Provider,
+      Consumer: context.Consumer,
+   };
+}
+
+// SampleContext
+export const SampleContext = createContext();
+
+// uses
+<SampleContext.Provider />
+<SampleContext.Consumer />
+```
