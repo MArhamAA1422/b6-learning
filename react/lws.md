@@ -103,7 +103,7 @@ const element = {
 - Class has its own `render` function. **ReactDOM will execute that**.
 - **this.props**
 - **this.props.children**
-   - `<Sample>childrenHTML</Sample>`
+   - `<SampleComp>childrenHTML</SampleComp>`
 
 ```jsx
 class Sample extends React.Component {
@@ -120,7 +120,7 @@ ReactDOM.render(<Sample />, document.getElementById('root'));
 ## State: A Component's Memory
 - Component **data** that can be changed.
 - Component's own database.
-- Not props, it resides insides the component.
+- Not props, it resides inside the component.
 - **state is JS object**.
 - **this.state**, **this.setState**
    - setState: React will be reactive and re-render.
@@ -129,7 +129,7 @@ class Clock extends React.Component {
    // constructor(props) {
    //    super(props);
    //    this.state = { data: new Date() };
-   // }  // we're not using props, then we've shortcut
+   // }  // if we're not using props, then we've shortcut
 
    state = { data: new Date() };
 
@@ -188,22 +188,22 @@ class Clock extends React.Component {
 ## Solve issue with 'this' in callback
 - We can use arrow function
 - We can use `.bind()`
-- Also, we can use presave outer "this"
+- Also, we can use pre-saved outer "this"
 
 ## Handling Events
 
 #### Prevent default
-- don't go to the link that is clicked, submit button handle
+- For example: don't go to the link that is clicked, submit button handle
 - `event.preventDefault()`
 
 ## Conditional rendering
-- trinary operator
+- ternary operator
 - && operator
 - use variable to construct the element
 
 ## Controlled vs Uncontrolled Component
 - Controlled input has `value` attribute/property.
-- (no value attribute) DOM manages uncontrolled one. (using **ref**)
+- (no value attribute) DOM manages uncontrolled one. (also, can use **ref**)
 - For controlled input, React takes the responsibility, but also it requires **state**.
 
 ```jsx
@@ -250,21 +250,21 @@ return (
 ```
 
 ## Props Drilling
-Data flow from root to leaf. Some components can get prop but they don't require. Solution:
+Data flow from root to leaf. Some components may get prop but they don't require. Solution:
 
 - HOC pattern (avoids PD)
 - Render Prop pattern (avoids PD)
 - Context API (actual solution)
 
 ## Higher Order Component
-- Takes a component as parameter, returns another component.
+- Takes a component as parameter, returns another(updated) component.
 - New component with necessary props.
 - Naming convention: name starts with "with"
    - `withCounter.js`
    - `export default withCounter(ClickCounter)`
 
 ## Render Prop
-Prop that defines render logic.
+Prop that defines render logic. Function involved in props.
 
 ```jsx
 <User render={(cond) => cond ? 'a' : 'b'} />
@@ -281,8 +281,8 @@ Prop that defines render logic.
 
 ## Context API
 - Provide props to only relevant components anywhere in the Component Tree.
-- Basically a storage system, a pattern.
-- If provider's value changes, all consumers will also re-render.
+- Basically a storage system, a design pattern.
+- If provider's value changes, all consumers will also be re-rendered.
 
 ### Procedures
 - Create a Context, it provides 2 things:
@@ -291,7 +291,7 @@ Prop that defines render logic.
 - Wrap parent with Context Provider
 - Provide a value of the context as prop
 - Wrap child with Context Consumer
-- Consumer follows the render prop patter
+- Consumer follows the render prop pattern
 
 We can build our own context class:
 ```js
