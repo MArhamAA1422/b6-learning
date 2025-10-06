@@ -383,3 +383,19 @@ export const SampleContext = createContext();
 - Life cycle method can be written once, but useEffect can be multiple in same component
 - Empty dependency array ([]) == componentDidMount
 
+### componentWillUnmount with useEffect
+- for cleanUp purpose
+- useEffect can return something
+- Before leaving from DOM we can return an anonymous function from useEffect that will only work in the time of leave
+```jsx
+useEffect(() => {
+   console.log('starting timer');
+   const interval = setInterval(tickFunc, 1000);
+
+   // do the cleanup
+   return () => {
+      console.log('component unmounted');
+      clearInterval(interval);
+   };
+})
+```
