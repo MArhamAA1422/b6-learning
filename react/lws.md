@@ -399,3 +399,25 @@ useEffect(() => {
    };
 })
 ```
+
+## useCallback & useMemo
+- Help in performance optimization.
+- Stop unnecessary re-rendering
+
+### useMemo
+- `useMemo` is not a hook
+- Like HOC
+- component caching
+```js
+export default React.memo(Title);  // Title is a component
+```
+- Function is a object (reference) type, so in prop it would cause component re-render, even if we use memo.
+   - **Solution**: useCallback
+
+### useCallback
+- Has dependency array like useEffect
+```js
+const incByOne = useCallback(() => {
+   setCount((prev) => prev + 1);
+}, []);
+```
