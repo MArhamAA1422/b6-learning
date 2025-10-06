@@ -36,3 +36,27 @@ Hooks are defined using JavaScript functions, but they represent a special type 
 
 - **Only call Hooks at the top level** – Don’t call Hooks inside loops, conditions, or nested functions. Instead, always use Hooks at the top level of your React function, before any early returns.
 - **Only call Hooks from React functions** – Don’t call Hooks from regular JavaScript functions.
+
+
+## Debugging and Troubleshooting
+### Understanding Compiler Behavior
+React Compiler is designed to handle code that follows the **Rules of React**. When it encounters code that might break these rules, it safely **skips optimization** rather than risk changing your app’s behavior.
+
+Most of the time, if you encounter an issue with React Compiler, it’s a **runtime issue**.
+
+### Common Breaking Patterns
+One of the main ways React Compiler can break your app is if your **code was written to rely on memoization for correctness**. This means your app depends on specific values being memoized to work properly. Since the compiler may **memoize differently** than your manual approach, this can lead to unexpected behavior like effects over-firing, infinite loops, or missing updates.
+
+Common scenarios where this occurs:
+- *Effects that rely on referential equality* - When effects depend on objects or arrays maintaining the same reference across renders
+- *Dependency arrays that need stable references* - When unstable dependencies cause effects to fire too often or create infinite loops
+- *Conditional logic based on reference checks* - When code uses referential equality checks for caching or optimization
+
+### Runtime Issues Solutions
+- Temporarily Disable Compilation: use "use no memo"
+```jsx
+function ProblemComp() {
+   "use no memo";
+   //
+}
+```
