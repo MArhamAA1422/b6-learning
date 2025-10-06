@@ -361,3 +361,12 @@ export const SampleContext = createContext();
 - Hooks are optional & classes won't be removed from React
 - Hooks can't be used inside class component
 - Hooks just provide a more direct API to the already known react concepts
+- Functions as stateful components
+
+## useState
+- setState re-renders the component, but only the **return part**, not whole component stuffs.
+- we can implement our own useState function
+- For object state, we should provide full update, useState doesn't merge updates individually
+   - Solution: use object spread operator: `...obj,` then write the individual update
+- How to use Previous state (React uses batch update for better UI)
+   - **use callback function with prevState** as parameter
