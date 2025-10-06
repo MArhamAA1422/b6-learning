@@ -403,9 +403,9 @@ useEffect(() => {
 ## useCallback & useMemo
 - Help in performance optimization.
 - Stop unnecessary re-rendering
-
-### useMemo
 - `useMemo` is not a hook
+
+### Memo
 - Like HOC
 - component caching
 ```js
@@ -416,8 +416,21 @@ export default React.memo(Title);  // Title is a component
 
 ### useCallback
 - Has dependency array like useEffect
+- Memoize the function ref, cache function body
+- Memoize a **callback function** and only forgets while the dependencies of the callback function get changed
 ```js
 const incByOne = useCallback(() => {
    setCount((prev) => prev + 1);
 }, []);
+```
+
+### useMemo
+- Memoize **function return value**
+- Has dependency array
+- Forgets while the dependencies of the function get changed
+```js
+const isEvenOrOdd = useMemo(() => {
+   for (let i = 0; i < 1000000000; i++) {}  // costly operations
+   return count1 % 2 == 0;
+}, [count1]);  // count1 is outside the function
 ```
