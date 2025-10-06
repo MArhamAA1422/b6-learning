@@ -180,6 +180,8 @@ class Clock extends React.Component {
 #### componentWillUnmount()
 - Before DOM leaves, this will be called.
 
+#### componentDidUpdate(prevProps)
+
 #### shouldComponentUpdate(nextProps, nextState)
 - manually control re-rendering
 - returns true/false based on conditions, true means re-render component
@@ -335,3 +337,27 @@ export const SampleContext = createContext();
 - **useContext()**
 - `const context = useContext(SampleContext);`
 - No need of **Provider**, **Consumer** use
+
+## Modern React (Intro to Hooks)
+## Historical Context
+- May 29, 2013: released react v0.3.0
+   - No, JS class support
+   - React.createClass({}), render() in object prop
+- Jan 17, 2015: ES6 class declarations
+- Jan 27, 2015: React Native Classes v0.13.0
+   - extends React.Component
+- Feb 16, 2019: React Hooks v16.8 (modern react)
+
+## Issues Before Hooks and Solutions
+- complex state: **useState**
+- lifecycle methods (side effect, data from server): **useEffect**
+- sharing same logic: **customHook**
+- duplicate code: **useEffect**
+
+#### React simplified stuffs with *Simple JS Function* instead of OOP
+#### Wordpress first introduced HOOKS
+
+## Some points of Hooks
+- Hooks are optional & classes won't be removed from React
+- Hooks can't be used inside class component
+- Hooks just provide a more direct API to the already known react concepts
