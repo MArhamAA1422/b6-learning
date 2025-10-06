@@ -1,5 +1,6 @@
 ## Intro
 React is famous for amazing Developer Experience.
+- Render/re-render UI & React to user io
 - UI handling, huge project maintain: hard for Vanilla JS or jQuery
 
 ```js
@@ -370,3 +371,15 @@ export const SampleContext = createContext();
    - Solution: use object spread operator: `...obj,` then write the individual update
 - How to use Previous state (React uses batch update for better UI)
    - **use callback function with prevState** as parameter
+
+## useEffect
+- Working with side effects
+- React's main duty: Render JSX, Manage State & Props, React to Events/Inputs, Evaluating State/Props Change
+- Anything other than that: side effects
+   - fetching data from any API
+   - updating the DOM
+   - setting any subscriptions/timers
+- Without dependency array, useEffect will run for each re-render
+- Life cycle method can be written once, but useEffect can be multiple in same component
+- Empty dependency array ([]) == componentDidMount
+
