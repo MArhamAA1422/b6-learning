@@ -449,3 +449,16 @@ useEffect(() => {
 
 <input ref={inputRef} />
 ```
+
+## forwardRef
+Need ref of something out of the component.
+```jsx
+<Input ref={inputRef} text="some" />
+```
+```jsx
+function Input({text}, parRef) {
+   return <input ref={parRef} text={text} />
+}
+const forwardedInput = React.forwardRef(Input);  // call with "ref" as parameter
+export default forwardedInput;
+```
