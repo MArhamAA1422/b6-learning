@@ -438,4 +438,14 @@ const isEvenOrOdd = useMemo(() => {
 ```
 
 ## useRef
-Take control on DOM element.
+Take control on DOM (or any React) element. `someRef.current`
+
+```jsx
+const inputRef = useRef(null);
+useEffect(() => {
+   // component did load
+   console.log(inputRef.current);
+}, []);
+
+<input ref={inputRef} />
+```
