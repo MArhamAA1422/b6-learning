@@ -548,3 +548,37 @@ function ComponentA() {
 - Inline Style
    - Must provide as a object
    - `<Element style={{ fontSize: 16px }} />`
+- Styled Component package
+   - CSS as react component
+   - npm install
+   - naming convention: `Container.styles.js`
+   ```js
+   import styled from 'styled-components';
+   const Container = styled.div`
+      display: flex;
+   `;
+   export default Container;
+   ```
+   - send props: `<Tag color='black'>EXCLUSIVE</Tag>`
+   ```js
+   const Tag = styled.span`
+      display: flex;
+      color: ${(props) => props.color}
+   `;
+   ```
+   - Nested CSS (parent to child)
+   ```js
+   export const ButtonContainer = styled.div`
+      margin-top: 10px;
+      & a {
+         display: inline-block;
+      }
+   `;
+   ```
+   - Styling custom component
+   ```js
+   import Title from '../Title';
+   export const StyledTitle = style(Title)`
+      color: white;
+   `;
+   ```
