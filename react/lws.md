@@ -438,7 +438,10 @@ const isEvenOrOdd = useMemo(() => {
 ```
 
 ## useRef
-Take control on DOM (or any React) element. `someRef.current`
+- Take control on DOM (or any React) element. `someRef.current`
+- Stays in memory even if component does re-render
+- Returns an object
+- We can update useRef using current: `eleRef.current = updateValue`
 
 ```jsx
 const inputRef = useRef(null);
