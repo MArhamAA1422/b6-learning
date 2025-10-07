@@ -371,9 +371,11 @@ export const SampleContext = createContext();
    - Solution: use object spread operator: `...obj,` then write the individual update
 - How to use Previous state (React uses batch update for better UI)
    - **use callback function with prevState** as parameter
+- Whenever a component’s state or props change, React schedules a render.
 
 ## useEffect
 - Working with side effects
+- Starts working after the UI loaded: rendering > VDOM > DOM > useEffect
 - React's main duty: Render JSX, Manage State & Props, React to Events/Inputs, Evaluating State/Props Change
 - Anything other than that: side effects
    - fetching data from any API
@@ -434,3 +436,6 @@ const isEvenOrOdd = useMemo(() => {
    return count1 % 2 == 0;
 }, [count1]);  // count1 is outside the function
 ```
+
+## useRef
+Take control on DOM element.

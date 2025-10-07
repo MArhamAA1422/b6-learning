@@ -46,6 +46,16 @@ function App() {
 
 - Svelte → Compiles at build time (no virtual DOM), very fast but newer ecosystem.
 
+## Two Key Phases in React Internals
+
+- Render Phase (Pure, can be paused or aborted)
+
+→ React just calculates what to show.
+
+- Commit Phase (Mutates the DOM, cannot be paused)
+
+→ React applies the changes and runs useLayoutEffect, then useEffect.
+
 ## JSX
 JSX is a syntax extension for JavaScript that looks like HTML but actually compiles to **React function calls**.
 
