@@ -530,3 +530,7 @@ function ComponentA() {
 - State data type: non-primitive
 - complex logic
 - scope of state is GLOBAL
+
+## Custom Hooks
+- Typical JS function, name stars with 'use' (so that React could identify it as a hook)
+- Simplistic way of **logic share** among function components
