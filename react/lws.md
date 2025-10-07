@@ -465,3 +465,62 @@ function Input({text}, parRef) {
 const forwardedInput = React.forwardRef(Input);  // call with "ref" as parameter
 export default forwardedInput;
 ```
+
+## useReducer
+- A hook that is used for **state management** purpose.
+- useState() is built based on useReducer()
+- useReducer is the alternative of useState
+- `Array.prototype.reduce()`
+```js
+useReducer(reducer, initialValue)  // same as array.reduce()
+newState = reducer(currentState, action)
+```
+- returns a tuple - `[newState, dispatch]`
+- `dispatch` a function that provides action
+
+```js
+const initialState = 0;
+const reducer = (state, action) => {
+   switch(action) {
+      case 'increment':
+         return state+1;
+      case 'decrement':
+         return state-1;
+      default:
+         return state;
+   }
+}
+
+function CounterComp() {
+   const [count, dispatch] = useReducer(reducer, initialState);
+   return (
+      <button onClick={() => dispatch('increment')} />
+   );
+}
+```
+
+- If we need to provide some more information (multiple complex operations, multiple states), we can set **action and state as OBJECT**
+
+ ## useReducer in global context
+ - we can use context API
+ ```jsx
+export const counterContext = React.createContext();
+function GrandParentComp() {
+   const [count, dispatch] = useReducer(reducer, initialState);
+   return (
+      <counterContext.Provider value={{ countDispatch: dispatch }}>
+         <ComponentA />
+      </ counterContext.Provider>
+   );
+}
+```
+
+```jsx
+import { counterContext }
+function ComponentA() {
+   const countContext = useContext(counterContext);
+   return (
+      <button onClick={() => countContext.countDispatch('increment')}>
+   );
+}
+```
