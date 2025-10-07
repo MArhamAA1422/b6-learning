@@ -524,3 +524,9 @@ function ComponentA() {
    );
 }
 ```
+
+## When useReducer instead of useState
+- Multiple state changes are related
+- State data type: non-primitive
+- complex logic
+- scope of state is GLOBAL
