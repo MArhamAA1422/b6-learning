@@ -534,3 +534,17 @@ function ComponentA() {
 ## Custom Hooks
 - Typical JS function, name stars with 'use' (so that React could identify it as a hook)
 - Simplistic way of **logic share** among function components
+
+## Styling React Components
+- `import '../assets/css/src.css'`, global CSS
+- CSS Module
+   - specific for a particular component, React won't apply it to global scope
+   - name: `CompName.module.css`, then `import styles '../assets/css/Logo.module.css'`.
+   - Now, **styles** is a JS object.
+   - `<Element className={styles.logo} />`
+   - Multiple elements push
+      - Using template string: `className={`${style.prop} border`}`
+      - Using array: `className={[style.prop, 'border'].join(' ')}`
+- Inline Style
+   - Must provide as a object
+   - `<Element style={{ fontSize: 16px }} />`
