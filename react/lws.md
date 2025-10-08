@@ -646,3 +646,21 @@ function goBack() {
    navigate(-2);  // go 2 page back
 }
 ```
+
+## Private Route
+
+### v5
+- custom hook: useAuth(), custom component: PrivateRout
+```jsx
+<PrivateRoute path="/dash" exact>
+   <Dash>
+</PrivateRoute>
+```
+```js
+function PrivateRoute({children, ...rest}) {
+   const auth = useAuth();
+   return <Route {...rest}> {auth ? children : <Redirect to="/login" />} </Route>
+}
+```
+
+### v6
