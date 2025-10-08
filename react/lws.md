@@ -617,9 +617,32 @@ function ComponentA() {
 ```
 
 ## Router Hooks
-#### useParams
+- useParams
 ```jsx
 const parameters = useParams();  // returns a object
 ```
-#### useHistory
-#### useLocation
+- useHistory
+- useLocation
+
+## React Router DOM v6
+- no `<Switch>`, instead `<Routes>`
+- `<Route path="/home" element={<Hello />} />`, here "element" represent a JSX element, (no child inside)
+- no "exact"
+- no `<Redirect>`, instead `<Navigate>`
+```jsx
+<Route path="/" element={<Navigate to="/hello" />} />
+```
+- `<NavLink to="/hello" className={(navInfo) => navInfo.isActive ? classes.active : ""} />`
+- Route must reside inside of Routes
+- Nested Routing: `<Outlet />`
+- no useHistory, instead useNavigate
+```js
+const navigate = useNavigate();
+function goBack() {
+   navigate("/posts", {
+      replace: true,  // normally, pages pushed into a stack, now URL will'be completely replaced
+   });
+
+   navigate(-2);  // go 2 page back
+}
+```
