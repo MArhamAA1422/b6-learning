@@ -582,3 +582,44 @@ function ComponentA() {
       color: white;
    `;
    ```
+
+## React Router
+- `npm i react-router-dom`
+- `BrowserRouter` as `Router`
+- `<Route exact path="/" component={Home} />`
+- `<Link to='/home'>`
+- Every routing/navigation should be inside `<Router>` in React
+- A special version of `<LinK>` that will add styling attributes to the rendered element when it matched the curren URL: `<NavLink>`
+- `<Switch> <Route /> </Switch>`
+
+### Dynamic Link
+- Using `/:`, route parameter
+- `<Route exact path="/posts/:category/:topic" component={Posts} />`
+- We can get the route path in component **props**.
+
+### Passing Props
+```jsx
+<Route exact path="/service">
+   <Services batch="6" />
+</Route>
+```
+- Also we can use render prop pattern
+```jsx
+<Route exact path="/home" render={() => <Home />} />
+```
+
+### Redirection
+- If user is logged in, redirect to home page.
+```jsx
+<Route exact path="/login">
+   {isLoggedIn ? <Redirect to="/dashboard" /> : <Home />}
+</Route>
+```
+
+## Router Hooks
+#### useParams
+```jsx
+const parameters = useParams();  // returns a object
+```
+#### useHistory
+#### useLocation
