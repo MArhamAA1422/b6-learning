@@ -651,16 +651,22 @@ function goBack() {
 
 ### v5
 - custom hook: useAuth(), custom component: PrivateRout
-```jsx
-<PrivateRoute path="/dash" exact>
-   <Dash>
-</PrivateRoute>
-```
-```js
-function PrivateRoute({children, ...rest}) {
-   const auth = useAuth();
-   return <Route {...rest}> {auth ? children : <Redirect to="/login" />} </Route>
-}
-```
 
 ### v6
+Using Nested component concept:
+```jsx
+<Routes>
+   <Route path="/*" element={<PrivateOutlet />} >
+      <Route path="dashboard" element={<Dashboard />} />
+      <Route path="dashboard2" element={<Dashboard2 />} />
+      <Route path="dashboard3" element={<Dashboard3 />} />
+   </Route>
+</Routes>
+```
+```js
+import { Outlet } from 'react-router-dom';
+function PrivateOutlet({children}) {
+   const auth = useAuth();
+   return auth ? <Outlet /> : <Navigate to="/login" />
+}
+```
