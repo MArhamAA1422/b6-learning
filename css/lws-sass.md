@@ -143,3 +143,22 @@ $sizes: 32px, 48px, 72px;
 ```
 
 #### a-b == a_b in naming
+
+## Function
+```css
+@function sum($numbers...) {
+   $sum: 0;
+   @each $number in $numbers {
+      $sum: $sum + $number;
+   }
+   @return $sum;
+}
+
+.micro {
+   width: sum(50px, 50px, 100px);
+}
+```
+
+### Built-in Functions
+lighten(), darken(), string, numeric, list, map, selector, introspection, color
+
