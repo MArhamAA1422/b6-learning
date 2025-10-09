@@ -664,8 +664,8 @@ Using Nested component concept:
 </Routes>
 ```
 ```js
-import { Outlet } from 'react-router-dom';
-function PrivateOutlet({children}) {
+import { Outlet, Navigate } from 'react-router-dom';
+function PrivateOutlet() {
    const auth = useAuth();
    return auth ? <Outlet /> : <Navigate to="/login" />
 }
