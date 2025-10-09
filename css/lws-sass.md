@@ -8,6 +8,10 @@
 - SAAS is a CSS pre-processor, **compiled into CSS**
 - `.sass`: indented like python, `.scss`: like normal CSS
 
+## Installation
+- npm install
+- VS code "Live SASS Compiler", watch
+
 ## Variables
 - `$varName: value;`
 ```css
@@ -131,7 +135,7 @@ body {
 }
 ```
 
-- Loop, Interpolation
+- Loop, Interpolation (`#{}`)
 ```css
 $sizes: 32px, 48px, 72px;
 
@@ -162,3 +166,15 @@ $sizes: 32px, 48px, 72px;
 ### Built-in Functions
 lighten(), darken(), string, numeric, list, map, selector, introspection, color
 
+## Extend
+Lets you share a set of CSS properties from one selector to another.
+
+```css
+.button-basic {
+   /* */
+}
+
+.button-report {
+   @extend .button-basic;
+}
+```
