@@ -670,3 +670,15 @@ function PrivateOutlet() {
    return auth ? <Outlet /> : <Navigate to="/login" />
 }
 ```
+
+## React 18
+- Batch update re-render
+   - previously **no batch update in callback**, from 18, any stat updates will be auto batched
+- Force individual re-render: `flushSync`
+- Transition: we can tell which update in important which is not
+- Suspense and SSR
+   - Server Side Rendering (get HTML, then JS, Hydrate)
+   - Streaming HTML (not all at once, piece by piece)
+   - Suspense (Loading state, rendered in server)
+   - Suspend heavy component, selective hydration (light component in UI with interactivity)
+   - Prioritised Hydration: user clicked any incomplete component
