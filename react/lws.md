@@ -712,3 +712,53 @@ setTitle(clonedTitle);
 // export default React.memo(Child);
 const memoizedName = useMemo(() => name, []);
 ```
+
+## 4 ways to fetch data from API in React
+### fetch API
+```js
+const [q, setQ] = useState(null);
+useEffect(function() {
+   const fetchQuote = async function() {
+      const res = await fetch(URL);
+      const data = await res.json();
+      setQ(data);
+   }
+   fetchQuote();
+}, []);
+```
+
+### axios
+Handle **promise internally** and returns the data (JSON) directly.
+
+```js
+useEffect(function() {
+   const fetchQuote = async function() {
+      const res = await axios.get(URL);
+      setQ(res.data);
+   }
+   fetchQuote();
+}, []);
+```
+
+### swr
+- Until data, DOM is null. Manual work is chaotic here.
+- "swr" helps to manage data with caching and other benefits.
+- Has own hook
+- No hassle in "loading data" thinking.
+
+```js
+const fetcher = async (...args) => {
+   const res = await fetch(...args);
+   const data = await res.json();
+   return data;
+}
+
+const { data, error } = useSWR(URL, fetcher, {
+   suspense: true,  // React 18 feature
+});
+```
+
+### react-query
+- Solved props drilling issue.
+- `import { QueryClientProvider, QueryClient } from 'react-query';`
+- `const {data} = useQuery("quote", () => getQuote());`
