@@ -682,3 +682,33 @@ function PrivateOutlet() {
    - Suspense (Loading state, rendered in server)
    - Suspend heavy component, selective hydration (light component in UI with interactivity)
    - Prioritised Hydration: user clicked any incomplete component
+
+## React Mistakes to Avoid
+- Component Name should start with uppercase letter
+- Dependency in previous state, use callback in setState
+- In React: `onClick={fn()}`, will call "fn" immediately with rendering, provide **function reference**.
+- If we would like to have updated value/state: use **useEffect**
+- Use dependency array always.
+- Provide the reference to setState, immutable state update
+```js
+const [title, setTitle] = useState(null);
+title.a = "b";
+setTitle(title);  // won't work!
+```
+```js
+const clonedTitle = {
+   ...title,
+   meta: {
+      ...title.meta;  // object inside object, so, we should make reference, otherwise previous ref will be copied
+   }
+}
+update(clonedTitle);
+setTitle(clonedTitle);
+```
+
+- Don't put array index in **React Key**.
+- Optimize in proper way, don't over-optimize.
+```js
+// export default React.memo(Child);
+const memoizedName = useMemo(() => name, []);
+```
