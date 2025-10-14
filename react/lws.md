@@ -774,3 +774,66 @@ const { data, error } = useSWR(URL, fetcher, {
 - no forwardRef in 
 - asset loading
 - Context.Provider => Context
+
+### use hook for data fetching
+`use, suspense`, if we need to resolve a promise we use suspense feature from react.
+
+```jsx
+// joke item takes time to return data, until then use "fallback"
+<Suspense fallback={<h1>Loading...</h1>}>
+   <JokeItem />
+</Suspense>
+```
+
+#### use
+- can use a promise or a context
+```jsx
+const joke = use(fetchJokes());
+```
+
+#### use hook with promise
+- `use(promise())`
+- we can pass promise as props
+
+#### use hook with context
+`use(ThemeContext)` instead of `useContext(ThemeContext)`
+
+### Form Action
+- "name" attribute is must in form elements for "action"
+```jsx
+const formAction = async function(formData) {
+   await new Promise((resolve) => {
+      setTimeout(() => {
+         resolve();
+      }, 1000);
+   });
+
+   // name: "title", name: "body" in HTML attribute
+   addPost({ title: formData.get('title'), body: formData.get('body')});
+}
+
+return (
+   <form action={formAction}/>
+);
+```
+
+### useFormStatus()
+- disable a button, like in form submit, disable "submit", so we need form status
+- works if parent has a form for any children
+- in react-dom
+```jsx
+const { pending } = useFormStatus();  // true or false
+
+<button disabled={pending} />
+```
+
+### useFormState()
+- current form state, kinda like useState
+```jsx
+const businessLogic = (prevState, formData) => {
+   ///
+}
+
+const initialState = null;
+const [message, formAction] = useFormState(businessLogic, initialState);
+```
