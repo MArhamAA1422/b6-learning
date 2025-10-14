@@ -765,13 +765,14 @@ const { data, error } = useSWR(URL, fetcher, {
 
 ## React 19
 - React Compiler
+   - early compilation, before going to browser
 - Auto Memoization
    - no useMemo(), useCallback() needed
 - use() hook
 - Form Action
 - client-server support
 - useOptimistic()
-- no forwardRef in 
+- no forwardRef needed to pass ref as prop
 - asset loading
 - Context.Provider => Context
 
@@ -836,4 +837,19 @@ const businessLogic = (prevState, formData) => {
 
 const initialState = null;
 const [message, formAction] = useFormState(businessLogic, initialState);
+```
+
+### useOptimistic
+- show something (dummy or actual data) until full resolved
+```jsx
+const [optimisticMessages, addOptimisticMessage] = useOptimistic(
+   messages,
+   (state, newMessage) => [
+      ...state,
+      {
+         text: newMessage,
+         sending: true,
+      }
+   ]
+)
 ```
