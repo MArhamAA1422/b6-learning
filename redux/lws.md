@@ -8,3 +8,9 @@
 Redux is a flexible **state container** for JS apps that manages our application state **separately**
 
 ## How Redux Store works
+- Button clicked: **action**, Event: **dispatch**, Resolve/Response: **reducer()**
+```js
+reducer( state, action ) {
+   return newState;  // not updated state, immutable action
+}
+```
