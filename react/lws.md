@@ -762,3 +762,15 @@ const { data, error } = useSWR(URL, fetcher, {
 - Solved props drilling issue.
 - `import { QueryClientProvider, QueryClient } from 'react-query';`
 - `const {data} = useQuery("quote", () => getQuote());`
+
+## React 19
+- React Compiler
+- Auto Memoization
+   - no useMemo(), useCallback() needed
+- use() hook
+- Form Action
+- client-server support
+- useOptimistic()
+- no forwardRef in 
+- asset loading
+- Context.Provider => Context
