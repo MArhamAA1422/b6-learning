@@ -329,6 +329,7 @@ Flexibility	| Limited to objects/classes	| Very flexible
 Some points:
 - `type` is better than `interface`, no declaration merging, 99.9% => `type`
 - `interface` always defines a object
+- Naming: **TSomeType**, **ISomeInterface**
 
 ## Type Assertion
 - Type Assertion tells TypeScript: “Trust me, I know the type better than you.”
