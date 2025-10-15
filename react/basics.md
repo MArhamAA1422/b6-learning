@@ -56,6 +56,10 @@ function App() {
 
 → React applies the changes and runs useLayoutEffect, then useEffect.
 
+#### To reuse JSX markup, create a component
+#### To reuse logic without React hooks, create a utility function (lib/utils.ts)
+#### To reuse logic with React hooks, create a custom hook
+
 ## JSX
 JSX is a syntax extension for JavaScript that looks like HTML but actually compiles to **React function calls**.
 
@@ -125,9 +129,9 @@ root.render(element);
 - Supports automatic batching → multiple state updates in one go.
 - Future-proof (all new features rely on it).
 
-#### In Short
+#### render() vs createRoot()
 - ReactDOM.render() → old, synchronous, React ≤17.
-- ReactDOM.createRoot() → new, concurrent, React 18+.
+- ReactDOM.createRoot() → new, **concurrent**, React 18+.
 
 ## Components in React
 Think of components as reusable pieces of UI (like Lego blocks).
@@ -242,9 +246,11 @@ If you pass wrong type → React gives a **warning in console**, not an error.
 #### props = external data, state = internal data
 
 ## React Fragments
-A Fragment lets you group multiple elements without adding an extra DOM node (like a `<div>`).
+- A Fragment lets you group multiple elements without adding an extra DOM node (like a `<div>`).
 
-Use Fragments for cleaner, semantic, and optimized DOM.
+- Use Fragments for cleaner, semantic, and optimized DOM.
+
+- `<React.Fragment>` is recommended over `<>` and `<div>`, as we can pass props, key.
 
 ## Controlled Input
 A controlled input is an `<input>, <textarea>, or <select>` element whose value is controlled by **React state**. The source of truth for the input’s value lives in React’s state. Whatever you type into the input updates the state, and then React **re-renders** with the updated value.
@@ -323,6 +329,9 @@ This avoids bugs if **multiple setStates** run quickly (since **state updates ar
 - Once updates are processed, React re-renders the component.
 - Virtual DOM compares old vs new → only the differences are applied to the real DOM.
 
+## Custom Hook
+
+
 ## Synthetic Events in React
 
 In React, events (like onClick, onChange, onSubmit) are wrapped inside a `SyntheticEvent object`.
@@ -337,5 +346,7 @@ In React, events (like onClick, onChange, onSubmit) are wrapped inside a `Synthe
 
    - Improve performance (by reusing event objects with pooling).
 
+
 ## Others
-- `onChange={setName("name")}`, setName("name") runs immediately during render, not on change.
+- `onChange={setName("name")}`, setName("name") runs immediately during render, not on change, so we can use `{(anySyntheticEventHere) => setName('name')}`
+- **useState** is called only once (first render), so, state initialization is one time, then update with **setState**
