@@ -562,7 +562,7 @@ For example: `Array<number>`
 
 ### What are Generics?
 Generics allow you to create components (functions, classes, etc.) that work with **any type**, while still enforcing **type safety**.
-Think of them as placeholders (<T>) for types.
+Think of them as placeholders (`<T>`) for types.
 
 - Without generics:
 ```js
@@ -570,7 +570,7 @@ function identity(arg: any): any {
   return arg;
 }
 ```
-  - Problem: Using any loses type information.
+  - Problem: Using *any* loses type information.
 
 - With generics:
 ```js
@@ -582,6 +582,8 @@ let num = identity<number>(42);   // T = number
 let str = identity("Hello");      // T = string (inferred)
 ```
   - Now the function is type-safe and reusable.
+  - We need to use `<T>` with function name or before parameters parenthesis.
+  - T means *type*
 
 ### Generic Functions
 
@@ -643,7 +645,7 @@ function greet<T extends Person>(person: T): void {
   console.log("Hello, " + person.name);
 }
 
-greet({ name: "app", age: 25 }); // ✅ works
+greet({ name: "app", age: 25 }); // works
 // greet({ age: 25 }); Error: must have `name`
 ```
 
