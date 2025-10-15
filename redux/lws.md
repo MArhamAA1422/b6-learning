@@ -4,6 +4,7 @@
 - Separate Store (for state, kinda DB)
    - Component can "subscribed to" that store and will be notified if state gets changed
 - Redux is suitable for big application, huge STATE
+- No props drilling, Redux handles re-rendering itself. **Debugging** one of the most important features of Redux.
 
 ## Installation
 - `npm i @reduxjs/toolkit react-redux`
@@ -70,4 +71,12 @@ export default store;
 <Provider store={store}>
    <App />
 </Provider>
+```
+
+- `App.jsx`
+```js
+const counters = useSelector((state) => state.counters);  // redux hook, counters from store
+
+const dispatch = useDispatch();
+dispatch(increment(onlyOneParam));  // increment action creator, increment() => returns an action, if multiple param is needed we can use object
 ```
