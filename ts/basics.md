@@ -81,6 +81,9 @@ let mySize: Size = Size.Medium;
 Use `const` to generate more optimized JS.
 
 ## Function
+
+Function Type: `(params) => void`
+
 ```ts
 function fn(v: number): number {
   return 0;
@@ -323,7 +326,9 @@ Extending	| Can extend other interfaces	| Can use intersection (&) to combine
 Declaration merging	| Supported (you can redeclare same interface and it merges)	| Not supported
 Flexibility	| Limited to objects/classes	| Very flexible
 
-`type` is better than `interface`, no declaration merging, 99.9% => `type`
+Some points:
+- `type` is better than `interface`, no declaration merging, 99.9% => `type`
+- `interface` always defines a object
 
 ## Type Assertion
 - Type Assertion tells TypeScript: “Trust me, I know the type better than you.”
