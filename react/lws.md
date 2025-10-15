@@ -363,6 +363,7 @@ export const SampleContext = createContext();
 - Hooks can't be used inside class component
 - Hooks just provide a more direct API to the already known react concepts
 - Functions as stateful components
+- Hooks are like "angta" to any component, this component has some life cycles, this hooks will be used then, hooks will handle the situations in need
 
 ## useState
 - setState re-renders the component, but only the **return part**, not whole component stuffs.
