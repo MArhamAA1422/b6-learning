@@ -80,3 +80,7 @@ const counters = useSelector((state) => state.counters);  // redux hook, counter
 const dispatch = useDispatch();
 dispatch(increment(onlyOneParam));  // increment action creator, increment() => returns an action, if multiple param is needed we can use object
 ```
+
+## Debugging
+- Redux DevTools (chrome extension)
+- Redux tab in browser dev tools
