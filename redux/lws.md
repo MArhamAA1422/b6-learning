@@ -84,3 +84,52 @@ dispatch(increment(onlyOneParam));  // increment action creator, increment() => 
 ## Debugging
 - Redux DevTools (chrome extension)
 - Redux tab in browser dev tools
+
+## Asynchronous Action (Redux Thunk)
+- Work flow
+   - dispatch from component
+   - before get into redux, there is a middleware
+   - middleware calls api, gets response, then make action
+   - finally, middleware sends this action to redux
+   - inside redux, stuffs are synchronous
+
+```js
+/* postsSlice.js */
+const initialState = {
+   posts: [],
+   isLoading: false,
+   isError: false,
+   error: null,
+};
+
+export const fetchPosts = createAsyncThunk('posts/fetchPosts', 
+   async () => {
+      const posts = await getPosts();  // getPosts is a function in postsAPI.js
+      return posts;
+   }
+);
+
+const postsSlice = createSlice({
+   name: 'posts',
+   initialState,
+   extraReducers: (builder) => {
+      builder.addCase(fetchPosts.pending, (state) => {
+         state.isError = false;
+         state.isLoading = true;
+      });
+
+      builder.addCase(fetchPosts.fulfilled, (state) => {
+         state.isLoading = false;
+         state.posts = action.payload;
+      });
+
+      builder.addCase(fetchPosts.rejected, (state, action) => {
+         state.isLoading = false;
+         state.isError = true;
+         state.error = action.error?.message;
+      });
+   }
+};
+
+export default postsSlice.reducer;
+```
