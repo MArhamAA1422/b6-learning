@@ -329,9 +329,6 @@ This avoids bugs if **multiple setStates** run quickly (since **state updates ar
 - Once updates are processed, React re-renders the component.
 - Virtual DOM compares old vs new → only the differences are applied to the real DOM.
 
-## Custom Hook
-
-
 ## Synthetic Events in React
 
 In React, events (like onClick, onChange, onSubmit) are wrapped inside a `SyntheticEvent object`.
@@ -350,3 +347,4 @@ In React, events (like onClick, onChange, onSubmit) are wrapped inside a `Synthe
 ## Others
 - `onChange={setName("name")}`, setName("name") runs immediately during render, not on change, so we can use `{(anySyntheticEventHere) => setName('name')}`
 - **useState** is called only once (first render), so, state initialization is one time, then update with **setState**
+- **useState(fn())** is bad, as in render the function will be called (but the return value won't be used), instead pass the ref, like **useState(fn)**
