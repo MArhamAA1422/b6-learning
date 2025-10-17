@@ -73,4 +73,31 @@ function App() {
 ```
 
 ### Compound Pattern
-A compound pattern can be referred to as **multiple components** that are combined together to serve a **common function**.
+A compound pattern can be referred to as **multiple components** that are combined together to serve a **common function**. Use wisely, not in all place.
+```jsx
+/* PostCard */
+function PostCard({ children, post}: PostCardProps) {
+   return (
+      <PostCardContext.Provider value={{post}}>
+         {children}
+      </PostCardContext.Provider>
+   );
+}
+
+PostCard.Title = function PostCardTitle() {
+   const { post } = usePostCartContext();
+   return <h1>{ post.title }</h1>
+}
+```
+
+```jsx
+/* App */
+function App() {
+   return (
+      <PostCard>
+         <PostCard.Title />
+         <PostCard.Content />
+      </PostCard>
+   );
+}
+```
