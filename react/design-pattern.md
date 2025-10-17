@@ -101,3 +101,8 @@ function App() {
    );
 }
 ```
+
+## Others
+- Use `enabled` boolean in props, to check if some code need to run, otherwise return in first place
+- For asynchronous code we can wrap the component with `Suspense`
+- Make custom types using TS
