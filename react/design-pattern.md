@@ -29,13 +29,6 @@ Inputs whose value is driven by state are controlled `value={state} + onChange`.
 #### Facade / Adapter-like wrappers around UI libraries
 Small wrapper components that adapt an external library component to your app’s props or styling system (common in shadCN or AntD wrappers).
 
-## shadCN ui/select
-This file defines a custom, styled Select component system — built on top of **Radix UI** (a low-level, accessible headless component library).
-
-Radix UI gives unstyled building blocks: `SelectPrimitive.Root`, shadCN adds other stuffs (such as styling).
-
-This file uses a **Compound Component Pattern** combined with a **Wrapper** (Adapter / Facade) Pattern.
-
 ## Why DP in React
 Some common challenges that a React developer faces are:
 - Creating reusable components
@@ -117,3 +110,15 @@ function App() {
    - For components, use **PascalCase** (like UserProfile.js)
    - For variables and functions, use **camelCase** (like getUserData())
    - And for constants, use **UPPERCASE_SNAKE_CASE** (like API_URL)
+
+## shadCN ui/select
+This file defines a custom, styled Select component system — built on top of **Radix UI** (a low-level, accessible headless component library).
+
+Radix UI gives unstyled building blocks: `SelectPrimitive.Root`, shadCN adds other stuffs (such as styling).
+
+This file uses a **Compound Component Pattern** combined with a **Wrapper** (Adapter / Facade) Pattern.
+
+## AntD Form
+AntD Form = "Styled + Contextualized adapter for rc-field-form", rc-field-form = a lower-level React library created by the Ant team
+
+This file uses: Adapter/wrapper, Context provider, Compound component, ForwardRef/imperative handle, Provider Composition patterns.
