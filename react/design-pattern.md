@@ -31,6 +31,19 @@ Inputs whose value is driven by state are controlled `value={state} + onChange`.
 #### Facade / Adapter-like wrappers around UI libraries
 Small wrapper components that adapt an external library component to your app’s props or styling system (common in shadCN or AntD wrappers).
 
+#### Adapter
+Man in the middle between two incompatible interfaces to work together. Adapter lies in between the interfaces. It acts as a bridge between existing code (old interface) and new code (new interface).
+
+#### Wrapper Pattern
+
+The term "wrapper" just means an object or function that wraps another object to modify or extend its behavior.
+
+So a wrapper can:
+- Adapt an interface (→ Adapter Pattern)
+- Add extra behavior (→ Decorator Pattern)
+- Restrict or simplify access (→ Facade Pattern)
+- Control object creation (→ Proxy Pattern)
+
 ## Why DP in React
 Some common challenges that a React developer faces are:
 - Creating reusable components
