@@ -11,6 +11,8 @@ Small components that only render UI and receive props (presentational). Larger 
 #### Compound Components
 Instead of just having a bunch of separate components, you can **group them together in a parent component** to make things way more intuitive and user-friendly. Stuff like Accordions, Tabs, and Dropdowns can get pretty complicated in a web app.
 
+ The creation of components that work closely and coherently together. In this pattern, a parent component can encapsulate multiple child components, enabling seamless communication and coordinated interaction among them.
+
 #### Context/Provider Pattern
 Used to avoid prop drilling.
 
@@ -101,16 +103,6 @@ function App() {
 }
 ```
 
-## Others
-- Use `enabled` boolean in props, to check if some code need to run, otherwise return in first place
-- For asynchronous code we can wrap the component with `Suspense`
-- Make custom types using TS
-- `const ProductDetails = React.lazy(() => import('./ProductDetails'))`, you can lazily load components when you need them, making your app faster and more efficient.
-- Naming Conventions
-   - For components, use **PascalCase** (like UserProfile.js)
-   - For variables and functions, use **camelCase** (like getUserData())
-   - And for constants, use **UPPERCASE_SNAKE_CASE** (like API_URL)
-
 ## shadCN ui/select
 This file defines a custom, styled Select component system — built on top of **Radix UI** (a low-level, accessible headless component library).
 
@@ -122,3 +114,21 @@ This file uses a **Compound Component Pattern** combined with a **Wrapper** (Ada
 AntD Form = "Styled + Contextualized adapter for rc-field-form", rc-field-form = a lower-level React library created by the Ant team
 
 This file uses: Adapter/wrapper, Context provider, Compound component, ForwardRef/imperative handle, Provider Composition patterns.
+
+## Other Patterns
+#### Extensible Styles Pattern
+For example, a button component with extensible styles that allows changing its color and size by means of props.
+#### Control Props Pattern
+The Control Props pattern is a technique in React that allows a component to control its internal state through props provided by the parent component.
+
+## Others
+- Use `enabled` boolean in props, to check if some code need to run, otherwise return in first place
+- For asynchronous code we can wrap the component with `Suspense`
+- Make custom types using TS
+- `const ProductDetails = React.lazy(() => import('./ProductDetails'))`, you can lazily load components when you need them, making your app faster and more efficient.
+- Naming Conventions
+   - For components, use **PascalCase** (like UserProfile.js)
+   - For variables and functions, use **camelCase** (like getUserData())
+   - And for constants, use **UPPERCASE_SNAKE_CASE** (like API_URL)
+- Among the most common examples of design patterns applied to React are **custom hooks, HOC**, and **prop-based rendering techniques**.
+- It is important to emphasize that these patterns not only focus on solving technical problems, but also prioritize code efficiency, readability and maintainability. By adopting standardized practices and well-defined concepts, development teams can collaborate more effectively and build robust and adaptable React applications for the long term.
