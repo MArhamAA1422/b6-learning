@@ -337,6 +337,8 @@ In React, events (like onClick, onChange, onSubmit) are wrapped inside a `Synthe
 
 - Provides the same interface as native events (event.target, event.preventDefault(), etc.).
 
+- If you need to use an event that is not included in this list, you can use the React.SyntheticEvent type, which is the base type for all events.
+
 - React does this to:
 
    - Ensure consistent behavior across browsers.
@@ -348,3 +350,9 @@ In React, events (like onClick, onChange, onSubmit) are wrapped inside a `Synthe
 - `onChange={setName("name")}`, setName("name") runs immediately during render, not on change, so we can use `{(anySyntheticEventHere) => setName('name')}`
 - **useState** is called only once (first render), so, state initialization is one time, then update with **setState**
 - **useState(fn())** is bad, as in render the function will be called (but the return value won't be used), instead pass the ref, like **useState(fn)**
+
+## Generalized type ReactTS
+- children
+  - `React.ReactNode`, a union of all the possible types that can be passed as children in JSX
+  - `React.ReactElement`, only JSX elements and not JavaScript primitives like strings
+- css style: `React.CSSProperties`
