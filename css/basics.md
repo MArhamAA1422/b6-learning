@@ -7,9 +7,11 @@ flex-flow: row wrap;
 
 ## flexbox justify-content
 - The `justify-content` property is used to align the flex items when they do not use all available space on the main-axis (horizontally).
+- Depends on flex-direction
 
 ## flexbox align-items
 - The `align-items` property is used to align the flex items when they do not use all available space on the cross-axis (vertically).
+- Depends on flex-direction
 
 ## flexbox flex
 - The `flex` property is a shorthand property for the `flex-grow, flex-shrink`, and `flex-basis `properties.
@@ -18,6 +20,12 @@ flex-flow: row wrap;
 flex: 0 0 200px;
 ```
 
+## flex: 1
+- `flex-grow:  1`
+- `flex-shrink: 1`
+- `flex-basis: 0`, default is `auto`
+- also, we can write: `flex-basis: 100%` same as `flex: 1`
+
 ## flexbox responsive
 ```css
 /* Responsive layout - makes a one column layout instead of a two-column layout */
@@ -25,6 +33,13 @@ flex: 0 0 200px;
   .flex-container {
     flex-direction: column;
   }
+}
+```
+
+## Overwrite parent
+```css
+.card:nth-child(2) {
+  align-self: flex-start;
 }
 ```
 
@@ -94,9 +109,7 @@ p { color: blue; } /* this one applies */
 - Universal selector * and inherited values (weakest).
 
 ### Best practice
-
 - Avoid `!important` unless really needed.
-
 - Structure your CSS with classes and IDs carefully to avoid conflicts.
 
 ## Transform
@@ -158,7 +171,7 @@ p { color: blue; } /* this one applies */
 
 ### Note
 - opacity: 0 still keeps the element in the layout (it’s just invisible).
-- Remove it entirely: use `display: none` or `visibility: hidden`
+- Remove it entirely: use `display: none` or `visibility: hidden` or JS removeChild
 
 ## px vs rem
 - **px** (pixels) → absolute unit.
@@ -167,22 +180,19 @@ p { color: blue; } /* this one applies */
 
 - **rem** (root em) → relative unit.
 
-  - 1rem = font size of the root element (<html>), normally `16px`.
+  - 1rem = font size of the root element (`<html>`), normally `16px`.
 
-- By default (user can change this though), most browsers set <html> `font-size = 16px`, so:
+- By default (user can change this though), most browsers set `<html>` `font-size = 16px`, so:
 
-```css
-1rem = 16px
-```
+##### 1rem = 16px
 
 ## Difference from em
-- em is relative to the parent element’s font size.
+- em is relative to the **parent element's** font size.
   - name came from the letter M in traditional typography
-
 - rem is relative to the root (html) font size, so **it’s more consistent**.
 
 ## Container query
-- Container queries are a modern CSS feature that let you style something based on the size of a parent element instead of the size of the entire viewport.
+- Container queries are a modern CSS feature that let you style something based on the **size of a parent elemen**t instead of the size of the entire viewport.
 - `@container`, similar to `@media`
 
 ## Position
@@ -190,8 +200,8 @@ p { color: blue; } /* this one applies */
 - relative (in normal flow)
   - left, right, top, right movement possible
 - absolute (not in normal flow)
-  - normally under `relative` parent
-  - If no ancestor is positioned, it’s relative to <html> (the page itself).
+  - normally under `relative` parent, works under `fixed`, `absolute` as well
+  - If no ancestor is positioned, it’s relative to `<html>` (the page itself).
 - fixed
   - navbar, sidebar
 - sticky
@@ -200,3 +210,7 @@ p { color: blue; } /* this one applies */
   - sticky headers
 - inherit, initial, unset
   - unset → behaves like inherit if parent has a value, else initial.
+
+#### absolute
+- kinda like the element has gone
+- doesn't affect other elements in page
