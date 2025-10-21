@@ -14,3 +14,19 @@ This concept is super important in React, especially for optimizing performance 
 Throttling ensures that a function is called **at most once during a specified time interval**, no matter how many times the event is triggered. Unlike debouncing, which waits until the action stops, throttling ensures that the function is executed at regular intervals while the action is still happening.
 
 While it’s useful to write your own debounce and throttle functions, you can also use the popular utility library `lodash`, which provides built-in implementations.
+
+## Keeping Components Pure
+
+A pure function:
+- Minds its own business. It does not change any objects or variables that **existed before** it was called.
+- Same inputs, same output. Given the same inputs, a pure function should always return the same result.
+
+## UI as a tree
+
+React uses trees to model the relationships between components and modules. A React render tree is a representation of the parent and child relationship between components.
+
+## Some Definitions
+**State**: In React, data that changes over time is called state.
+
+**Event handlers**: Event handlers are your own functions that will be triggered in response to user interactions. Built-in components like `<button>` only support built-in browser events like onClick.
+
