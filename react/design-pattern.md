@@ -11,10 +11,10 @@ Small components that only render UI and receive props (presentational). Larger 
 #### Compound Components
 Instead of just having a bunch of separate components, you can **group them together in a parent component** to make things way more intuitive and user-friendly. Stuff like Accordions, Tabs, and Dropdowns can get pretty complicated in a web app.
 
- The creation of components that work closely and coherently together. In this pattern, a parent component can encapsulate multiple child components, enabling seamless communication and coordinated interaction among them.
+The creation of components that work closely and coherently together. In this pattern, a parent component can encapsulate multiple child components, enabling seamless communication and coordinated interaction among them.
 
 #### Context/Provider Pattern
-Used to avoid prop drilling.
+Used to avoid props drilling.
 
 #### Custom Hooks
 Encapsulate stateful logic used by multiple components.
