@@ -26,7 +26,23 @@ A pure function:
 React uses trees to model the relationships between components and modules. A React render tree is a representation of the parent and child relationship between components.
 
 ## Some Definitions
-**State**: In React, data that changes over time is called state.
+- **State**: In React, data that changes over time is called state. **State as a Snapshot**
 
-**Event handlers**: Event handlers are your own functions that will be triggered in response to user interactions. Built-in components like `<button>` only support built-in browser events like onClick.
+- **Event handlers**: Event handlers are your **own functions** that will be triggered in response to user interactions. Built-in components like `<button>` only support built-in browser events like onClick.
+
+- **Batching**: React processes state updates after **event handlers** have finished running. This is called batching.
+
+## Queueing a Series of State Updates
+
+React waits until all code in the event handlers has run before processing your state updates. This is why the re-render only happens after all these setState() calls. This might remind you of a waiter taking an order at the restaurant.
+
+React does not batch across multiple intentional events like clicks—each click is handled separately. Rest assured that React only does batching when it’s generally safe to do. This ensures that, for example, if the first button click disables a form, the second click would not submit it again.
+
+- An updater function (e.g. n => n + 1) gets added to the queue.
+- Any other value (e.g. number 5) adds “replace with 5” to the queue, ignoring what’s already queued.
+
+In Strict Mode, React will run each updater function twice (but discard the second result) to help you find mistakes.
+
+### Naming Convention in Updater Function
+It’s common to name the updater function argument by the first letters of the corresponding state variable. Or, state name, or prevState.
 
