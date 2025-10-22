@@ -46,3 +46,9 @@ In Strict Mode, React will run each updater function twice (but discard the seco
 ### Naming Convention in Updater Function
 It’s common to name the updater function argument by the first letters of the corresponding state variable. Or, state name, or prevState.
 
+## Updating objects in state 
+
+State can hold any kind of JavaScript value, including objects. But you shouldn’t change objects and arrays that you hold in the React state directly. Instead, when you want to update an object and array, you need to create a new one (or make a copy of an existing one), and then update the state to use that copy. Usually, you will use the `... spread` syntax to copy objects and arrays that you want to change.
+
+If copying objects in code gets tedious, you can use a library like **immer** to reduce repetitive code: useImmer()
+
