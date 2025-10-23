@@ -125,3 +125,7 @@ Different React contexts don’t override each other. Each context that you make
 - Current account (even with multiple account for single user)
 - Routing
 - Managing state: Context is not limited to static values. If you pass a different value on the next render, React will update all the components reading it below!
+
+## Scaling up with reducer and context
+
+Reducers let you consolidate a component's state update logic. Context lets you pass information deep down to other components. You can combine reducers and context together to manage state of a complex screen.
