@@ -182,10 +182,36 @@ Following these principles will make your components more predictable:
 
 - Don’t read or write `ref.current` during rendering. If some information is needed during rendering, use state instead. **Since React doesn’t know when ref.current changes**.
 
-## Synchronizing with Effects
+### Synchronizing with Effects
 In development, React will immediately run and clean up your Effect one extra time. This ensures that you don’t forget to implement the cleanup function.
 
 Effects let you specify side effects that are caused by rendering itself, rather than by a particular event.
 
 ### Effect vs Event
 Sending a message in the chat is an event because it is directly caused by the user clicking a specific button. However, setting up a server connection is an Effect because it should happen no matter which interaction caused the component to appear.
+
+#### Once per app load
+If some logic must run once per app load rather than once per component mount, add a top-level variable to track whether it has already executed.
+
+### You might not need an effect
+- Avoid: redundant state and unnecessary Effect
+- Avoid: Resetting state on prop change in an Effect
+- Avoid: Adjusting state on prop change in an Effect
+- Avoid: Event-specific logic inside an Effect
+- Avoid: Chains of Effects that adjust the state solely to trigger each other
+- Avoid: Effects with logic that should only ever run once
+- Avoid: The onChange handler runs too late
+- Avoid: Passing data to the parent in an Effect
+- Avoid: Fetching without cleanup logic
+
+##### Subscribing to external stores from React components: useSyncExternalStor()
+
+### Some points
+- If you can calculate something during render, you don’t need an Effect.
+- To cache expensive calculations, add useMemo instead of useEffect.
+- To reset the state of an entire component tree, pass a different key to it.
+- To reset a particular bit of state in response to a prop change, set it during rendering.
+- Code that runs because a component was displayed should be in Effects, the rest should be in events.
+- If you need to update the state of several components, it’s better to do it during a single event.
+- Whenever you try to synchronize state variables in different components, consider lifting state up.
+- You can fetch data with Effects, but you need to implement cleanup to avoid race conditions.
