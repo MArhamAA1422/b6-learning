@@ -60,6 +60,19 @@ With React, you won't modify the UI from code directly. For example, you won't w
 
 React lets you override the default behavior, and force a component to reset its state by passing it a **different key**, like `<Chat key={email} />`. This tells React that if the recipient is different, it should be considered a different Chat component that needs to be **re-created from scratch** with the new data (and UI like inputs).
 
+## State as a Snapshot
+
+### Rendering takes a snapshot in time
+"Rendering" means that **React is calling your component**, which is a function. The JSX you return from that function is like a snapshot of the UI in time. **Its props, event handlers, and local variables were all calculated using its state at the time of the render**. Unlike a photograph or a movie frame, the UI "snapshot" you return is interactive. It includes logic like event handlers that specify what happens in response to inputs.
+
+When React re-renders a component:
+- React calls your function again.
+- Your function returns a new **JSX snapshot**.
+- React then updates the screen to match the snapshot your function returned.
+
+##### Variables and event handlers don’t “survive” re-renders. Every render has its own event handlers.
+##### Every render (and functions inside it) will always “see” the snapshot of the state that React gave to that render.
+
 ## Passing Data Deeply with Context
 
 Context lets a parent component provide data to the **entire tree below it**.
@@ -169,3 +182,10 @@ Following these principles will make your components more predictable:
 
 - Don’t read or write `ref.current` during rendering. If some information is needed during rendering, use state instead. **Since React doesn’t know when ref.current changes**.
 
+## Synchronizing with Effects
+In development, React will immediately run and clean up your Effect one extra time. This ensures that you don’t forget to implement the cleanup function.
+
+Effects let you specify side effects that are caused by rendering itself, rather than by a particular event.
+
+### Effect vs Event
+Sending a message in the chat is an event because it is directly caused by the user clicking a specific button. However, setting up a server connection is an Effect because it should happen no matter which interaction caused the component to appear.
