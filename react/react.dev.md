@@ -129,3 +129,43 @@ Different React contexts don’t override each other. Each context that you make
 ## Scaling up with reducer and context
 
 Reducers let you consolidate a component's state update logic. Context lets you pass information deep down to other components. You can combine reducers and context together to manage state of a complex screen.
+
+
+## Escape Hatches
+
+Some of your components may need to control and synchronize with systems outside of React. Escape hatches that let you **"step outside" React and connect to external systems**. Most of your application logic and data flow *should not rely* on these features.
+
+### Referencing values with refs
+
+When you want **a component to "remember" some information**, but you don’t want that information to trigger new renders, you can use a *ref*.
+
+Like state, refs are **retained by React between re-renders**. However, setting state re-renders a component. Changing a ref does not! You can access the current value of that ref through the `ref.current` property.
+
+```js
+let ref = useRef(0);  // Here ref points to a simple number
+function handleClick() {
+   ref.current = ref.current + 1;
+   alert('You clicked ' + ref.current + ' times!');
+}
+```
+
+A ref is like a secret pocket of your component that **React doesn't track**. For example, you can use refs to store timeout IDs, DOM elements, and other objects that don't impact the component's rendering output. Unlike state, ref is a plain JavaScript object with the current property that you can read and modify.
+
+You can think of it as a regular state variable without a setter. If you’re familiar with object-oriented programming, refs might remind you of instance fields—but instead of this.something you write somethingRef.current.
+
+#### When to use refs 
+Typically, you will use a ref when your component needs to "step outside" React and communicate with external APIs—often a browser API that won’t impact the appearance of the component. Here are a few of these rare situations:
+
+- Storing timeout IDs
+- Storing and manipulating DOM elements, which we cover on the next page
+- Storing other objects that aren't necessary to calculate the JSX.
+
+If your component needs to store some value, but it doesn't impact the rendering logic, choose refs.
+
+#### Best practices for refs
+Following these principles will make your components more predictable:
+
+- Treat refs as an escape hatch. Refs are useful when you work with external systems or browser APIs. If much of your application logic and data flow relies on refs, you might want to rethink your approach.
+
+- Don’t read or write `ref.current` during rendering. If some information is needed during rendering, use state instead. **Since React doesn’t know when ref.current changes**.
+

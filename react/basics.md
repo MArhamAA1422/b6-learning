@@ -73,6 +73,17 @@ is compiled to:
 const element = React.createElement("h1", null, "Hello");
 ```
 
+## Object (VDOM) equivalent
+```js
+element = {
+  type: 'h1',
+  props: {
+    children: 'hello',
+  },
+  key: null,
+}
+```
+
 So, JSX just makes writing UI easier and more readable.
 
 ### Embedding Expressions in JSX
@@ -132,6 +143,20 @@ root.render(element);
 #### render() vs createRoot()
 - ReactDOM.render() → old, synchronous, React ≤17.
 - ReactDOM.createRoot() → new, **concurrent**, React 18+.
+
+## ReactNode
+ReactNode is a broader TypeScript type that covers everything React can render:
+
+```js
+type ReactNode =
+  | ReactElement
+  | string
+  | number
+  | boolean
+  | null
+  | undefined
+  | ReactNode[]; // array of nodes
+```
 
 ## Components in React
 Think of components as reusable pieces of UI (like Lego blocks).

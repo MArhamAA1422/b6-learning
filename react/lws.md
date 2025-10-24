@@ -69,6 +69,7 @@ element = {
       tabIndex= 0,
       children: 'Hello World',
    },
+   key: null,
 }
 ```
 
