@@ -158,6 +158,32 @@ type ReactNode =
   | ReactNode[]; // array of nodes
 ```
 
+## LifeCycle (client)
+Includes Hooks, JSX
+
+Each component goes through three steps:
+- Initial Render (mount)
+  - initialization
+  - jsx => vdom => dom
+- Update (re-render)
+  - update (useState, useMemo)
+  - jsx => vdom => dom
+- Exit (unmount)
+  - releasing all values from memory (useState, useMemo)
+  - cleanup (**also between two render**)
+  - vdom => dom
+
+## LifeCycle (server)
+- **No Hooks**, returned JSX as HTML
+- function component
+  - can be async (can be used for data fetch)
+  - runs on server only
+- **component => (returns HTML) => React => Browser paint**
+- **Update**:
+  - function in server
+  - revalidatePath("/")  /* NextJS example */
+  - HTML => Browser paint
+
 ## Components in React
 Think of components as reusable pieces of UI (like Lego blocks).
 
