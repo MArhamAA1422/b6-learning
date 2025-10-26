@@ -176,6 +176,38 @@ nums.push(4);           // ✅
 
 ### In JavaScript, truthiness/falsiness is not about “content”, it’s about data type rules when values are converted to Boolean.
 
+## Loose Equality (==) Conversion Rules
+
+When == is used, JS tries to **convert operands to the same type** before comparison.
+
+- Same Type? → Compare directly
+- null & undefined → equal to each other, and only each other
+- Boolean → convert to number (true → 1, false → 0)
+- String ↔ Number → string converted to number
+- Object ↔ Primitive → object converted via .valueOf() or .toString()
+
+### Under the hood
+- false == '' // true ('' → 0)
+- false == [] // true ([] → '' → 0)
+- false == {} // false ({} → NaN)
+
+### Tricky ones
+- [] == ![]
+![] → false (because [] is truthy)
+[] == false
+→ [] becomes '' (to primitive)
+→ '' == false
+→ '' → 0, false → 0
+0 == 0 → true
+
+- [] == {}
+[].toString() → ''
+**{}.toString() → '[object Object]'**
+'' == '[object Object]' → false
+
+- ' \t\n' == 0
+Whitespace string converts to 0  // true
+
 ## switch
 - Strict comparison (===)
     - switch uses strict equality (no type coercion).
