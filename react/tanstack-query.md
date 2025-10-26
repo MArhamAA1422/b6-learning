@@ -3,6 +3,8 @@
 - Primarily known as react query. Manages fetching, validation, caching.
 - Powerful asynchronous state management, server-state utilities and data fetching.
 
+### React Query = best for REST/any API + cache handling.
+
 ## Features
 - Fetching data
 - **Caching responses**
@@ -87,3 +89,18 @@ function AddUser() {
   )
 }
 ```
+
+## Advanced Features
+- Dependent Queries: Fetch data only after another query succeeds.
+- Prefetching: Preload data before navigation.
+- Infinite Queries: Handle infinite scroll or pagination easily.
+- Query Invalidation: Manually refetch specific data.
+
+## When to Use React Query
+Use it when:
+- You frequently fetch data from a server.
+- You want caching, pagination, or background updates.
+- You want to avoid Redux boilerplate for server state.
+- You build apps that need reactive UI + async data.
+
+Avoid it when: All your data is local-only (e.g., small to-do list without server).
