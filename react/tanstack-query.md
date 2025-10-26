@@ -62,3 +62,28 @@ function Users() {
 - Refetch automatically when needed
 - Keep UI in sync with server
 
+## Sending data
+```js
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+
+function AddUser() {
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: (newUser) => fetch('/api/users', {
+      method: 'POST',
+      body: JSON.stringify(newUser),
+      headers: { 'Content-Type': 'application/json' }
+    }),
+    onSuccess: () => {
+      queryClient.invalidateQueries(['users']); // Refetch user list
+    }
+  });
+
+  return (
+    <button onClick={() => mutation.mutate({ name: 'ezyapp' })}>
+      Add User
+    </button>
+  )
+}
+```
