@@ -396,7 +396,6 @@ In React, events (like onClick, onChange, onSubmit) are wrapped inside a `Synthe
 
    - Improve performance (by reusing event objects with pooling).
 
-
 ## Others
 - `onChange={setName("name")}`, setName("name") runs immediately during render, not on change, so we can use `{(anySyntheticEventHere) => setName('name')}`
 - **useState** is called only once (first render), so, state initialization is one time, then update with **setState**
