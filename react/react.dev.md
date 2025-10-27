@@ -229,3 +229,6 @@ If some logic must run once per app load rather than once per component mount, a
 ### Object.is
 - React compares the **dependency (array) values** using the Object.is comparison. 
 - The only difference between Object.is() and === is in their treatment of **signed zeros and NaN** values. The === operator (and the == operator) treats the number values -0 and +0 as equal, but treats NaN as not equal to each other.
+
+### Lifecycle of reactive effects
+Effects have a different lifecycle from components. Components may mount, update, or unmount. An Effect can only do two things: **to start synchronizing something, and later to stop synchronizing it**.
