@@ -25,6 +25,11 @@ A pure function:
 
 React uses trees to model the relationships between components and modules. A React render tree is a representation of the parent and child relationship between components.
 
+## Requesting and serving UI has three steps
+- **Triggering** a render (delivering the guest’s order to the kitchen)
+- **Rendering** the component (preparing the order in the kitchen)
+- **Committing** to the DOM (placing the order on the table)
+
 ## Some Definitions
 - **State**: In React, data that changes over time is called state. **State as a Snapshot**
 
@@ -39,7 +44,7 @@ React waits until all code in the event handlers has run before processing your 
 React does not batch across multiple intentional events like clicks—each click is handled separately. Rest assured that React only does batching when it's generally safe to do. This ensures that, for example, if the first button click disables a form, the second click would not submit it again.
 
 - An updater function (e.g. n => n + 1) gets added to the queue.
-- Any other value (e.g. number 5) adds “replace with 5” to the queue, ignoring what's already queued.
+- Any other value (e.g. number 5) adds "replace with 5" to the queue, ignoring what's already queued.
 
 In Strict Mode, React will run each updater function twice (but discard the second result) to help you find mistakes.
 
@@ -70,8 +75,8 @@ When React re-renders a component:
 - Your function returns a new **JSX snapshot**.
 - React then updates the screen to match the snapshot your function returned.
 
-##### Variables and event handlers don’t “survive” re-renders. Every render has its own event handlers.
-##### Every render (and functions inside it) will always “see” the snapshot of the state that React gave to that render.
+##### Variables and event handlers don’t "survive" re-renders. Every render has its own event handlers.
+##### Every render (and functions inside it) will always "see" the snapshot of the state that React gave to that render.
 
 ## Passing Data Deeply with Context
 
@@ -166,6 +171,8 @@ A ref is like a secret pocket of your component that **React doesn't track**. Fo
 
 You can think of it as a regular state variable without a setter. If you’re familiar with object-oriented programming, refs might remind you of instance fields—but instead of this.something you write somethingRef.current.
 
+React guarantees you’ll always get the same object from the same useRef call on every render.
+
 #### When to use refs 
 Typically, you will use a ref when your component needs to "step outside" React and communicate with external APIs—often a browser API that won’t impact the appearance of the component. Here are a few of these rare situations:
 
@@ -215,3 +222,10 @@ If some logic must run once per app load rather than once per component mount, a
 - If you need to update the state of several components, it’s better to do it during a single event.
 - Whenever you try to synchronize state variables in different components, consider lifting state up.
 - You can fetch data with Effects, but you need to implement cleanup to avoid race conditions.
+- You can’t "choose" your dependencies. They are determined by the code inside the Effect.
+- If your Effect breaks because of remounting, you need to implement a cleanup function.
+- React will call your cleanup function before the Effect runs next time, and during the unmount.
+
+### Object.is
+- React compares the **dependency (array) values** using the Object.is comparison. 
+- The only difference between Object.is() and === is in their treatment of **signed zeros and NaN** values. The === operator (and the == operator) treats the number values -0 and +0 as equal, but treats NaN as not equal to each other.
