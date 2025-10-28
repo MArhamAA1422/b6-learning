@@ -144,3 +144,21 @@ Array.prototype.calculate = function(logic) {  // custom map
 
 console.log(rad.calculate(area));
 ```
+
+## Zod (library)
+- TypeScript-first schema validation with static type inference
+- We can have `utils/env.ts` with zod implementation for `.env` processing
+
+```js
+const userSchema = z.object({
+    name: z.string(),
+    age: z.number(),
+});
+
+type User = z.infer<typeof userSchema>;
+
+const user: User = {
+    name: 'app',
+    age: 6,
+}
+```

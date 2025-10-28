@@ -2,7 +2,7 @@
 - Developed by **IBM** researchers in the **1970s**; standardized by ANSI in 1986.
 - SQL is also used by PostgreSQL, SQLite, Oracle, SQL Server, etc.
 - Internals of SQL: query parsing, optimization, execution, indexing, and storage.
-- B+ Tree Index → Default for most relational databases.
+- **B+ Tree Index** → Default for most relational databases.
 
 ## Modern SQL databases include background tasks that improve efficiency
 - Checkpointing: Periodically writes modified pages from memory to disk.
