@@ -162,3 +162,19 @@ const user: User = {
     age: 6,
 }
 ```
+
+## Regex
+- Starts with '/' and ends with '/'
+- `/text_to_match/flags` : `/the/gi`
+- some flags: g (global), i (case insensitive)
+- g flag for all matches, with g only the first match
+- `/e+/g` : e, ee, eee
+- `/ea?/g` : e, ea  (a is optional, one or none)
+- `/a./g` : . (dot) matches any char except new line
+- `/\./g` : only matches . (dot)
+- `/\w{3, 5}/g` : matches any word of length between 3 and 5
+- `/[0-9]at/g`
+- grouping: `/(t|T|r){3, 4}/g` : word with t or T or r len (3, 4)
+- $ for end char
+- `/d{1}[ -]?\d{1}[ -]?\d{2}/g` : matches "1-2 34"
+- naming: `(?<name>)\d{3}/g`
