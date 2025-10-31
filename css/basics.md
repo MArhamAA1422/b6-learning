@@ -1,3 +1,9 @@
+## CSS Specificity
+- 1000 => inline styles
+- 100 => IDs
+- 10 => Classes/Attributes(`[type="input"]`)/Pseudo-classes(`:hover`)
+- 1 => Tags/Pseudo-elements(`::before`)
+
 ## flexbox wrapping
 - `nowrap, wrap, wrap-reverse`
 - The `flex-flow` property is a shorthand property for setting both the `flex-direction` and `flex-wrap` properties.
