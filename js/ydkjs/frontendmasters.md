@@ -15,6 +15,12 @@
 - Only regular functions have a `.prototype` property. Arrow functions do not have a .prototype, which is why they cannot be used as constructors with the new keyword and will fail if you attempt to do so.
 - DunderProto(`__proto__`): one level up to the prototype chain.
 - How can you invoke a method one level up the prototype chain using the this keyword: Use `this.__proto__.methodName.call(this)`, which is referred to as 'explicit pseudo polymorphism'
+- Object.create(Workshop.prototype): It creates a new object and links its prototype to the specified prototype, effectively **establishing inheritance** between objects
+- What is the key difference between classical inheritance and prototypal inheritance: **In classical inheritance, objects are copied from top to bottom (parent to child), while in prototypal inheritance, objects are linked through prototype chains from right to left and bottom to top.**
+- What is the fundamental design pattern of JavaScript's prototype system: **Delegation**, which is different from a class-based system and allows for more powerful behavior sharing between objects. Class can fit into delegation, reverse is not possible.
+- **The prototypal system is a superset of the class system.**
+- Delegation focuses on peer-to-peer relationships instead of parent-child hierarchies, allowing objects to cooperate through prototype chain linkage and shared context via the 'this' keyword
+- Through the 'this' keyword, delegated objects can access and use properties and methods from each other while maintaining their original execution context
 
 ## Type coercion (avoid case)
 - == with 0 or "" (or even " ")
@@ -131,3 +137,33 @@ deepJS.constructor === Workshop;  // true
 deepJS.__proto__ === Workshop.prototype;  // true, dunder prototype
 Object.getPrototypeOf(deepJS) === Workshop.prototype;  // true
 ```
+
+## Class in JS
+```js
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  greet() {
+    console.log(`Hi, I'm ${this.name}`);
+  }
+}
+```
+JavaScript translates it internally into prototype-based logic equivalent to:
+```js
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.greet = function() {
+  console.log(`Hi, I'm ${this.name}`);
+};
+```
+
+## OLOO
+- Objects Linked to Other Objects
+- `Object.create()` allows creating a new object with a specified prototype object, enabling direct linkage between objects without using constructor functions or the 'new' keyword
+- OLOO focuses on directly linking objects together, removing the complexity of constructor functions, prototypes, and the 'new' keyword, while maintaining similar functionality
+- class oriented languages should never have really called themselves object oriented languages. They should have called themselves class oriented
+- Truly Object Oriented: two languages in existence, JavaScript being one of them, OLOO being the other. (**can create an object without any class**)
+- That was added to the language back in ES5. That was actually proposed for JavaScript by our good friend *Doug Crockford*.
