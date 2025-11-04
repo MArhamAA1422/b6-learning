@@ -26,3 +26,26 @@
 
 ## Update (DML)
 - change on **data**
+
+## Delete (DML), Drop (DDL), Truncate (DDL)
+- row delete: Delete  // Rollback (using log) is possible, slower
+- full table gone: Drop
+- all rows delete: Truncate  // faster
+
+## Constraints
+- unique
+- not null
+- primary key
+- check (condition)
+- foreign key
+- default
+
+## Single Row Functions
+- number: round, trunc, mod
+- char: lower, concat, substr, length
+- date: next_day, round, trunc, add_months
+- general: nvl, nullif, case, decode
+- data type conversion: to_char, to_number, to_date
+
+## Multi Row Functions
+- aggregate functions: sum, max/min, count, avg
