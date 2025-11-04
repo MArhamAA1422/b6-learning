@@ -3,6 +3,10 @@
 - SQL is also used by PostgreSQL, SQLite, Oracle, SQL Server, etc.
 - Internals of SQL: query parsing, optimization, execution, indexing, and storage.
 - **B+ Tree Index** → Default for most relational databases.
+- query order: **from - join - where - group by - having - select - distinct - order by - limit**
+- correlated nested query: subquery is dependent on outer query, M*N
+- Optimization: with > join > subquery
+- 10 common sql commands: **select, from, where, join, group by, having, order by, sub_queries, CTEs, window functions**
 
 ## Modern SQL databases include background tasks that improve efficiency
 - Checkpointing: Periodically writes modified pages from memory to disk.
@@ -42,10 +46,26 @@
 
 ## Single Row Functions
 - number: round, trunc, mod
-- char: lower, concat, substr, length
+- char: lower, concat, substr, instr, initcap, length
 - date: next_day, round, trunc, add_months
 - general: nvl, nullif, case, decode
 - data type conversion: to_char, to_number, to_date
 
 ## Multi Row Functions
 - aggregate functions: sum, max/min, count, avg
+
+## Group By
+- must use same col after both group by and select: `SELECT dept FROM emp GROUP BY dept;`
+- if we need to select other col than we can do that by aggregate functions
+
+## Having vs Where
+- having filters post-group rows
+- where filter pre-group rows
+
+## Rank(), Dense_rank()
+- rank() => (5:val, 1:rank), (4, 2), (4, 2), (4, 2), (3, 5)
+- dense_rank() => (5, 1), (4, 2), (4, 2), (4, 2), (3, 3)
+
+## Delete duplicate row
+- using rowid, group by
+- for each group take only min rowid, others will be deleted
