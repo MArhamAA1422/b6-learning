@@ -16,3 +16,13 @@
 - concurrency: MVCC
 - logging: binary log
 - best use case: web apps
+
+## Alter (DDL)
+- table **structure** update
+- col add/delete
+- col datatype change
+- col/table name change
+- varchar(10) to varchar(20) typeof change
+
+## Update (DML)
+- change on **data**
