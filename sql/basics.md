@@ -61,6 +61,7 @@
 ## Having vs Where
 - having filters post-group rows
 - where filter pre-group rows
+- for aggregate function filter use having
 
 ## Rank(), Dense_rank()
 - rank() => (5:val, 1:rank), (4, 2), (4, 2), (4, 2), (3, 5)
