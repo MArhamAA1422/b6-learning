@@ -8,3 +8,12 @@
 - DBMS: a software, **db + set of programs** (access, add, update, delete)
    - To make real use of Data, we need DBMS
    - primary goal of dbms: provide a way **to store and retrieve** db info that is both convenient and efficient
+
+## DBMS > File Systems
+- data redundancy and inconsistency
+- difficulty in accessing data
+- data isolation (same data could be in diff format in file system), integrity problems, atomicity problems
+- concurrent access anomalies
+- security problems
+
+The above are possible in file systems but we need to write a lot of code for that, but in DBMS those are built-in.
