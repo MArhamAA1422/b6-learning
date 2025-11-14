@@ -17,3 +17,18 @@
 - security problems
 
 The above are possible in file systems but we need to write a lot of code for that, but in DBMS those are built-in.
+
+## Three schema (design) architecture (view of data)
+- Physical level / Internal level
+   - lowest level of abstraction
+   - it has physical schema
+   - Goal: we must define algo that allow efficient access to data
+- Logical level / Conceptual level
+   - conceptual schema
+   - relationship between data, tabular form
+   - Goal: ease to use
+- View level / External level
+   - view schema, highest level of abstraction
+   - end user
+   - data mapping to end user: customer_data, admin_data, specific_dept_data
+   - provide necessary (not all) to specific users
