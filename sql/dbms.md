@@ -42,7 +42,7 @@ The above are possible in file systems but we need to write a lot of code for th
 - consistency constraints (say, primary key)
 
 ## Data Models
-- Provides a way to describe the design of a DB at logical level.
+- Provides a way to **describe the design of a DB at logical level**.
 - underlying the structure of the DB is the data model
 - example: ER model
 
@@ -78,3 +78,10 @@ The above are possible in file systems but we need to write a lot of code for th
 - user - application client --- network --- application server - db system
 - no direct access to db
 - scalable (due to distributed application servers)
+
+## ER (entity-relationship) model
+- It's a **high level data model** based on a perception of a real world that consists of a collection of basic objects, called entities and of relationships among these objects.
+- Graphical representation of EF model is **ER diagram**, which acts as a **blueprint of DB**.
+
+### Entity
+- An entity is a thing or object in real world tha is distinguishable

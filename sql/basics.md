@@ -70,3 +70,12 @@
 ## Delete duplicate row
 - using rowid, group by
 - for each group take only min rowid, others will be deleted
+
+## SARGABLE queries
+- Search ARGument ABLE
+- queries that can use indexing for faster execution
+
+### To write sargable queries
+- avoid using functions or calculations on indexed columns in the WHERE clause
+- use direct comparisons when possible, instead of wrapping the column in a function
+- if we need to use a function on a column, consider creating a computed column or a function-based index, if the database system supports it
