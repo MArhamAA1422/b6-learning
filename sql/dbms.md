@@ -82,6 +82,103 @@ The above are possible in file systems but we need to write a lot of code for th
 ## ER (entity-relationship) model
 - It's a **high level data model** based on a perception of a real world that consists of a collection of basic objects, called entities and of relationships among these objects.
 - Graphical representation of EF model is **ER diagram**, which acts as a **blueprint of DB**.
+- Entity - Attribute
 
 ### Entity
-- An entity is a thing or object in real world tha is distinguishable
+- An entity is a thing or object in real world that is distinguishable from all other objects.
+- uniquely identifiable, primary key
+- for example: each student in a class
+- entity set: student table
+
+### Attributes
+- properties, that define entity
+
+#### Types of attributes
+- simple: can't be divide further
+- composite: for example, full_name
+- single-valued: one value, for example: one std one std_id
+- multi-valued: nominee_name (can have multiple nominees)
+- derived
+- null value
+
+**In diagram**: simple (single ellipse), multi-valued (double ellipse), derived (dotted ellipse)
+
+### Relationship
+association among 2 or more entities
+- strong relationship (single square in ER diagram)
+   - strong entity = can be identified using primary key
+- weak relationship (double square)
+   - weak entity dependent on strong one, not identifiable using primary key
+
+### Degree of Relation
+- number of participants (or, entities)
+- unary, binary, ternary
+- ternary example: emp --- [works-on] --- job --- [works-on] --- branch
+
+### Relationship constraints
+- mapping cardinality (one-to-one...)
+- participation constraints
+   - partial (single line)
+   - total (double line)
+
+#### Weak entity has total participation constraint
+
+## Relation Model (Tabular form)
+- degree of table: no of attributes
+- cardinality: total no of tuples (rows)
+
+### ER to Table
+- entity => table
+- attributes => columns
+
+### Properties of table
+- unique relation name
+- values have to be atomic, can't be broken down further
+- column name unique
+- each tuple must be unique in a table
+- seq of row/col has no significance
+- tables must follow integrity constraints - it helps to maintain data consistency across the tables
+
+### Relation keys
+- super key (all possible set, can be null)
+- candidate key (can't be null, minimal set of SK)
+- primary key = selected out of CK set, has the least no of attributes
+- alternate key = all CK except PK
+- foreign key = PK of another table
+   - creates relation
+   - **referenced** relation / parent table
+   - referencing relation / child table
+- composite key = PK formed using at least 2 attributes
+- compound key = PK which is formed using 2FK
+- surrogate key
+   - synthetic PK
+   - generated auto by DB, usually INT, may be used as PK
+
+### Integrity constraints
+- CRUD operations must be done with some integrity policy so that DB is always consistent, no accidental corrupt to DB
+#### Domain constraint
+INT, age >= 18
+
+#### Entity constraint
+PK != NULL, must have PK
+
+#### Referential constraint
+- insert constraint: no tuple insertion in child if FK doesn't exist in parent
+- delete constraint: no delete from parent if that exists in child
+- **`ON DELETE CASCADE`**: deleting from parent will also delete from child
+- **`ON DELETE NULL`**
+   - **FK can be NULL**
+   - delete value from parent table => put corresponding FK value = NULL
+
+### Key constraints
+- Not Null
+- unique
+- default constraint
+- check constraint: limit value range
+   - `check (age >= 18)`
+- PK constraint
+   - uniquely identify each tuple
+   - PK != null
+   - only 1 PK
+- FK constraint
+   - keeps relation between 2 table
