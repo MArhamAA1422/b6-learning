@@ -182,3 +182,6 @@ PK != NULL, must have PK
    - only 1 PK
 - FK constraint
    - keeps relation between 2 table
+
+## What is Clustering / Replication in DBMS
+Mostly used in NoSQL (mongoDB)

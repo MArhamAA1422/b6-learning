@@ -5,6 +5,7 @@
 - Indexing is optional, but increases access speed. It is not the
 primary mean to access the tuple, it is the secondary mean.
 - Index file is always sorted.
+- Based on selectivity (uniqueness of any column) DB optimizer chooses weather to use index or not.
 
 ## Index
 - index file, a DS, kinda map
