@@ -97,12 +97,10 @@ So yes, multi-threading can make things faster, but safety and simplicity were p
 
 - CLI (NodeJS)
     - **jsdom**: parse HTML & emulate DOM.
-
     - **parse5**: parse HTML.
-
     - **postcss**: parse & transform CSS.
 
-## Performance Basics
+## CSS Performance Basics
 
 - Repaints/Reflows are expensive → changing layout (width, height, position) is slower than changing colors or opacity.
 
@@ -117,7 +115,7 @@ So yes, multi-threading can make things faster, but safety and simplicity were p
 - Part of Browser (not JS)
     - WEB APIs (window): `setTimeout, DOM APIs, fetch, localStorage, console, location`
     - Browser gives access to JS Engine through WEB APIs
-    - `window.fetch()` = `fetch()`, same for others
+    - `window.fetch() = fetch()`, same for others
 
 ## Concurrency Model in JS
 For example: `startTimeout` callback will be waiting in callback queue to finish execution of the GEC in call stack.
@@ -178,3 +176,7 @@ const user: User = {
 - $ for end char
 - `/d{1}[ -]?\d{1}[ -]?\d{2}/g` : matches "1-2 34"
 - naming: `(?<name>)\d{3}/g`
+
+## System Design Optimization
+- Scale-in (vertical scaling), upgrading single node
+- Scale-out (horizontal scaling), distributing resources, new nodes are added

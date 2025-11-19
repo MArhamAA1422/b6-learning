@@ -184,4 +184,17 @@ PK != NULL, must have PK
    - keeps relation between 2 table
 
 ## What is Clustering / Replication in DBMS
-Mostly used in NoSQL (mongoDB)
+
+Mostly used in NoSQL (mongoDB). High availability. Multiple servers. Kinda CDN.
+
+Database Clustering (making Replica-sets) is the process of combining more than one servers or instances connecting a **single database**. Sometimes one server may not be adequate to manage the amount of data or the number of requests, that is when a Data Cluster is needed. Database clustering, SQL server clustering, and SQL clustering are closely associated with SQL is the language used to manage the database information. **`Replicate the same dataset on different servers.`**
+
+## What is Partitioning and Sharding in DBMS
+
+A big problem can be solved easily when it is chopped into several smaller sub-problems. That is what the partitioning technique does. It divides a big database containing data metrics and indexes into **smaller and handy slices of data called partitions**. The partitioned tables are directly used by SQL queries without any alteration. Once the database is partitioned, the data definition language can easily work on the smaller partitioned slices, instead of handling the giant database altogether. This is how partitioning cuts down the problems in managing large database tables.
+
+Partitioning is the technique used to divide stored database objects into separate servers.
+
+### Sharding
+- Technique to implement Horizontal Partitioning.
+- The fundamental idea of Sharding is the idea that instead of having all the data sit on one DB instance, we split it up and introduce a **Routing layer** so that we can forward the request to the right instances that actually contain the data.
