@@ -182,8 +182,31 @@ const user: User = {
 - Scale-out (horizontal scaling), distributing resources, new nodes are added
 
 ## IP
-- consists of octates, IPv4 has 4
+- consists of octets, IPv4 has 4, network address + host address
 - using **default gateway** device A can know weather device B is in same network or not
+
+#### Subnetting
+
+Logically broken down networks into smaller networks. It is done by changing the default subnet mask by borrowing some of the bits from the host portion. Host = TOT - networks addr - broadcast addr.
+
+Class A/B/C, CIDR (classless inter-domain routing, **slash notation**)
+
+#### Static IP
+
+A IP is where a user assigns an IP manually.
+
+#### Dynamic IP
+
+A IP is where a computer gets an IP from **DHCP** server.
+
+##### DHCP (dynamic host configuration protocol)
+
+Is a **service** that runs on a server, such as a Microsoft server or linux server. It's also a service that runs on routers.
+
+##### DHCP Settings
+- **Scope**: range of possible IP
+- The DHCP server assigns the IP as a lease (the amount of time an IP is assigned to a computer)
+- **Reservation**: ensures that a specific computer or device will always be given the same IP
 
 ### Public vs Private IP
 - public is unique and registered, ISP provides it
@@ -222,3 +245,65 @@ A reverse proxy is the reverse of a forward proxy. A reverse proxy regulates tra
 - Increases the security by hiding the IP of the server.
 - Blocks malicious traffic such as DDOS attacks.
 - Load balancing
+
+## Cloud Computing
+Cloud computing refers to data and applications being **`stored and run`** on the cloud rather than on your local computer.
+
+Cloud is just a **big building** filled with computers (servers).
+
+Cloud Providers provide multiple benefits: scalability (pay as you go), reliability, security, backup.
+
+##### CC types
+- IAAS
+    - you: software portion - app, data, os, runtime, middleware
+    - provider: hardware portion - servers, virtualization, storage, networking
+- PAAS
+    - you: **app, data**, rest for provider
+- SAAS
+    - most common
+    - provider provides everything
+    - for example: google docs
+
+### VPC
+- isolated, secure cloud network inside a public cloud
+- public subnet (for internet), private subnet (for db)
+- benefits: scalable, secure
+
+## Virtualization
+Virtualization in computing is the **process of simulating hardware and software** in a virtual (software) environment. Multiple applications in one machine.
+
+The one server is running 3 VMs, running 3 different applications, running 3 different OS.
+
+#### Hypervisor
+
+The software that creates and runs the virtualization is called hypervisor. It allocates and controls the sharing of machine's resources: storage, ram, CPUs.
+
+- Type 1 hypervisor: installed on empty, bare metal hardware, no OS
+- Type 2 hypervisor: installed on an existing OS
+
+#### Benefits of virtualization
+- saves money on hardware and electricity, floor space, maintenance and management
+- portability, full computing capability (machine's full potential), recovery
+
+## Containers
+
+A container is an application that's been packaged with all the (files, configurations, dependencies) necessary for it run. A package that can be shared with multiple machines without further configurations.
+
+Instead of hypervisor, container has **container engine**, it unpacks the container files and hands them off to the OS kernel.
+
+### VM vs Containers
+- Each VM has an OS, typically larger, because it contains: app + os
+- Containers only contain application, shares machine's OS
+- containers must be packaged to work with same OS of the server, on the other hand VM doesn't rely on that
+
+## CDN (Content Delivery Network)
+
+The main purpose of a CDN is to make websites faster by **bringing the website content closer to the user**. A CDN works by establishing a **point of presence** (POP). A POP is made up of **Edge Servers** which cache the content of the origin webserver.
+
+## Switching
+
+Switching is the process of **data being transferred** from one device to another.
+
+- Circuit switching: communication happens through a dedicated circuit or channel or path, primary used in telephone systems. **Connection Oriented**.
+
+- Packet switching: **Connectionless**. No session or channel is established prior to data transfer. Used in modern routing. Data is broken down into **individuals packets** that take different routes to the destination. Data reassemble happens.
