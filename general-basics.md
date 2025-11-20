@@ -307,3 +307,28 @@ Switching is the process of **data being transferred** from one device to anothe
 - Circuit switching: communication happens through a dedicated circuit or channel or path, primary used in telephone systems. **Connection Oriented**.
 
 - Packet switching: **Connectionless**. No session or channel is established prior to data transfer. Used in modern routing. Data is broken down into **individuals packets** that take different routes to the destination. Data reassemble happens.
+
+## What is a port
+
+A port is not a physical connection. It's a **logical connection** that's used by programs and services to **exchange information**. It specifically determines **which program or service** on a computer or server that is going to be used. (0 - 65535), 80, 443 for web pages (http, https), 21 for FTP, 25 for Email (SMTP).
+
+**A port is always associated with an IP.** IP determines the location of the server, a port number determines which service or program on that server it wants to use. We can use **NETSTAT** cmd tool to visualize them.
+
+State: Established => client
+State: Listening => server
+
+##### Three type of ports
+- system or well known ports, used in server, (0 - 1023)
+- user or registered ports, user in server,
+- dynamic or private ports, client side ports (49152 - 65535)
+
+## Modem vs Router
+- A modem is what **brings the internet into your home or business**, demodulates incoming analog signals into digital signal, also modulates outgoing digital signals into an analog one.
+- A router is what **routes or passes your internet connection** to all of your devices. Most routers will have a built-in switch inside of them.
+
+## Hub vs Switch vs Router
+- Hub doesn't have intelligence, it accepts packets in one port and broadcasts that to all connections
+- Switch is intelligent, has MAC table, so sends data to specific device unlike the hub
+- **Hub and Switch are used to exchange data withing LAN**, not outside their own network, **to do that a device needs IP**, hub and switch do not read IP.
+- **Router routes data from one network to another based on their IP.** Gateway of network.
+- **`Hubs and Switches are used to create networks, Routers are used to connect networks.`**
