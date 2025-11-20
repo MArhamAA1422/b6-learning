@@ -180,3 +180,45 @@ const user: User = {
 ## System Design Optimization
 - Scale-in (vertical scaling), upgrading single node
 - Scale-out (horizontal scaling), distributing resources, new nodes are added
+
+## IP
+- consists of octates, IPv4 has 4
+- using **default gateway** device A can know weather device B is in same network or not
+
+### Public vs Private IP
+- public is unique and registered, ISP provides it
+- private can be duplicate in different networks
+- device has private IP, sends req to router (who has public IP), router communicates with internet with public IP
+- public is insecure, we can use VPN
+
+## MAC (media access control)
+- mainly NIC contains MAC, all MACs are unique
+- a device can have multiple MAC, for example: Wired NIC, USB, Bluetooth adapter
+- a device/router uses **ARP** to get the MAC of other device/router, once it locates the IP
+- Two communicate with other device, a device needs both IP and MAC
+    - IP locates the device, MAC identifies it
+    - kinda like, IP tells about city/area/house location, MAC tells who does live inside
+
+## Proxy
+A proxy is someone or something that has the authority to do something for another person or thing. **A proxy is a server.**
+
+A proxy server is a middleman that sits between a private network and public internet.
+
+### Forward Proxy (from server to client)
+- Provides private network safety
+- devices communicates with server through proxy server
+
+##### Benefits
+    - safety against malicious activities
+    - hides identity of the clients by masking their IP
+    - logs user activity, a proxy keeps track of what websites that were visited and how long they were on those websites
+    - can bypass restricted content
+    - increases speed by caching copies of websites in its db
+
+### Reverse Proxy (from client to server)
+A reverse proxy is the reverse of a forward proxy. A reverse proxy regulates traffic coming into a network. Protect the server.
+
+##### Benefits
+- Increases the security by hiding the IP of the server.
+- Blocks malicious traffic such as DDOS attacks.
+- Load balancing

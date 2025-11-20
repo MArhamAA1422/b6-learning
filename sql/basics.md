@@ -86,3 +86,4 @@ MySQL supports 3 major backup methods:
 1. **Logical Backup**: Human-readable SQL commands, Taken using **`mysqldump`**, Not binary, not page-by-page, Easy to inspect and restore, Slow for huge databases, Larger file size, DB < 10 GB
 2. **Physical Backup**: Binary-only, Copies raw data files (.ibd, .frm, redo logs, undo logs), Fastest
 3. Hot Backup
+

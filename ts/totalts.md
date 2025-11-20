@@ -1,6 +1,6 @@
 ## Kickstart your TS setup
 
-Anders Hejlsberg, the inventor of C# was also the inventor of TypeScript (around 2010, at Microsoft). A new language that was closer to JavaScript, but that enabled all the IDE features that JavaScript is missing? In many metrics, it is even more popular than JavaScript.
+**Anders Hejlsberg, the inventor of C# was also the inventor of TypeScript (around 2010, at Microsoft).** A new language that was closer to JavaScript, but that enabled all the IDE features that JavaScript is missing? In many metrics, it is even more popular than JavaScript.
 
 TypeScript wasn't invented to make JavaScript strongly typed. It was built to **allow amazing tooling** for JavaScript.
 
