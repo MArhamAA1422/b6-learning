@@ -18,6 +18,15 @@
 - SUB QUERY is the alternative to JOIN
 - Normalization: SRP, one table one responsibility
 
+## Flow/Parts of DB
+
+- ORM/ODM <=> Client => Database <=> Disc
+- Inside Database
+   - query parser/optimizer <=> execution engine (kinda CEO) <=> cache
+   - storage engine: B/B+ tree, hashindex
+   - data file, index file
+   - transaction (follow atomicity) manager, lock manager, recovery manager
+
 ## Modern SQL databases include background tasks that improve efficiency
 - Checkpointing: Periodically writes modified pages from memory to disk.
 - Log Writer: Maintains transaction logs for recovery.
