@@ -30,3 +30,8 @@
 ### React
 - Hooks (useEffect, useMemo)
    - side effect
+
+### Adonis
+- routing
+- module
+- file system

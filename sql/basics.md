@@ -7,6 +7,16 @@
 - correlated nested query: subquery is dependent on outer query, M*N
 - Optimization: with > join > subquery
 - 10 common sql commands: **select, from, where, join, group by, having, order by, sub_queries, CTEs, window functions**
+- **select command always creates a table, even dummy one**
+- **Dual tables** are dummy tables created by mysql, help users to do certain obvious actions without referring to user defined tables
+- We can use IN instead of multiple OR
+- For aggregation we need to use GROUP BY
+- Full Join != Cross Join
+- **set operations (union, intersect, minus) apply on `ROWS`**
+- **joins apply on `COLUMNS`**
+- MINUS = LEFT JOIN + TABLE.id IS NULL
+- SUB QUERY is the alternative to JOIN
+- Normalization: SRP, one table one responsibility
 
 ## Modern SQL databases include background tasks that improve efficiency
 - Checkpointing: Periodically writes modified pages from memory to disk.
@@ -30,6 +40,10 @@
 
 ## Update (DML)
 - change on **data**
+
+## Update vs Replace
+
+If row is not present, **Replace will add a new row** while Update will do nothing.
 
 ## Delete (DML), Drop (DDL), Truncate (DDL)
 - row delete: Delete  // Rollback (using log) is possible, slower
@@ -71,6 +85,28 @@
 - using rowid, group by
 - for each group take only min rowid, others will be deleted
 
+## Co-related Subqueries
+
+- Inner queries that refer outer query, Outer query refers inner one
+```sql
+-- 3rd oldest employee
+select *
+from employee e1
+where 3 = (
+   select count(e2.age)
+   from employee e2
+   where e2.age >= e1.age
+);
+```
+
+## SQL View
+- simpler table
+- alter view, drop view
+```sql
+create view customer_view as select fname, age from employee;
+select * from customer_view
+```
+
 ## SARGABLE queries
 - Search ARGument ABLE
 - queries that can use indexing for faster execution
@@ -87,3 +123,28 @@ MySQL supports 3 major backup methods:
 2. **Physical Backup**: Binary-only, Copies raw data files (.ibd, .frm, redo logs, undo logs), Fastest
 3. Hot Backup
 
+## Data types in SQL
+
+- blob (audio, video)
+- datetime = yyyy-mm-dd hh:mm:ss
+- timestamp = yyyymmddhhmmss
+- signed/unsigned int
+- **advanced DT**: JSON
+
+## Referential Constraints
+- delete: ON DELETE CASCADE, ON DELETE SET NULL
+   - FK can be NULL
+
+## Functional Dependency
+- Trivial: A (determinant) => B (dependent), and B is a subset of A
+- Non Trivial: A => B, and B is not a subset of A
+
+### Rules of FD (Armstrong's axioms)
+- Reflexive: if B is a subset of A, then A => B
+- Augmentation: if A => B, then for any other attribute X in the table, AX => BX
+- Transitivity: if A => B, B => C, then A => C
+
+## Redundant Data Introduces Anomalies
+- insertion anomaly
+- deletion anomaly
+- update anomaly
