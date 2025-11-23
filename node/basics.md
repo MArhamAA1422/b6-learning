@@ -109,3 +109,68 @@ server.listen(3000);
 ```
 
 In real application we don't write those using http, callback (req, res). Because it becomes complex when we add more routes. Instead we can use frameworks like **Express**.
+
+## JS Module System
+
+- Files ending with `.mjs` are always treated as ES Modules (ESM) by Node.js.
+- `.js` files can be either CJS or ESM, depending on the project setting.
+
+### CommonJS (CJS)
+- Used by default in Node.js before ES modules.
+- Synchronous, file-based module system.
+- `module.exports`, `require()`
+
+#### Characteristics
+
+- Synchronous loading (**good for backend, bad for browser**)
+- **Loaded at runtime**
+- Default in Node.js files ending with .cjs or without `"type": "module"` in package.json
+
+#### Where used
+
+- Almost all Node.js libraries before 2020
+- Express, lodash, old versions of React scripts, etc.
+
+### ES Modules (ESM)
+- Modern JavaScript module system (ECMAScript 2015).
+- Native in browsers & now in Node.js.
+- `export`, `import`
+
+#### Characteristics
+
+- **Asynchronous loading**
+- Static structure → better tree-shaking & optimization
+- Mandatory file extensions in Node.js (.js, .mjs)
+- Enabled when:
+   - filename is .mjs
+   - OR `"type": "module"` in package.json
+
+#### Where used
+
+- Modern browser apps
+- Node.js 14+ with `"type": "module"`
+
+### UMD (Universal Module Definition)
+
+- A module format that works everywhere: Node.js, AMD, browser globals.
+- Used for older libraries published on CDN or npm.
+- If you publish a library for all environments (or even better, publish dual: ESM + CJS)
+
+#### Where used
+
+- jQuery, Moment.js (old versions)
+- Libraries intended to work both in **Node + browser**.
+
+### Node.js Module Resolution Rules
+If using CommonJS:
+
+`require('./file')` → resolves to:
+   - file.js
+   - file.json
+   - file.node (native addon)
+   - index.js inside folder
+
+If using ESM:
+- import "./file" needs extension
+- **file.js must be written explicitly**
+- No auto-extension guessing
