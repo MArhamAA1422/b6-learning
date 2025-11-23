@@ -140,6 +140,10 @@ MySQL supports 3 major backup methods:
 - signed/unsigned int
 - **advanced DT**: JSON
 
+## Functions
+
+- ADDDATE(date, day);
+
 ## Referential Constraints
 - delete: ON DELETE CASCADE, ON DELETE SET NULL
    - FK can be NULL
