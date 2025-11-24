@@ -2,10 +2,45 @@
 - In 2009, *Ryan Dahl* introduced Node.exe (similar to Chrome) with v8 inside
    - In node, we don't have document/window object, instead we have: `fs, http`
    - node = v8 + some additional modules that are missing in browser
+   - or, **`node = v8 + c++`**
+      - JS can talk to native machine because of c++
+      - we can create webservers in JS
 - Node is not a programming language or framework either, it's a **runtime environment** for executing JS code.
 - NodeJS engine: call stack, Node APIs, event loop, callback queue
 - JS doesn't have the power to access stuffs like Networking or other, but Node has (using C/C++ internally, aka **`libuv`**), Node has **Node API**
 - Library like **Express** makes it easier to works with response writing (as a stream) with JSON
+- For API server we can use Node for backend
+- highly-scalable, data-intensive and real-time apps, node is ideal for I/O-intensive apps
+- **non-blocking asynchronous** nature
+- Don't use Node for CPU-intensive apps, for example: video encoding, img manipulation service
+
+## Node JS Internal Working
+- node = v8 + libuv
+- v8 = c++ + js
+- **libuv implements Event Loop, Thread Pool**
+
+### node index.js
+- First creation: **node process**
+- Then, **Main Thread** inside the process
+   - inside main thread: **`init project, top level code, require module, event callbacks register`**
+   - inside main thread: start event loop
+- Parallelly, **Thread Pool** inside the process, contains multiple thread, does CPU intensive tasks (for example: FS, crypto, compression)
+   - any cpu/blocking task goes to Thread Pool
+   - normally, there are 4 threads, we can change using: `process.env.UV_THREADPOOL_SIZE = 10`
+   - event loop can offload CPU intensive tasks to thread pool
+#### Event Loop's job (one by one check serially)
+- expired timer callbacks
+- IO polling - FS, output/result of file IO task
+- setImmediate callbacks
+- close callbacks
+- continue if pending task
+
+##### Promise
+- Event loop checks in every transition(say, IO polling to setImmediate callbacks) is there any promise to resolve
+
+#### Exception
+
+setTimeout callback and setImmediate callback may give confusing output and it is non-deterministic, it depends on CPU performance mainly.
 
 ## Behind the scene (mental model)
 
@@ -13,11 +48,6 @@
 - libuv interacts with NIC of the computer
 
 ![node-mental-model](node-mental-model.png)
-
-## How Node.js works
-- highly-scalable, data-intensive and real-time apps, node is ideal for I/O-intensive apps
-- **non-blocking asynchronous** nature
-- Don't use Node for CPU-intensive apps, for example: video encoding, img manipulation service
 
 ## Modules
 - Every node application has at least one module or file called `main`
