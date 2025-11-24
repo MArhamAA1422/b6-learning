@@ -39,3 +39,37 @@ Usage: creating log (say, user) file
 - delete: `fs.unlinkSync("./copy.txt");`
 - info: `fs.statSync("./test.txt");`
 - new dir creation: `fs.mkdirSync("my-docs");`
+
+## HTTP Server
+```js
+const http = require('http');
+
+const myServer = http.createServer((req, res) => {
+   console.log('New req res');
+   res.end('Hello From Server');
+});
+
+myServer.listen(8000, () => console.log('server started'));
+```
+
+## Express
+
+Express provide `myHandler` in `http.createServer(myHandler)`
+
+```js
+const app = express();  // app => handler function
+
+app.get('/', (req, res) => {
+   return res.send("hello from home page");
+});
+
+// const server = http.createServer(app);
+
+// in express
+app.listen(8000, () => console.log("server started"));
+```
+
+### Benefits
+- builtin stuffs like url module, http module
+- in place HTTP method callbacks
+- routing is easy, code is modulated
