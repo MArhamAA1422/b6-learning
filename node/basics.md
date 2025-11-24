@@ -230,8 +230,11 @@ Server renders all and sends the ready stuffs to show in client side. Faster tha
 
 Server sends only XML/JSON and client renders them.
 
-## Restfull API
+## REST API vs RESTful API
 
-- API that follows REST architecture
+A REST API is an API that follows some principles of REST, whereas a RESTful API must follow all REST rules, **including statelessness**, the proper use of HTTP methods and resource-based URLs. In short, every RESTful API is a REST API, but not every REST API is RESTful
+
+#### REST API
+
 - server client architecture
 - always respect all http methods
