@@ -221,3 +221,17 @@ a.b.c; Three parts:
 - we can use comparison operators
 - we can use direct link
 - we can use or (||) operator...
+
+## Sever Side Rendering (SSR)
+
+Server renders all and sends the ready stuffs to show in client side. Faster than CSR.
+
+## Client Side Rendering (CSR)
+
+Server sends only XML/JSON and client renders them.
+
+## Restfull API
+
+- API that follows REST architecture
+- server client architecture
+- always respect all http methods
