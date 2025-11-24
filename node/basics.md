@@ -204,3 +204,20 @@ If using ESM:
 - import "./file" needs extension
 - **file.js must be written explicitly**
 - No auto-extension guessing
+
+## Versioning
+
+a.b.c; Three parts:
+- third (c) part / latest part: **minor** fixes (optional)
+- second (b) part / latest running: **recommended** bug fix (security fix)
+- first (a) part  / **major** lease: breaking updates
+
+^ = install all Recommended and Minor fixes automatically
+
+~ = install all Minor fixes only
+
+#### Others
+- we can provide range in versions
+- we can use comparison operators
+- we can use direct link
+- we can use or (||) operator...
