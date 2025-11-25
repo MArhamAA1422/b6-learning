@@ -264,3 +264,37 @@ app.use((req, res, next) => {
    next();  // goes to next middleware
 });
 ```
+
+## HTTP Headers
+
+HTTP headers are an important part of the API req and res as they represent the **meta-data** associated with the API req and res. Headers carry information for the req and res body.
+
+```js
+// we can add info into header
+res.setHeader("X-Name", "app");  // it's good practice to add "X-" before custom header key
+```
+
+## HTTP Status Code
+
+- informational responses: 100 - 199
+- successful responses: 200 - 299
+- redirection messages: 300 - 399
+- client error messages : 400 - 499
+- server error responses: 500 - 599
+
+Some example status:
+- 200: ok
+- 201: created
+- 400: bad request
+- 401: unauthorized
+- 402: payment required
+- 403: forbidden
+- 404: not found
+- 500: internal server error
+- 501: not implemented
+- 502: bad gateway
+- 503: service unavailable
+
+```js
+return res.status(201).json( { status: "success", id: users.length });
+```
