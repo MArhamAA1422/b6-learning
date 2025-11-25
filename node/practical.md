@@ -73,3 +73,20 @@ app.listen(8000, () => console.log("server started"));
 - builtin stuffs like url module, http module
 - in place HTTP method callbacks
 - routing is easy, code is modulated
+
+## API Route Convention
+
+- /users => send html, html document render
+- /api/users => send raw json
+
+### Dynamic Path Parameters
+
+GET /api/users/:id
+
+## Same Route (shortcut)
+
+```js
+app.route('/api/users/:id')
+.get((req, res) => {})
+.post((req, res) => {});
+```

@@ -238,3 +238,29 @@ A REST API is an API that follows some principles of REST, whereas a RESTful API
 
 - server client architecture
 - always respect all http methods
+
+## Express Middleware (kinda plugin)
+
+```js
+// express middleware example for POST request
+app.use(express.urlencoded({ extended: false }));
+```
+
+Between client and server/(app.get function) there is a stuff called middleware. It takes req and can forward it or if find something wrong reverse back that req to client.
+
+There can be multiple middlewares. Middleware functions can perform the following tasks:
+- execute any code
+- make changes to req and res objects
+- end the request-response cycle
+- call the next middleware function in the stack
+
+Express uses `app.use` to define middleware normally
+
+```js
+app.use((req, res, next) => {
+   console.log("hello from middleware");
+   return res.json({ msg: "hello from middleware" });
+
+   next();  // goes to next middleware
+});
+```
