@@ -333,4 +333,22 @@ Stateless: which has no state, for example: JWT, must for serverless application
 - controllers
 - models
 - routes
-- views 
+- views
+
+## CORS (cross platform resource sharing)
+
+Using browser cookies a.com can access (API call, fetch) b.com data. That is a security vulnerability. This is CORS. One origin shouldn't talk to another origin. Same origin API call is allowed.
+
+**`Origin`**: Tuple (Scheme + Host + Port), for example: (https + a.dev + 443)
+
+Allowing a origin:
+
+```
+Response Headers {
+   Access-Control-Allow-Origin: "http://a.com"
+}
+```
+
+Browser does preflight (OPTIONS) request before doing actual GET/POST/PUT, if preflight is successful actual req is sent.
+
+CORS is browser concept (where there are cookies, like login info). It won't be an issue like in POSTMAN.
