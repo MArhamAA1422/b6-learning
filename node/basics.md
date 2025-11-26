@@ -326,3 +326,11 @@ Stateless: which has no state, for example: JWT, must for serverless application
 - it's browser only feature
 - for usage in multiple devices such as mobile application, we can send cookie in headers in JSON:
    - JSON => Headers { Authorization : Bearer `<token>` }
+
+## MVC
+
+### Folder Structures
+- controllers
+- models
+- routes
+- views 
