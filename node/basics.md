@@ -298,3 +298,31 @@ Some example status:
 ```js
 return res.status(201).json( { status: "success", id: users.length });
 ```
+
+## Authentication
+### Authentication Patterns
+
+Stateful: which maintains **state or data** on server side
+- client sends (username, password)
+- server responses "session uid"
+- if client sends another req: `GET /users | uid: x`, need to provide uid
+- example: session
+
+##### How to transfer uid
+- cookies (SSR)
+- response
+- headers (API)
+
+Stateless: which has no state, for example: JWT, must for serverless application
+
+### Cookies
+
+- always server makes cookies
+- server auto creates/saves cookies
+- cookies go with request from client to server
+- cookies are **domain specific**
+   - domain: ".example.com", creates subdomain, anything.example.com can have that cookie
+- cookies can have expiry date
+- it's browser only feature
+- for usage in multiple devices such as mobile application, we can send cookie in headers in JSON:
+   - JSON => Headers { Authorization : Bearer `<token>` }
