@@ -14,6 +14,15 @@
    <h1>Heading</h1>
 @end
 ```
+- {{ }} = escaped output
+   - It prints data safely
+   - It escapes HTML to prevent XSS
+- {{{ }}} = unescaped output
+   - It does NOT escape HTML
+   - It inserts the raw HTML into the page
+   - Used when you trust the content
+   - render actual HTML
+- CSRF = Cross-Site Request Forgery
 
 ## VineJS
 
