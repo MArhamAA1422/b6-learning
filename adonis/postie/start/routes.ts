@@ -12,6 +12,8 @@ const AuthController = () => import('#controllers/auth_controller')
 const PostsController = () => import('#controllers/posts_controller')
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
+const UserProfileController = () => import('#controllers/user_profile_controller')
+const PostLikesController = () => import('#controllers/post_likes_controller')
 const FeedController = () => import('#controllers/feed_controller')
 
 router.get('/', [FeedController, 'index'])
@@ -24,9 +26,13 @@ router.post('login', [AuthController, 'store'])
 
 router.group(() => {
    router.delete('logout', [AuthController, 'destroy'])
+
    router.post('posts', [PostsController, 'store'])
    router.get('posts/:id/edit', [PostsController, 'edit'])
    router.patch('posts/:id', [PostsController, 'update'])
    router.delete('posts/:id', [PostsController, 'destroy'])
+
+   router.post('posts/:id/likes', [PostLikesController, 'store'])
 }).middleware(middleware.auth())
 
+router.get('username', [UserProfileController, 'index'])

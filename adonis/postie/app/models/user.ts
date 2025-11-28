@@ -44,4 +44,10 @@ export default class User extends compose(BaseModel, AuthFinder) {
   get handle(): string {
     return `@${this.username}`
   }
+
+  async hasLikedPost(postId: number): Promise<boolean> {
+    const self = this as User
+
+    return !!(await self.related('likes').query().where('posts.id', postId).first())
+  }
 }

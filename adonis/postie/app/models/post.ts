@@ -19,10 +19,10 @@ export default class Post extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 
-  @manyToMany(() => Post, {
+  @manyToMany(() => User, {
     pivotTimestamps: true,
   })
-  declare likes: ManyToMany<typeof Post>
+  declare likes: ManyToMany<typeof User>
 
   @belongsTo(() => User)
   declare user: BelongsTo<typeof User>
