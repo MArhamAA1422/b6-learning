@@ -33,6 +33,7 @@ router.group(() => {
    router.delete('posts/:id', [PostsController, 'destroy'])
 
    router.post('posts/:id/likes', [PostLikesController, 'store'])
+   router.delete('posts/:id/likes', [PostLikesController, 'destroy'])
 }).middleware(middleware.auth())
 
 router.get(':username', [UserProfileController, 'index'])
