@@ -13,6 +13,8 @@ export const RegisterValidator = vine.compile(
 
          return result ? false : true
       }),
-      password: vine.string().confirmed(),
+      password: vine.string().confirmed({
+         confirmationField: 'password_confirmation'
+      }),
    })
 )

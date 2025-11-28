@@ -35,4 +35,4 @@ router.group(() => {
    router.post('posts/:id/likes', [PostLikesController, 'store'])
 }).middleware(middleware.auth())
 
-router.get('username', [UserProfileController, 'index'])
+router.get(':username', [UserProfileController, 'index'])
