@@ -18,5 +18,9 @@ router.get('register', [RegisterController, 'create'])
 
 router.post('register', [RegisterController, 'store'])
 
+router.get('login', [AuthController, 'create'])
+
+router.post('login', [AuthController, 'store'])
+
 
 router.delete('logout', [AuthController, 'destroy'])
