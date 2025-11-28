@@ -35,4 +35,8 @@ export default class User extends compose(BaseModel, AuthFinder) {
 
   @hasMany(() => Post)
   declare posts: HasMany<typeof Post>
+
+  get handle(): string {
+    return `@${this.username}`
+  }
 }
