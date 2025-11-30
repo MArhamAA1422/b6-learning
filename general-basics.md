@@ -180,6 +180,7 @@ const user: User = {
 ## System Design Optimization
 - Scale-in (vertical scaling), upgrading single node
 - Scale-out (horizontal scaling), distributing resources, new nodes are added
+- SQL when the system is read driven and NoSQL such as MongoDB when the system is write driven
 
 ## IP
 - consists of octets, IPv4 has 4, network address + host address
@@ -332,3 +333,16 @@ State: Listening => server
 - **Hub and Switch are used to exchange data withing LAN**, not outside their own network, **to do that a device needs IP**, hub and switch do not read IP.
 - **Router routes data from one network to another based on their IP.** Gateway of network.
 - **`Hubs and Switches are used to create networks, Routers are used to connect networks.`**
+
+## Backend Concepts
+
+- authentication vs authorization
+- rate limiting (control request from `user, ip, token`)
+- db index
+- transactions & ACID
+- caching
+- Message Queue
+- load balancing
+- CAP
+- Reverse Proxy
+- distributed systems, CDN
