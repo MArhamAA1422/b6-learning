@@ -8,12 +8,14 @@
 - `node ace make:validator validator_name`
 - `node ace make:model model_name -m` // -m for migration file creation
 - `node ace configure @adonisjs/redis`
+- `node ace configure @adonisjs/lucid`
 
 ## EdgeJS
 
 - HTML
 - dynamic variable: `{{ title }}`
-- Home: `pages\home.edge`, it contains
+- has components/props
+- Home: `pages\home.edge`, it can contain:
 
 ```html
 @layout.app({title: 'title'}) /* views\components\layout\app.edge */
@@ -29,7 +31,6 @@
   - It inserts the raw HTML into the page
   - Used when you trust the content
   - render actual HTML
-- CSRF = Cross-Site Request Forgery
 - Providing dynamic stuffs from backend
 ```js
 ctx.view.share({ something: 'something' })
@@ -38,6 +39,14 @@ ctx.view.share({ something: 'something' })
 ```
 @vite(['resources/js/app.js', 'resources/css/app.css'])
 ```
+
+#### CSRF (Cross-Site Request Forgery)
+
+Prevents unauthorized form submission.
+
+#### Method Spoofing
+
+By default `<form>` only works with POST method. By setting `allowMethodSpoofing` in `config/app.ts` we can work with other HTTP methods.
 
 ## VineJS
 
@@ -60,6 +69,20 @@ Controller → Service → Model → DB
 - start: for registering routes, middlewares (`kernel.ts`)
 - `kernel.ts` registers all (global) middlewares serially
 
+### NodeJS subpath imports
+
+We need to fix the path in `tsconfig.json` and `package.json`
+
+```js
+// package.json
+"imports": {
+    "#controllers/*": "./app/controllers/*.js",
+    "#models/*": "./app/models/*.js",
+    "#mails/*": "./app/mails/*.js",
+    "#services/*": "./app/services/*.js",
+  }
+```
+
 ##### Cherry-picking
 
 Importing only the necessary stuffs.
@@ -70,7 +93,7 @@ import { useQuery } from "@tanstack/react-query";
 
 ## Services
 
-Contain re-usable code or logic. 
+Contain re-usable code or logic. Services are particularly useful for code that involves complex business logic, reusable helper functions, or interactions with external APIs.
 
 ## Controllers
 
