@@ -58,6 +58,7 @@ Controller → Service → Model → DB
 
 - bin: for build process, first folder to be hit
 - start: for registering routes, middlewares (`kernel.ts`)
+- `kernel.ts` registers all (global) middlewares serially
 
 ##### Cherry-picking
 
@@ -69,7 +70,7 @@ import { useQuery } from "@tanstack/react-query";
 
 ## Services
 
-Contain re-usable code or logic.
+Contain re-usable code or logic. 
 
 ## Controllers
 
@@ -112,6 +113,50 @@ redis.flushdb()
 // example deletion from redis cache, slug (movie context) is kinda id
 router.delete('/redis/:slug', [RedisController, 'destroy']).as('redis.destroy')
 ```
+
+## Middlewares
+
+#### Global Middleware
+
+Global middleware is applied to all HTTP requests in your application. These middleware are registered globally and are typically used for tasks that every request should pass through, such as:
+- Logging
+- Handling CORS
+- Parsing request bodies
+- Validating sessions or JWT tokens (if applied universally)
+
+```js
+// kernel.ts
+Server.middleware.register()
+```
+#### Named Middleware
+
+Named middleware is applied selectively to specific routes or route groups. It is ideal for middleware that is only relevant to certain parts of your application, such as:
+
+- Role-based access control
+- Specific validation for certain APIs
+- Rate limiting for certain endpoints
+
+Explicitly applied via `.middleware()`
+
+```js
+// kernel.ts
+Server.middleware.registerNamed()
+```
+
+## Routes
+
+#### Context (ctx)
+
+AdonisJS provides a ctx (HTTP Context) object to the handler function. This ctx includes useful properties like:
+
+- auth: Authentication information for the request.
+- logger: For logging within the route handler.
+- params: URL parameters, useful for dynamic routes.
+- request: Information about the incoming request (headers, cookies, etc.).
+- response: Methods to control the outgoing response, like sending JSON or setting HTTP status codes.
+- session: Session data specific to the user.
+- view: Access to Edge templating system for rendering views
+
 
 ## Others
 
