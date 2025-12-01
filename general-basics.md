@@ -346,3 +346,64 @@ State: Listening => server
 - CAP
 - Reverse Proxy
 - distributed systems, CDN
+
+## API
+
+#### REST API
+
+- uses HTTP methods
+- **stateless**, so that can handle millions of requests
+- **platform independent**, mobile, browser all talk to same API
+- not ideal for bank transfer or enterprise systems
+
+#### SOAP
+
+- simple object access protocol
+- **most formal, oldest**
+- ideal for bank transfer or enterprise systems
+- http, https, smtp, tcp
+- **protocol independent**
+- provides security, error handling, transaction support
+- reliability, precision
+- not lightweight or flexible as like REST
+
+#### gRPC
+
+- RPC: remote procedure call
+    - **instead of data transfer run functions**
+    - but, XML-RPC, JSON-RPC are slow, text-heavy, don't scale
+- gRPC: google high-performance, modern take on RPC
+- speed, performance, precision
+- unlike REST text based HTTP, gRPC uses protocol buffers or `protobuf`
+    - **compress data in binary format**
+- 4 powerful communication patterns:
+    - simple request-response just like REST
+    - server streaming for live updated
+    - client streaming for sending continuous data
+    - bidirectional streaming, where both sides can chat at once in real time
+- 7 to 10 times faster than REST
+
+#### GraphQL
+
+- graph query language, created by facebook
+- issue: REST sends too much or too little data
+- graphQL optimizes that with one endpoint, one request with only necessary ones
+- github's entire API is built on graphQL
+
+#### WebHooks
+
+- instant update
+- classic API system continuously checks for update (something new?), webhooks changed that, now, server notifies if there is any update
+- **REVERSE API**, instead of app requests for data, data finds app
+
+#### WebSocket
+
+- continuous connection establishment
+- client sends HTTP request, server accepts (hand shaking) and the connection is established
+- persistent two-way communication line
+
+#### WebRTC
+
+- web real-time communication
+- it powers things like: **video call, screen sharing**, all in browser no extra software
+- no server in the middle (processing res/req)

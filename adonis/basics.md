@@ -108,6 +108,11 @@ redis.del(keys)  // keys = []
 redis.flushdb()
 ```
 
+```js
+// example deletion from redis cache, slug (movie context) is kinda id
+router.delete('/redis/:slug', [RedisController, 'destroy']).as('redis.destroy')
+```
+
 ## Others
 
 - adonis migration filename starts with creation_timestamp
@@ -120,3 +125,8 @@ redis.flushdb()
   - models in adonis are stateful (represent a row in db)
   - consistency with lucid (adonis ORM)
 - we can render markdown as well with proper tools
+- init existing project (say, from github) with Adonis Slim Starter Kit
+```
+// -- for one level down, -K for slim starter kit
+npm init adonisjs@latest -- -K="github:githubUsername/project_name"
+```
