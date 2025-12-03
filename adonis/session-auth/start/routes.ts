@@ -19,5 +19,6 @@ router.get('/', async () => {
 router
    .group(() => {
       router.get('/register', [RegisterController, 'show']).as('register.show')
+      router.post('/register', [RegisterController, 'store']).as('register.store')
    })
    .as('auth')
