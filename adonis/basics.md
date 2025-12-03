@@ -9,6 +9,10 @@
 - `node ace make:model model_name -m` // -m for migration file creation
 - `node ace configure @adonisjs/redis`
 - `node ace configure @adonisjs/lucid`
+- `node ace repl`
+- `node ace make:seeder start`  // database/seeders/start_seeder.ts
+- `node ace db:seed`
+- `node ace make:factory fname`
 
 ## EdgeJS
 
@@ -83,6 +87,18 @@ We need to fix the path in `tsconfig.json` and `package.json`
   }
 ```
 
+### Enums
+
+Example file (in root directory): `./enums/roles.ts`
+
+```js
+enum Role {
+  USER = 1,
+  ADMIN = 2
+}
+export default Role
+```
+
 ##### Cherry-picking
 
 Importing only the necessary stuffs.
@@ -108,33 +124,6 @@ class Test() {
   declare id: number
   declare content: string
 }
-```
-
-## Redis
-
-Redis sets values as String in database.
-
-```js
-// has
-redis.exists(keys)  // keys = []
-
-// get
-const value = await redis.get(key)
-return value && JSON.parse(value)
-
-// set
-redis.set(key, JSON.stringify(value))
-
-// delete
-redis.del(keys)  // keys = []
-
-// flush
-redis.flushdb()
-```
-
-```js
-// example deletion from redis cache, slug (movie context) is kinda id
-router.delete('/redis/:slug', [RedisController, 'destroy']).as('redis.destroy')
 ```
 
 ## Middlewares
@@ -180,6 +169,112 @@ AdonisJS provides a ctx (HTTP Context) object to the handler function. This ctx 
 - session: Session data specific to the user.
 - view: Access to Edge templating system for rendering views
 
+## Redis
+
+Redis sets values as String in database.
+
+```js
+// has
+redis.exists(keys)  // keys = []
+
+// get
+const value = await redis.get(key)
+return value && JSON.parse(value)
+
+// set
+redis.set(key, JSON.stringify(value))
+
+// delete
+redis.del(keys)  // keys = []
+
+// flush
+redis.flushdb()
+```
+
+```js
+// example deletion from redis cache, slug (movie context) is kinda id
+router.delete('/redis/:slug', [RedisController, 'destroy']).as('redis.destroy')
+```
+
+## Lucid ORM
+
+Lucid ORM expects a single primary key named id by default. Composite primary keys are supported at DB level, but not fully supported by Lucid ORM.
+
+So if you use composite keys:
+- Prefer using pivot tables
+- Or define a single primary key (id) + unique constraint on multiple columns
+
+```js
+table.increments('id')
+table.unique(['user_id', 'role_id'])
+```
+
+## SQL Parameters and Injection Protection
+
+```js
+(await db.rawQuery('select * from table where :column: = :value', { column: 'id', value: 3 })).rows
+```
+
+## Reusable Query Statements with `Model Query Scopes`
+
+```js
+static released = scope((query) => {
+  query.where(group => {
+    group
+      .where('statusId', 1)
+      .whereNotNull('releasedId')
+  })
+})
+```
+
+```js
+// in terminal
+await models.movie.query().withScopes(scope => scope.released())
+```
+
+## Pivot Table
+
+A pivot table is a special table used to represent a **many-to-many relationship** between two other tables.
+
+- It connects two models without storing extra data (usually).
+- Almost every backend framework uses pivot tables (AdonisJS, Laravel, Django, Rails, Prisma).
+
+#### Why
+
+Example: A user can have many roles, A role can belong to many users
+
+There is no direct way to store this in one table without duplication and mess.
+
+So we create a link table (pivot table): `users <---- user_roles ----> roles`
+
+**The pivot table holds pairs of foreign keys, linking the two main tables.**
+
+## REPL session
+
+Read Evaluate Print Loop, we can interact with server, create database in terminal.
+
+Some play commands:
+
+- `await loadDb()`
+- `await loadModels()`
+- `await models.table_name.all()`
+- `await models.table_name.create({ name: 'app' })`
+
+## Seeders
+
+REPL is not scalable in a team. It's fine for single person. In a team same db instance, info should be shared. Now, seeders come into play. Seeders allow you to you define the information, **run the seeder to create the info automatically**, you don't have to have somebody jump into REPL to create info.
+
+## Factories
+
+We can create fake database.
+
+## Relations in database
+
+```js
+// one to one relation
+@belongsTo()
+@hasOne()
+```
 
 ## Others
 
@@ -194,7 +289,8 @@ AdonisJS provides a ctx (HTTP Context) object to the handler function. This ctx 
   - consistency with lucid (adonis ORM)
 - we can render markdown as well with proper tools
 - init existing project (say, from github) with Adonis Slim Starter Kit
-```
+
+```js
 // -- for one level down, -K for slim starter kit
 npm init adonisjs@latest -- -K="github:githubUsername/project_name"
 ```
