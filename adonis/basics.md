@@ -16,7 +16,8 @@
 
 ## EdgeJS
 
-- HTML
+Edge is a template engine that you can embed inside any markup language. Be it Markdown, JSON, YAML, and, of course, HTML. Edge is a backend template engine completely different from frontend libraries like Vue.js or React.
+
 - dynamic variable: `{{ title }}`
 - has components/props
 - Home: `pages\home.edge`, it can contain:
