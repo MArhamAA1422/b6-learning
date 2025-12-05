@@ -29,3 +29,6 @@ For example, if you try to import and use the router service inside the `config/
 
 Fundamentally, this limitation positively impacts your codebase because the application code should rely on the config, not vice versa.
 
+## Environment variables (.env)
+
+Node.js natively exposes all the environment variables as an object through the `process.env`

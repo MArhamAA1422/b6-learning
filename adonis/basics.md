@@ -118,7 +118,9 @@ Cleaning up Routes.
 
 ## Models
 
-Data Structuring.
+- Data Structuring
+- Represent DB tables
+- Add relationships (hasMany, belongsTo)
 
 ```js
 class Test() {
@@ -250,9 +252,27 @@ So we create a link table (pivot table): `users <---- user_roles ----> roles`
 
 **The pivot table holds pairs of foreign keys, linking the two main tables.**
 
+## Preloads
+
+Used to load relationships efficiently.
+
+```js
+await User.query().preload('posts')
+```
+
+## Transactions
+
+To ensure atomic DB operations:
+
+```js
+const trx = await Database.transaction()
+await user.useTransaction(trx)
+await trx.commit()
+```
+
 ## REPL session
 
-Read Evaluate Print Loop, we can interact with server, create database in terminal.
+Read Evaluate Print Loop, we can interact with server, create database in terminal. Adonis REPL lets you interactively **run backend code inside the terminal**, with your full app loaded.
 
 Some play commands:
 
@@ -263,11 +283,15 @@ Some play commands:
 
 ## Seeders
 
-REPL is not scalable in a team. It's fine for single person. In a team same db instance, info should be shared. Now, seeders come into play. Seeders allow you to you define the information, **run the seeder to create the info automatically**, you don't have to have somebody jump into REPL to create info.
+**`Seeders = files that insert sample/initial data into your database.`**
+
+Example: Creating default admin user, fake posts, categories, roles, etc.
+
+REPL is not scalable in a team. It's fine for single person. In a team same db instance, info should be shared. Now, seeders come into play. Seeders allow you to define the information, **run the seeder to create the info automatically**, you don't have to have somebody jump into REPL to create info.
 
 ## Factories
 
-We can create fake database.
+We can create fake database. Factories help you generate fake data dynamically (mostly for testing & seeding). Factories use `faker.js` under the hood.
 
 ## Relations in database
 
@@ -276,6 +300,11 @@ We can create fake database.
 @belongsTo()
 @hasOne()
 ```
+
+## Migrations
+
+- Create/modify database tables
+- Version-controlled schema
 
 ## Others
 
