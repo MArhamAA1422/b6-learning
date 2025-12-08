@@ -57,6 +57,35 @@ Finally, Adonis starts listening on: `http://localhost:3333`. Your app is fully 
 
 **`Incoming request => GLOBAL middleware => Route lookup => ROUTE middleware => Controller / Handler => Response prepared => AFTER middleware => Send response to browser`**
 
+## IoC Container (Inversion of Control Container)
+
+The IoC container is basically a central registry where Adonis stores all important classes, services, helpers, and configurations.
+
+You can think of it like: **A smart storage box that gives you the correct object whenever you ask for it.**
+
+It controls:
+- How classes are created, How dependencies are injected
+- When services are loaded
+- Ensures single instances (singleton)
+- Avoids circular imports, Handles lifecycle of components
+
+Without IoC, your imports would be messy and repetitive.
+
+### Why is it called “Inversion of Control”?
+
+Normally YOU create objects:
+```js
+const userService = new UserService()
+```
+
+But with IoC, Adonis creates the object for you, and you just request it:
+```js
+import UserService from '#services/user_service'
+```
+You don’t create, configure, or manage the instance → the container does.
+
+That’s the “inversion”: Control moves from you → to the framework.
+
 ## Commands
 
 - `npm init adonisjs@latest project_name`
