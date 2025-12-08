@@ -83,3 +83,12 @@ You can define the environment in which to import the file. The valid options ar
 - `console` environment refers to the Ace commands except for the repl command.
 - `repl` environment refers to the process started using the node ace repl command.
 - Finally, the `test` environment refers to the process started for running the tests.
+
+### Async Local Storage (ALS)
+
+AsyncLocalStorage is used to create asynchronous state within callbacks and promise chains. It allows storing data throughout the lifetime of a web request or any other asynchronous duration. It is similar to thread-local storage in other languages.
+
+Correct Usage
+- Do not access the ALS at the top level of any module because modules in Node.js are cached.
+- **Static properties** (not methods) of any class are evaluated as soon as the module is imported; hence, you should not access the HTTP context within static properties.
+- **Event handlers** are executed after the HTTP request finishes. Therefore you should refrain from attempting to access the HTTP context inside them.
