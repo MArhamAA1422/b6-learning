@@ -92,3 +92,11 @@ Correct Usage
 - Do not access the ALS at the top level of any module because modules in Node.js are cached.
 - **Static properties** (not methods) of any class are evaluated as soon as the module is imported; hence, you should not access the HTTP context within static properties.
 - **Event handlers** are executed after the HTTP request finishes. Therefore you should refrain from attempting to access the HTTP context inside them.
+
+### Application
+
+The **Application class** does all the heavy lifting of wiring together an AdonisJS application. You can use this class to know about the environment in which your app is running, get the current state of the application, or make paths to specific directories.
+
+### Scaffolding and codemods
+
+Scaffolding refers to the process of generating source files from static templates (aka stubs), and codemods refer to updating the TypeScript source code by parsing the AST.
