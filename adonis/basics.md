@@ -1,3 +1,62 @@
+## AdonisJS Boot LifeCycle
+
+When an Adonis app starts, it goes through 5 major phases:
+
+### Load Environment (.env)
+
+Before anything runs: .env file is loaded, **variables are validated via env.ts**, values stored in `process.env`
+
+### Load Application Container (IoC Container)
+
+Adonis loads its IoC container, which is like a dependency manager. During this phase:
+- All service providers are registered (config, view engine, database, auth, mail, queue, etc.)
+- Aliases like Route, Model, Env, Database get mapped
+
+IoC guarantees everything loads in correct order.
+
+### Run Service Providers' Boot Method
+
+Service providers run three steps:
+
+- **register()** : add bindings to IoC, register classes/services, setup configs
+- **boot()** : load edge directives, initialize drivers (like lucid db), init auth guards, register global middlewares
+- **ready()** : called when app is fully  booted, typically used for background jobs/listeners
+
+### Load Kernel (Middleware and HTTP Server Setup)
+
+Now Adonis loads:
+
+1. Server Kernel (`start/kernel.ts`)
+
+Contains:
+- Global HTTP middleware (CORS, Shield/CSRF, BodyParser, Session)
+- Named middleware (auth, throttle, etc.)
+- Server middleware (session, inertia, shield)
+
+2. Route Middleware Kernel
+
+Contains:
+-Middleware groups
+-Standard named middleware (auth, silentAuth)
+
+This determines the pipeline your request will go through.
+
+### Load Routes
+
+Adonis loads all route files listed in: `start/routes.ts`
+
+- Adonis registers each route
+- Attaches controllers and middleware
+- Loads route parameters and validators
+
+#### Now the Server Starts
+
+Finally, Adonis starts listening on: `http://localhost:3333`. Your app is fully booted.
+
+## Request Lifecycle (After Boot)
+
+**`Incoming request => GLOBAL middleware => Route lookup => ROUTE middleware => Controller / Handler => Response prepared => AFTER middleware => Send response to browser`**
+
 ## Commands
 
 - `npm init adonisjs@latest project_name`
