@@ -32,3 +32,22 @@ Fundamentally, this limitation positively impacts your codebase because the appl
 ## Environment variables (.env)
 
 Node.js natively exposes all the environment variables as an object through the `process.env`
+
+### Using the AdonisJS env module
+
+The env module is instantiated inside the `start/env.ts` file, and you may access it elsewhere inside your application as follows.
+
+- Ability to store and parse environment variables from multiple .env files.
+- Validate environment variables as soon as the application starts.
+- Have static-type safety for validated environment variables.
+
+### Validating environment variables
+
+The validation rules for environment variables are defined inside the `start/env.ts` file using the `Env.create` method. The validation is performed automatically when you first import this file. Typically, the `start/env.ts` file is imported by one of the config files in your project. If not, then AdonisJS will import this file implicitly before booting the application.
+
+### Using variables inside the dot-env files
+
+```js
+URL=$HOST:$PORT
+REDIS-URL=localhost@${REDIS-USER}  //  You must wrap the variable name inside curly braces {} if the name has special characters other than an underscore.
+```
