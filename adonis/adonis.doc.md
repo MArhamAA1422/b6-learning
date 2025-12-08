@@ -62,8 +62,24 @@ The start directory contains the files you want to import during the boot lifecy
 
 Do not confuse the `public` directory with the `resources` directory. The resources directory contains the source code of your frontend application, and the public directory has the compiled output. The public directory hosts static assets.
 
-## DB Directory
+### DB Directory
 
 - migrations dir
 - seeders dir
 
+## Concepts
+
+### AdonisRC file
+
+The `adonisrc.ts` file is used to configure the workspace settings of your application.
+
+#### preloads
+
+An array of files to import at the time of booting the application.
+
+You can define the environment in which to import the file. The valid options are:
+
+- `web` environment refers to the process started for the HTTP server.
+- `console` environment refers to the Ace commands except for the repl command.
+- `repl` environment refers to the process started using the node ace repl command.
+- Finally, the `test` environment refers to the process started for running the tests.
