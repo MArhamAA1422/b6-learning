@@ -51,3 +51,19 @@ The validation rules for environment variables are defined inside the `start/env
 URL=$HOST:$PORT
 REDIS-URL=localhost@${REDIS-USER}  //  You must wrap the variable name inside curly braces {} if the name has special characters other than an underscore.
 ```
+
+## Folder Structure
+
+### Start Directory
+
+The start directory contains the files you want to import during the boot lifecycle of the application. For example, the files to register **routes** and define **event listeners** should live within the start directory.
+
+### Public Directory
+
+Do not confuse the `public` directory with the `resources` directory. The resources directory contains the source code of your frontend application, and the public directory has the compiled output. The public directory hosts static assets.
+
+## DB Directory
+
+- migrations dir
+- seeders dir
+
