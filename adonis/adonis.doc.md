@@ -306,3 +306,31 @@ To give you better control over the execution of the middleware pipeline, Adonis
 #### Execution Flow
 
 Request => Middleware [ downstream logic => next() ] => Route handler => Middleware [ upstream logic ] => Response
+
+### Body parser
+
+The request data is parsed using the BodyParser middleware registered inside the `start/kernel.ts` file.
+
+### Request
+
+An instance of the request class holds data for the ongoing HTTP request, including the **request body, reference to uploaded files, cookies, request headers**, and much more. The request instance can be accessed using the `ctx.request` property.
+
+####  Cherry-picking values
+
+The `request.input`, `request.only`, and the `request.except` methods can cherry-pick specific properties from the request data. All the cherry-picking methods lookup for values inside both the request body and the query string.
+
+#### Request body
+
+AdonisJS parses the request body using the body-parser middleware registered inside the `start/kernel.ts` file.
+
+####  Configuring trusted proxies
+
+Most Node.js applications are deployed behind a proxy server like Nginx or Caddy. Therefore we have to rely on HTTP headers such as `X-Forwarded-Host, X-Forwarded-For, and X-Forwarded-Proto` to know about the real end-client making an HTTP request.
+
+####  Form method spoofing
+
+The form method on an HTML form can only be set to GET, or POST, making it impossible to leverage restful HTTP methods. However, AdonisJS allows you to workaround this limitation using form method spoofing.
+
+#### Response
+
+An instance of the response class is used to respond to HTTP requests. AdonisJS supports sending **HTML fragments, JSON objects, streams**, and much more. The response instance can be accessed using the `ctx.response` property.
