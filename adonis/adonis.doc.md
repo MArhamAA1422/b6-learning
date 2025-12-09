@@ -100,3 +100,150 @@ The **Application class** does all the heavy lifting of wiring together an Adoni
 ### Scaffolding and codemods
 
 Scaffolding refers to the process of generating source files from static templates (aka stubs), and codemods refer to updating the TypeScript source code by parsing the AST.
+
+## Basics
+
+### Routing
+
+In AdonisJS, routes are defined inside the `start/routes.ts` file. A route is a combination of a **URI pattern and a handler** to handle requests for that specific route. For example:
+
+```js
+router.get('/home/:id', ({ params }) => {
+   return `hello ${params.id} from home page`
+})
+```
+
+#### Params Matchers
+
+```js
+router
+  .get('/posts/:id', ({ params }) => {})
+  .where('id', {
+    match: /^[0-9]+$/,
+  })
+```
+
+You can use the `router.any()` method to create a route that responds to all standard HTTP methods. Finally, you can create a route for custom HTTP methods using the `router.route()` method.
+
+#### Router handler
+
+The route handler handles the request by returning a **response** or raising an **exception** to abort the request. A handler can be an inline callback or a reference to a controller method.
+
+During an HTTP request, AdonisJS will **create an instance of the controller class using the IoC container** and execute the store method.
+
+```js
+const UsersController = () => import('#controllers/users_controller')
+router.post('users', [UsersController, 'store'])
+```
+
+You can define a middleware on a route by chaining the `use()` method.
+
+#### Route identifier
+
+Every route has a unique identifier you can use to reference the route elsewhere in your application. For example, you can generate a URL to a route using the URL builder or redirect to a route using the `response.redirect()` method.
+
+By default, the route pattern is the route identifier. However, you can assign a unique, memorable name to the route using the `route.as` method.
+```js
+router.get('users', () => {}).as('users.index')
+```
+
+#### Grouping Routes
+
+```js
+router.group(() => {
+  router.get('posts', () => {})
+  router.group(() => {
+    router.get('users', () => {})
+  })
+})
+```
+
+#### Prefixing Routes
+
+```js
+router
+  .group(() => {
+    router
+      .group(() => {
+        router.get('users', () => {})  // api/v1/users
+      })
+      .prefix('v1')
+  })
+  .prefix('api')
+```
+
+#### Routes for specific domain
+
+`.domain()`
+
+##### Dynamic subdomain
+
+In the following example, the tenant segment accepts any subdomain, and you can access its value using the `HttpContext.subdomains` object.
+
+```js
+.domain(':tenant.adonisjs.com')
+```
+
+#### Forwarding params
+
+```js
+router.on('/a/:id').redirect('b/:id')
+```
+
+#### Explicitly specifying params
+
+```js
+// Always redirect to /articles/1
+router.on('/posts/:id').redirect('/articles/:id', {
+  id: 1
+})
+```
+
+#### With query string
+
+```js
+router.on('/posts').redirect('/articles', {
+  qs: {
+    limit: 20,
+    page: 1,
+  }  
+})
+```
+
+#### Match multiple routes
+
+```js
+if (request.matchesRoute(['/posts/:id', '/posts/:id/comments'])) {
+  // do something
+}
+```
+
+#### URL builder
+
+The `router.builder` method creates an instance of the URL builder class, and you can use the builder's fluent API to look up a route and create a URL for it.
+
+#### Signed URL
+
+For example: unsubscribe a user
+
+#### Extending router
+
+You can add custom properties to different router classes using macros and getters. Following is the list of classes you can extend.
+
+- Router, Route, RouteGroup
+- RouteResource
+- BriskRoute
+
+##### BriskRoute
+
+The BriskRoute class represents a route without an explicit handler. An instance of BriskRoute class is created once you call the `router.on` method.
+
+#### route.on
+
+`router.on()` (or `Route.on()` in AdonisJS) is a special routing method that maps a URL path directly to a view/template, without a controller, without logic, and without parameters. It is used for simple/static pages. Route.on() is a shortcut for simple GET routes that only need to render a view, with no logic.
+
+#### Route vs Router
+
+Route	= Public API for defining routes, for Application developer (you)
+
+router = Internal router engine, for Framework & advanced users
