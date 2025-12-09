@@ -300,6 +300,59 @@ table.increments('id')
 table.unique(['user_id', 'role_id'])
 ```
 
+## How an ORM (like Lucid) Turns Code into SQL
+
+Lucid internally does these steps:
+
+### You build a query using the Query Builder
+
+It stores instructions in memory like:
+```js
+{
+  type: 'select',
+  table: 'users',
+  wheres: [{ column: 'age', operator: '>', value: 18 }]
+}
+```
+
+This is called a Query Builder Object.
+
+### Lucid passes this to the Database Adapter
+
+Adonis uses its own SQL library called: **`Knex.js`**
+
+So your model instructions are passed to Knex.
+
+Lucid → Knex → SQL
+
+### Knex compiles the instructions into SQL
+
+Knex converts your JS instructions into raw SQL text. This is called SQL compilation.
+
+### SQL is sent to the Database Driver
+
+Knex chooses the correct driver based on your `.env`
+
+The driver (say, mysql):
+
+- opens a TCP connection
+- sends SQL text to the database
+- receives back rows in JSON form
+
+### Database sends results → driver → Knex → Lucid Models
+
+Knex gets raw rows like:
+```
+[
+  { id: 1, username: 'arham', age: 21 }
+]
+```
+
+Lucid converts them into Model instances:
+```js
+User { id: 1, username: 'arham', age: 21 }
+```
+
 ## SQL Parameters and Injection Protection
 
 ```js
