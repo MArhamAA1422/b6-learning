@@ -101,6 +101,20 @@ The **Application class** does all the heavy lifting of wiring together an Adoni
 
 Scaffolding refers to the process of generating source files from static templates (aka stubs), and codemods refer to updating the TypeScript source code by parsing the AST.
 
+### HTTP Context
+
+A new instance of HTTP Context class is generated **for every HTTP request** and passed along to the **route handler, middleware, and exception handler**.
+
+HTTP Context holds all the information you may need related to an HTTP request. For example:
+
+- You can access the request body, headers, and query params using the `ctx.request` property.
+- You can respond to the HTTP request using the `ctx.response` property.
+- Access the logged-in user using the `ctx.auth` property.
+- Authorize user actions using the `ctx.bouncer` property.
+- And so on.
+
+In a nutshell, the context is a request-specific store holding all the information for the ongoing request.
+
 ## Basics
 
 ### Routing
@@ -247,3 +261,29 @@ The BriskRoute class represents a route without an explicit handler. An instance
 Route	= Public API for defining routes, for Application developer (you)
 
 router = Internal router engine, for Framework & advanced users
+
+### Controllers
+
+HTTP controllers offer an abstraction layer to **organize the route handlers** inside dedicated files. Instead of expressing all the request handling logic within the routes file, you move it to controller classes.
+
+Lazy-loading controllers are needed when you are using HMR.
+
+#### Using magic strings
+
+Another way of lazy loading the controllers is to reference the controller and its method as a string. We call it a magic string because the string itself has no meaning, and it's just the router uses it to look up the controller and imports it behind the scenes.
+
+```js
+router.get('users', '#controllers/users_controller.index')
+```
+
+#### HTTP context
+
+The **controller methods receive an instance** of the HttpContext class as the first argument.
+
+#### Resource-driven controllers
+
+For conventional RESTful applications, a controller should only be designed to manage a single resource. A resource is usually an entity in your application like a User resource or a Post resource.
+
+#### router.resource
+
+Creates all the necessary routes for controller class methods.
