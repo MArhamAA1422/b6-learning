@@ -287,3 +287,22 @@ For conventional RESTful applications, a controller should only be designed to m
 #### router.resource
 
 Creates all the necessary routes for controller class methods.
+
+### Middleware
+
+Middleware are a **series of functions** executed during an HTTP request before the **request reaches the route handler**. Every function in the chain can end the request or forward it to the next middleware.
+
+A typical AdonisJS application uses middleware for **parsing request body, managing users sessions, authenticating requests, serving static assets**, etc.
+
+#### Middleware stacks
+
+To give you better control over the execution of the middleware pipeline, AdonisJS split the middleware stack into following three groups.
+
+- Server middleware stack
+- Router middleware stack or Global middleware
+   - The Bodyparser, auth, and session middleware are registered under the router middleware stack.
+- Named middleware collection
+
+#### Execution Flow
+
+Request => Middleware [ downstream logic => next() ] => Route handler => Middleware [ upstream logic ] => Response
