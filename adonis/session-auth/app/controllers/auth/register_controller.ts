@@ -3,7 +3,11 @@ import { registerValidator } from '#validators/auth'
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class RegisterController {
-   async show({}: HttpContext) {}
+   async show({}: HttpContext) {
+      return {
+         message: 'nothing to show',
+      }
+   }
 
    async store({ request, response, auth }: HttpContext) {
       const data = await request.validateUsing(registerValidator)
@@ -11,6 +15,8 @@ export default class RegisterController {
 
       await auth.use('web').login(user)
 
-      return response.redirect().toPath('/')
+      return {
+         message: 'success',
+      }
    }
 }
