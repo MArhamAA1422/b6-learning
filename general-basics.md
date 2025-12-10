@@ -407,3 +407,23 @@ State: Listening => server
 - web real-time communication
 - it powers things like: **video call, screen sharing**, all in browser no extra software
 - no server in the middle (processing res/req)
+
+## Authentication
+
+generate big string (using hash) for user data => send it to browser as cookie => compare (hash) further data
+
+### JWT
+
+generate Refresh token based on user data, then generate Access token and send it to client (say, React app)
+
+- Refresh Token
+    - HTTP-only cookie
+    - first layer of security
+    - only the browser can access it, not frontend (JS, React) or others can access it
+    - normally has bigger expiry time
+- Access Token
+    - can have expiry time
+    - it's recommended not to store access token either in localStorage or browser cookie (as js can access it)
+    - can be put this access token in **React App MEMORY: state/context**
+    - react app is responsible to handle that token (gets from browser), even after expiration
+    - as long as the Refresh token is in server, the react app can generate the access token when in need (say, user refresh the page) without re-login required
