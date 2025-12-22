@@ -412,6 +412,31 @@ State: Listening => server
 
 generate big string (using hash) for user data => send it to browser as cookie => compare (hash) further data
 
+### Session, Cookie
+
+Cookie contains session id, gets saved in computer file. Can be short/long.
+
+### Token
+
+token = temporary password + limited access to your data
+
+example: OAuth, OpenID, JWT
+
+### Session Vs Token
+
+Session:
+- only client and server, no third party, so may not standard
+- grant access to all information available
+- Cookie HTTP header
+
+Token:
+- follow a standard (interoperability) as many parties are involved and may not trust each other
+- some tokens tend not to need a session on the server
+- limited lifetime
+- grands access to only a subset of the data
+- Authorization HTTP header
+- common for mobile apps
+
 ### JWT
 
 generate Refresh token based on user data, then generate Access token and send it to client (say, React app)
