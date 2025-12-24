@@ -1,3 +1,21 @@
+## AdonisJS: Core Concepts
+
+AdonisJS is a TypeScript-first Node.js framework inspired by Laravel, emphasizing an opinionated MVC (Model-View-Controller) structure. This means it guides you toward best practices, reducing decision fatigue—perfect for beginners. Its mental model promotes **convention over configuration**: Follow the framework's patterns, and your code becomes readable and maintainable. As of 2025, AdonisJS v6 is stable, with v7 in alpha bringing enhanced type-safety and ESM support. The framework provides a complete stack out-of-the-box: routing, ORM, validation, auth, and more, so you focus on business logic.
+
+Key core concepts to master for understanding any Adonis code:
+
+### MVC Pattern:
+
+- Models: Represent data and database interactions using Lucid ORM. They handle relationships (e.g., hasMany for one-to-many) and queries.
+- Controllers: Handle requests, validate input, call services/models, and respond. Think of them as orchestrators: They glue everything together without doing heavy lifting themselves.
+- Routing: Maps URLs to controller actions. Supports middleware, groups, and parameters.
+- Lucid ORM: Abstracts database operations. Create migrations for schema, models for data, and factories for testing. Core idea: **Write type-safe queries** like `User.query().where('email', email)` instead of raw SQL, promoting safety and readability.
+- Authentication & Authorization (Engineering tip): Always check user context in protected routes—assume sessions can expire or be forged.
+- Services and IoC Container: For reusable logic (e.g., email sending). Adonis auto-resolves dependencies, encouraging modular code.
+- Other Essentials: Encryption/Hashing for security, `FlyDrive` for file storage, `Bentocache` for performance, `Mailer` for emails. The ecosystem is modular but official, so integrate as needed.
+
+**`To understand any Adonis code: Look for the MVC flow—route to controller to model/view. Check configs (config/*.ts) for settings, and use the Ace CLI (node ace) for scaffolding.`**
+
 ## AdonisJS Boot LifeCycle
 
 When an Adonis app starts, it goes through 5 major phases:
