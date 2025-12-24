@@ -336,6 +336,8 @@ State: Listening => server
 
 ## Backend Concepts
 
+Strong Backend: Load Balancing, Rate Limiting, Input Sanitization, Output Schema, No db operations from frontend
+
 - authentication vs authorization
 - rate limiting (control request from `user, ip, token`)
 - db index
