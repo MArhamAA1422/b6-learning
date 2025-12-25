@@ -323,6 +323,15 @@ State: Listening => server
 - user or registered ports, user in server,
 - dynamic or private ports, client side ports (49152 - 65535)
 
+## SSH
+
+Secure Shell. It's a essential tool for working with remote server. A protocol to connect remote server securely. Remote cmd-access, File transfers, Tunneling traffics. Components: SSH client, SSH server.
+
+Authentication Methods:
+- password auth
+- SSH Key auth (recommended, more secure)
+   - client has both private, public key; server sends random string, verify client response (with private key) with public key
+
 ## Modem vs Router
 - A modem is what **brings the internet into your home or business**, demodulates incoming analog signals into digital signal, also modulates outgoing digital signals into an analog one.
 - A router is what **routes or passes your internet connection** to all of your devices. Most routers will have a built-in switch inside of them.
