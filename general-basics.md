@@ -487,7 +487,7 @@ In a GPU => 10752 CUDA Cores, 336 Tensor Cores, 84 Ray Tracing Cores
 
 #### Tensor Core
 
-matrix multiplication and addition calculator, are used for geometric transformations and working with neural networks and AI
+matrix multiplication and addition calculator, are used for geometric transformations and working with neural networks and AI. A*B + C = RES
 
 #### Ray Tracing Core
 
@@ -515,3 +515,15 @@ coordinate of object in world space + coordinate of vertex in model space = coor
    - all thread block/warp same speed
 - SIMT: single instruction multiple threads
    - different warp different speed, multiple program counters
+
+## Mining Bitcoins, SHA-256
+
+GPU was used initially. To create a new block on a block chain the **SHA-256** hashing algorithm is run a set of data that includes Transactions, Time, Witness Tx's, Block number, **Nonce** (a random number).
+
+The output of SHA-256 is a random 256 bits, changing Nonce changes the output, kinda like a lottery generator. Success Lottery: first 80 digits all zero, rewards is 3 bitcoins.
+
+Why GPU? A GPU can run multiple SHA with all different Nonce, can generate 95 Million hashes.
+
+### ASIC
+
+Nowadays, computers filled with ASIC's or **Application-Specific Integrated Circuits**, performs 250 Trillion hashes every second, equivalent to 2600 GC. So, GC (spoon) <=> ASIC (excavator)
