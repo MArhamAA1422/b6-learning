@@ -30,8 +30,16 @@
 ### React
 - Hooks (useEffect, useMemo)
    - side effect
+- re-rendering concepts
 
 ### Adonis
 - routing
 - module
 - file system
+
+### Backend
+- Query optimization
+   - N+1 issue
+   - preload vs join
+- Validation
+- Authentication, Authorization
