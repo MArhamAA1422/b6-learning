@@ -33,3 +33,19 @@ Remembers fetched data to avoid repeat requests
 
 `cacheLife` => when to clear
 `cacheTag` => what to clear
+
+## Next.js has two different routers
+
+- App Router: The newer router that supports new React features like Server Components.
+- Pages Router: The original router, still supported and being improved.
+
+## Project Structure
+
+- Add page to expose a route, layout for shared UI such as header, nav, or footer. loading for skeletons, error for error boundaries, and route for APIs
+
+#### Interesting routing stuffs
+
+- [ ]
+- ( )
+- _
+- Colocation (page.js)
