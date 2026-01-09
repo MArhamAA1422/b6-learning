@@ -5,6 +5,9 @@
 - leaf nodes
 - B-tree
 - clustered index structure
+- index seek  // fast
+- index scan  // BF, linear
+   - so, we create non-clustered index (for example for "name" column)
 
 ## Data Page
 

@@ -16,6 +16,8 @@
 - “use cache”
 - Build Adapters API  // next 16+ feature
 - metadata  // SEO
+- server first framework unlike TANSTACK START (which is client first)
+- utilizes RSC
 
 ### Server type codes (routes, middlewares, listening, API creating)
 
@@ -49,3 +51,13 @@ Remembers fetched data to avoid repeat requests
 - ( )
 - _
 - Colocation (page.js)
+
+> LWS
+
+## CSR
+
+For client request server responses with html, css, js. html+css => blank page, waiting for js load. Like Movie download. Full load then can be watched. It increases **TTI** (time to interactive).
+
+## SSR
+
+Server simulates a browser inside and sends ready html, css. Good for SEO. It's a trick. Only the first page. As SPA (single page application), from 2nd page in browser again CSR. Like streaming.
