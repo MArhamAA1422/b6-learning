@@ -350,6 +350,7 @@ Strong Backend: Load Balancing, Rate Limiting, Input Sanitization, Output Schema
 - **stateless**, so that can handle millions of requests
 - **platform independent**, mobile, browser all talk to same API
 - not ideal for bank transfer or enterprise systems
+- **GET, PUT, and DELETE are idempotent** because calling them multiple times doesn't change the final result.
 
 #### SOAP
 
