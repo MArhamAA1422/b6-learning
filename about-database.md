@@ -28,3 +28,11 @@
 - write into a block and flashback, there is no limit to write in HDD for a block/section, but there is limit (**endurance**) in SSD to write in a block, but SSD is faster in read/write
 - SSD loves new write in new block, but for writing in existing block is troublesome, as we have B-Tree as DS, and that always gets updated, that (update) is bad for SSD
 - so, to get rid of B-Tree update problems, a new DS is invented? RocksDB
+
+## SQL optimization/mind set
+
+- first check without any index how db query performs, why bother extra space or write time for index?
+- JOIN vs Preload (preload doesn't do subquery always, it can be separate query), JOIN is readable + faster on average
+- analyze raw query (adonisjs has some builtin functions/tools to see generated sql)
+- use db transaction for batch upload
+- no extra query (consider round trip, request/response cycle)
