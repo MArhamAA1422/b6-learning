@@ -144,6 +144,13 @@ MySQL supports 3 major backup methods:
 
 - ADDDATE(date, day);
 
+### COALESCE
+
+- built-in sql function
+- It returns the first non-NULL value from a list of expressions.
+- `SELECT COALESCE(NULL, NULL, 'hello', 'world');` => 'hello'
+- `SELECT COALESCE(salary, 0) FROM employees;` => If salary is NULL → use 0
+
 ## Referential Constraints
 - delete: ON DELETE CASCADE, ON DELETE SET NULL
    - FK can be NULL
